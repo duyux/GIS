@@ -1,0 +1,33 @@
+﻿<xapCache source="E:\学习\src\GIS学习\GP服务学习\Buffer学习\BufferGP\BufferGP\Bin\Debug\BufferGP.xap" wasSigned="False" certificateThumbprint="" TimeStampUrl="" lastWriteTime="2014/10/11 13:34:34">
+  <file source="E:\学习\src\GIS学习\GP服务学习\Buffer学习\BufferGP\BufferGP\obj\Debug\BufferGP.dll" archivePath="BufferGP.dll" lastWriteTime="2014/10/11 13:34:33" />
+  <file source="C:\Program Files (x86)\ESRI SDKs\Silverlight5\v3.2\ESRI.ArcGIS.Client.Behaviors.dll" archivePath="ESRI.ArcGIS.Client.Behaviors.dll" lastWriteTime="2013/11/20 12:46:46" />
+  <file source="C:\Program Files (x86)\ESRI SDKs\Silverlight5\v3.2\ESRI.ArcGIS.Client.Bing.dll" archivePath="ESRI.ArcGIS.Client.Bing.dll" lastWriteTime="2013/11/20 12:46:00" />
+  <file source="C:\Program Files (x86)\ESRI SDKs\Silverlight5\v3.2\ESRI.ArcGIS.Client.dll" archivePath="ESRI.ArcGIS.Client.dll" lastWriteTime="2013/11/20 12:44:16" />
+  <file source="C:\Program Files (x86)\ESRI SDKs\Silverlight5\v3.2\ESRI.ArcGIS.Client.Toolkit.DataSources.dll" archivePath="ESRI.ArcGIS.Client.Toolkit.DataSources.dll" lastWriteTime="2013/11/20 12:46:10" />
+  <file source="C:\Program Files (x86)\ESRI SDKs\Silverlight5\v3.2\ESRI.ArcGIS.Client.Toolkit.dll" archivePath="ESRI.ArcGIS.Client.Toolkit.dll" lastWriteTime="2013/11/20 12:46:22" />
+  <file source="C:\Program Files (x86)\Microsoft SDKs\Expression\Blend\Silverlight\v5.0\Libraries\System.Windows.Interactivity.dll" archivePath="System.Windows.Interactivity.dll" lastWriteTime="2013/2/18 14:32:08" />
+  <file source="C:\Program Files (x86)\Microsoft SDKs\Silverlight\v5.0\Libraries\Client\System.Windows.Controls.dll" archivePath="System.Windows.Controls.dll" lastWriteTime="2011/11/18 17:40:20" />
+  <file source="C:\Program Files (x86)\Microsoft SDKs\Silverlight\v5.0\Libraries\Client\System.Windows.Controls.Data.dll" archivePath="System.Windows.Controls.Data.dll" lastWriteTime="2011/11/18 17:40:20" />
+  <file source="C:\Program Files (x86)\Microsoft SDKs\Silverlight\v5.0\Libraries\Client\System.Json.dll" archivePath="System.Json.dll" lastWriteTime="2011/11/18 17:40:20" />
+  <file source="C:\Program Files (x86)\Microsoft SDKs\Silverlight\v5.0\Libraries\Client\System.ComponentModel.DataAnnotations.dll" archivePath="System.ComponentModel.DataAnnotations.dll" lastWriteTime="2011/11/18 17:40:20" />
+  <file source="C:\Program Files (x86)\Microsoft SDKs\Silverlight\v5.0\Libraries\Client\System.Windows.Data.dll" archivePath="System.Windows.Data.dll" lastWriteTime="2011/11/18 17:40:20" />
+  <file source="C:\Program Files (x86)\Microsoft SDKs\Silverlight\v5.0\Libraries\Client\System.Xml.Linq.dll" archivePath="System.Xml.Linq.dll" lastWriteTime="2011/11/18 17:40:20" />
+  <file source="C:\Program Files (x86)\Microsoft SDKs\Silverlight\v5.0\Libraries\Client\System.ServiceModel.Syndication.dll" archivePath="System.ServiceModel.Syndication.dll" lastWriteTime="2011/11/18 17:40:20" />
+  <file source="C:\Program Files (x86)\Microsoft SDKs\Silverlight\v5.0\Libraries\Client\System.Windows.Controls.Data.Input.dll" archivePath="System.Windows.Controls.Data.Input.dll" lastWriteTime="2011/11/18 17:40:20" />
+  <file source="C:\Program Files (x86)\Microsoft SDKs\Silverlight\v5.0\Libraries\Client\System.Xml.Serialization.dll" archivePath="System.Xml.Serialization.dll" lastWriteTime="2011/11/18 17:40:20" />
+  <file source="C:\Program Files (x86)\ESRI SDKs\Silverlight5\v3.2\zh-Hans\ESRI.ArcGIS.Client.resources.dll" archivePath="zh-Hans\ESRI.ArcGIS.Client.resources.dll" lastWriteTime="2013/11/20 12:44:24" />
+  <file source="C:\Program Files (x86)\ESRI SDKs\Silverlight5\v3.2\zh-Hans\ESRI.ArcGIS.Client.Behaviors.resources.dll" archivePath="zh-Hans\ESRI.ArcGIS.Client.Behaviors.resources.dll" lastWriteTime="2013/11/20 12:46:54" />
+  <file source="C:\Program Files (x86)\ESRI SDKs\Silverlight5\v3.2\zh-Hans\ESRI.ArcGIS.Client.Bing.resources.dll" archivePath="zh-Hans\ESRI.ArcGIS.Client.Bing.resources.dll" lastWriteTime="2013/11/20 12:46:08" />
+  <file source="C:\Program Files (x86)\ESRI SDKs\Silverlight5\v3.2\zh-Hans\ESRI.ArcGIS.Client.Toolkit.resources.dll" archivePath="zh-Hans\ESRI.ArcGIS.Client.Toolkit.resources.dll" lastWriteTime="2013/11/20 12:46:28" />
+  <file source="C:\Program Files (x86)\ESRI SDKs\Silverlight5\v3.2\zh-Hans\ESRI.ArcGIS.Client.Toolkit.DataSources.resources.dll" archivePath="zh-Hans\ESRI.ArcGIS.Client.Toolkit.DataSources.resources.dll" lastWriteTime="2013/11/20 12:46:18" />
+  <file source="C:\Program Files (x86)\Microsoft SDKs\Silverlight\v5.0\Libraries\Client\zh-Hans\System.Windows.Controls.resources.dll" archivePath="zh-Hans\System.Windows.Controls.resources.dll" lastWriteTime="2011/12/7 23:27:32" />
+  <file source="C:\Program Files (x86)\Microsoft SDKs\Silverlight\v5.0\Libraries\Client\zh-Hans\System.Windows.Controls.Data.resources.dll" archivePath="zh-Hans\System.Windows.Controls.Data.resources.dll" lastWriteTime="2011/12/7 23:27:32" />
+  <file source="C:\Program Files (x86)\Microsoft SDKs\Silverlight\v5.0\Libraries\Client\zh-Hans\System.Json.resources.dll" archivePath="zh-Hans\System.Json.resources.dll" lastWriteTime="2011/12/7 22:31:00" />
+  <file source="C:\Program Files (x86)\Microsoft SDKs\Silverlight\v5.0\Libraries\Client\zh-Hans\System.ComponentModel.DataAnnotations.resources.dll" archivePath="zh-Hans\System.ComponentModel.DataAnnotations.resources.dll" lastWriteTime="2011/12/7 23:27:32" />
+  <file source="C:\Program Files (x86)\Microsoft SDKs\Silverlight\v5.0\Libraries\Client\zh-Hans\System.Windows.Data.resources.dll" archivePath="zh-Hans\System.Windows.Data.resources.dll" lastWriteTime="2011/11/18 17:40:20" />
+  <file source="C:\Program Files (x86)\Microsoft SDKs\Silverlight\v5.0\Libraries\Client\zh-Hans\System.Xml.Linq.resources.dll" archivePath="zh-Hans\System.Xml.Linq.resources.dll" lastWriteTime="2011/12/7 22:31:00" />
+  <file source="C:\Program Files (x86)\Microsoft SDKs\Silverlight\v5.0\Libraries\Client\zh-Hans\System.ServiceModel.Syndication.resources.dll" archivePath="zh-Hans\System.ServiceModel.Syndication.resources.dll" lastWriteTime="2011/12/7 22:31:00" />
+  <file source="C:\Program Files (x86)\Microsoft SDKs\Silverlight\v5.0\Libraries\Client\zh-Hans\System.Windows.Controls.Data.Input.resources.dll" archivePath="zh-Hans\System.Windows.Controls.Data.Input.resources.dll" lastWriteTime="2011/12/7 23:27:32" />
+  <file source="C:\Program Files (x86)\Microsoft SDKs\Silverlight\v5.0\Libraries\Client\zh-Hans\System.Xml.Serialization.resources.dll" archivePath="zh-Hans\System.Xml.Serialization.resources.dll" lastWriteTime="2011/12/7 22:31:00" />
+  <file source="E:\学习\src\GIS学习\GP服务学习\Buffer学习\BufferGP\BufferGP\Bin\Debug\AppManifest.xaml" archivePath="AppManifest.xaml" lastWriteTime="2014/10/11 13:34:34" />
+</xapCache>

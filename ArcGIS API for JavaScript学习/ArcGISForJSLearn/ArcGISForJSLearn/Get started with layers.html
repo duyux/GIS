@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Get started with layers</title>
+    <style>
+        html, body, #viewDiv {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            width: 100%;
+        }
+        #layerToggle {
+      top: 20px;
+      right: 20px;
+      position: absolute;
+      z-index: 99;
+      background-color: white;
+      border-radius: 8px;
+      padding: 10px;
+      opacity: 0.75;
+    }
+    </style>
+    <link rel="stylesheet" href="https://js.arcgis.com/4.2/esri/css/main.css">
+    <script src="https://js.arcgis.com/4.2/"></script>
+    <script>
+        require([
+         "esri/Map",
+        "esri/views/SceneView",
+        "esri/layers/TileLayer",  // Require the TileLayer module
+        "dojo/dom",  // require dojo/dom for getting the DOM element
+        "dojo/on",   // require dojo/on for listening to events on the DOM
+        "dojo/domReady!"
+        ], function (Map, SceneView, TileLayer,dom,on) {
+
+            var transportationLyr = new TileLayer({
+                url: "https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Transportation/MapServer",
+                id: "streets",
+                opacity: 0.7
+            });
+
+            var housingLyr = new TileLayer({
+                url: "https://tiles.arcgis.com/tiles/nGt4QxSblgDfeJn9/arcgis/rest/services/New_York_Housing_Density/MapServer",
+                id: "ny-housing"
+            });
+
+
+            var map = new Map({
+                basemap: "oceans",
+                layers: [housingLyr]  // layers can be added as an array to the map's constructor
+            });
+
+            var view = new SceneView({
+                container: 'viewDiv',
+                map:map
+            });
+
+
+            map.layers.add(transportationLyr);
+
+            // Create a variable referencing the checkbox node
+            var streetsLyrToggle = dom.byId("streetsLyr");
+
+            // Listen to the onchange event for the checkbox
+            on(streetsLyrToggle, "change", function () {
+                // When the checkbox is checked (true), set the layer's visibility to true
+                transportationLyr.visible = streetsLyrToggle.checked;
+            });
+
+
+            // This event fires each time a layer's LayerView is created for the
+            // specified view instance
+            view.on("layerview-create", function (event) {
+                if (event.layer.id === "ny-housing") {
+                    // Explore the properties of the housing layer's layer view here
+                    console.log("LayerView for New York housing density created!", event.layerView);
+                }
+                if (event.layer.id === "streets") {
+                    // Explore the properties of the transportation layer's layer view here
+                    console.log("LayerView for streets created!", event.layerView);
+                }
+            });
+            // When the layer's promise resolves, animate the view to the layer's fullExtent
+            housingLyr.then(function() {
+                view.goTo(housingLyr.fullExtent);
+            });
+
+        });
+    </script>
+</head>
+<body>
+    <div id="viewDiv"></div>
+    <span id="layerToggle">
+        <input type="checkbox" id="streetsLyr"> Transportation
+    </span>
+</body>
+</html>

@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="DZXSLGP.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:esri="http://schemas.esri.com/arcgis/client/2009"
+    xmlns:esriSymbols="clr-namespace:ESRI.ArcGIS.Client.Symbols;assembly=ESRI.ArcGIS.Client"
+
+    mc:Ignorable="d"
+    d:DesignHeight="300" d:DesignWidth="400">
+
+    <Grid x:Name="LayoutRoot" Background="White" >
+        <!--资源引用-->
+        <Grid.Resources>
+            <esriSymbols:SimpleFillSymbol x:Name="DefaultFillSymbol" Fill="#33FF0000" BorderBrush="Red" BorderThickness="2" />
+        </Grid.Resources>
+        <esri:Map x:Name="MyMap" >
+            <esri:Map.Layers>
+                <esri:ArcGISDynamicMapServiceLayer ID="MyLayer"
+                Url="http://dyx/ArcGIS/rest/services/testgpmap/MapServer"
+                   />
+                <esri:GraphicsLayer ID="MyGraphicsLayer" />
+
+            </esri:Map.Layers>
+        </esri:Map>
+        <Button Content="Button" Height="23" HorizontalAlignment="Left" Margin="106,22,0,0" Name="button1" VerticalAlignment="Top" Width="75" Click="button1_Click" />
+    </Grid>
+
+</UserControl>

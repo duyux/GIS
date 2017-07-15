@@ -1,0 +1,5 @@
+E:\学习\src\MeteoInfo学习\wContourToSliverlight\wContourToSliverlight.Web\bin\wContourToSliverlight.Web.dll
+E:\学习\src\MeteoInfo学习\wContourToSliverlight\wContourToSliverlight.Web\bin\wContourToSliverlight.Web.pdb
+E:\学习\src\MeteoInfo学习\wContourToSliverlight\wContourToSliverlight.Web\obj\Debug\wContourToSliverlight.Web.csprojResolveAssemblyReference.cache
+E:\学习\src\MeteoInfo学习\wContourToSliverlight\wContourToSliverlight.Web\obj\Debug\wContourToSliverlight.Web.dll
+E:\学习\src\MeteoInfo学习\wContourToSliverlight\wContourToSliverlight.Web\obj\Debug\wContourToSliverlight.Web.pdb
