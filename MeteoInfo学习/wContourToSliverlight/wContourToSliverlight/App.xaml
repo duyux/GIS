@@ -1,0 +1,108 @@
+﻿<Application xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+               xmlns:esriSymbols="clr-namespace:ESRI.ArcGIS.Client.Symbols;assembly=ESRI.ArcGIS.Client"
+              xmlns:esri="http://schemas.esri.com/arcgis/client/2009"
+             x:Class="wContourToSliverlight.App"
+             >
+    <Application.Resources>
+        <esriSymbols:PictureMarkerSymbol x:Name="airSymbol" OffsetX="8" OffsetY="8" >
+            <esriSymbols:PictureMarkerSymbol.ControlTemplate>
+                <ControlTemplate>
+                    <Grid>
+                        <Border x:Name="Background" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="3">
+                            <Grid Margin="1">
+                                <Border x:Name="BackgroundAnimation" Opacity="0" />
+                                <Image Source="/Assets/Images/stationpushpin/1_05.png" Stretch="Fill" Width="15" Height="18" />
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </esriSymbols:PictureMarkerSymbol.ControlTemplate>
+        </esriSymbols:PictureMarkerSymbol>
+
+        <esriSymbols:PictureMarkerSymbol x:Name="airGrade1" OffsetX="8" OffsetY="8" >
+            <esriSymbols:PictureMarkerSymbol.ControlTemplate>
+                <ControlTemplate>
+                    <Grid>
+                        <Border x:Name="Background" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="3">
+                            <Grid Margin="1">
+                                <Border x:Name="BackgroundAnimation" Opacity="0" />
+                                <Image Source="/Assets/Images/stationpushpin/绿.png" Stretch="Fill" Width="17" Height="20" />
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </esriSymbols:PictureMarkerSymbol.ControlTemplate>
+        </esriSymbols:PictureMarkerSymbol>
+        <esriSymbols:PictureMarkerSymbol x:Name="airGrade2" OffsetX="8" OffsetY="8" >
+            <esriSymbols:PictureMarkerSymbol.ControlTemplate>
+                <ControlTemplate>
+                    <Grid>
+                        <Border x:Name="Background" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="3">
+                            <Grid Margin="1">
+                                <Border x:Name="BackgroundAnimation" Opacity="0" />
+                                <Image Source="/Assets/Images/stationpushpin/黄.png" Stretch="Fill" Width="17" Height="20" />
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </esriSymbols:PictureMarkerSymbol.ControlTemplate>
+        </esriSymbols:PictureMarkerSymbol>
+        <esriSymbols:PictureMarkerSymbol x:Name="airGrade3" OffsetX="8" OffsetY="8" >
+            <esriSymbols:PictureMarkerSymbol.ControlTemplate>
+                <ControlTemplate>
+                    <Grid>
+                        <Border x:Name="Background" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="3">
+                            <Grid Margin="1">
+                                <Border x:Name="BackgroundAnimation" Opacity="0" />
+                                <Image Source="/Assets/Images/stationpushpin/橙.png" Stretch="Fill" Width="17" Height="20" />
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </esriSymbols:PictureMarkerSymbol.ControlTemplate>
+        </esriSymbols:PictureMarkerSymbol>
+        <esriSymbols:PictureMarkerSymbol x:Name="airGrade4" OffsetX="8" OffsetY="8" >
+            <esriSymbols:PictureMarkerSymbol.ControlTemplate>
+                <ControlTemplate>
+                    <Grid>
+                        <Border x:Name="Background" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="3">
+                            <Grid Margin="1">
+                                <Border x:Name="BackgroundAnimation" Opacity="0" />
+                                <Image Source="/Assets/Images/stationpushpin/红.png" Stretch="Fill" Width="17" Height="20" />
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </esriSymbols:PictureMarkerSymbol.ControlTemplate>
+        </esriSymbols:PictureMarkerSymbol>
+        <esriSymbols:PictureMarkerSymbol x:Name="airGrade5" OffsetX="8" OffsetY="8" >
+            <esriSymbols:PictureMarkerSymbol.ControlTemplate>
+                <ControlTemplate>
+                    <Grid>
+                        <Border x:Name="Background" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="3">
+                            <Grid Margin="1">
+                                <Border x:Name="BackgroundAnimation" Opacity="0" />
+                                <Image Source="/Assets/Images/stationpushpin/紫.png" Stretch="Fill" Width="17" Height="20" />
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </esriSymbols:PictureMarkerSymbol.ControlTemplate>
+        </esriSymbols:PictureMarkerSymbol>
+        <esriSymbols:PictureMarkerSymbol x:Name="airGrade6" OffsetX="8" OffsetY="8" >
+            <esriSymbols:PictureMarkerSymbol.ControlTemplate>
+                <ControlTemplate>
+                    <Grid>
+                        <Border x:Name="Background" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="3">
+                            <Grid Margin="1">
+                                <Border x:Name="BackgroundAnimation" Opacity="0" />
+                                <Image Source="/Assets/Images/stationpushpin/褐红.png" Stretch="Fill" Width="17" Height="20" />
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </esriSymbols:PictureMarkerSymbol.ControlTemplate>
+        </esriSymbols:PictureMarkerSymbol>
+    </Application.Resources>
+</Application>

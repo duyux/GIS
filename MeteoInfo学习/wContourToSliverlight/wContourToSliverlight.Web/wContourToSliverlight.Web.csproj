@@ -1,0 +1,256 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3BD961FE-C1C0-48B5-88D5-3823C1B380B2}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>wContourToSliverlight.Web</RootNamespace>
+    <AssemblyName>wContourToSliverlight.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+    <SilverlightApplicationList>{E40AF8FC-B21C-40E6-BA54-721EBC188ECA}|..\wContourToSliverlight\wContourToSliverlight.csproj|ClientBin|False</SilverlightApplicationList>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="clientaccesspolicy.xml" />
+    <Content Include="ClientBin\Assets\Images\125.png" />
+    <Content Include="ClientBin\Assets\Images\24Avg.png" />
+    <Content Include="ClientBin\Assets\Images\8O3.png" />
+    <Content Include="ClientBin\Assets\Images\acidrainrate.png" />
+    <Content Include="ClientBin\Assets\Images\acidrainstate.png" />
+    <Content Include="ClientBin\Assets\Images\airQuailityLever.PNG" />
+    <Content Include="ClientBin\Assets\Images\allzd.png" />
+    <Content Include="ClientBin\Assets\Images\allzdh.png" />
+    <Content Include="ClientBin\Assets\Images\bingtop.PNG" />
+    <Content Include="ClientBin\Assets\Images\blue_globe.png" />
+    <Content Include="ClientBin\Assets\Images\bookmark.png" />
+    <Content Include="ClientBin\Assets\Images\CB.png" />
+    <Content Include="ClientBin\Assets\Images\CB_Press.png" />
+    <Content Include="ClientBin\Assets\Images\chart_pie.png" />
+    <Content Include="ClientBin\Assets\Images\clear.png" />
+    <Content Include="ClientBin\Assets\Images\collapse.png" />
+    <Content Include="ClientBin\Assets\Images\collapse2.png" />
+    <Content Include="ClientBin\Assets\Images\date.png" />
+    <Content Include="ClientBin\Assets\Images\dateh.png" />
+    <Content Include="ClientBin\Assets\Images\dbnot.png" />
+    <Content Include="ClientBin\Assets\Images\dbyes.png" />
+    <Content Include="ClientBin\Assets\Images\DeleteGraphics.png" />
+    <Content Include="ClientBin\Assets\Images\dismiss.png" />
+    <Content Include="ClientBin\Assets\Images\DrinkLegend.png" />
+    <Content Include="ClientBin\Assets\Images\expand.png" />
+    <Content Include="ClientBin\Assets\Images\expand2.png" />
+    <Content Include="ClientBin\Assets\Images\fatcow_1098.png" />
+    <Content Include="ClientBin\Assets\Images\grade1.png" />
+    <Content Include="ClientBin\Assets\Images\grade2.png" />
+    <Content Include="ClientBin\Assets\Images\grade3.png" />
+    <Content Include="ClientBin\Assets\Images\grade4.png" />
+    <Content Include="ClientBin\Assets\Images\grade5.png" />
+    <Content Include="ClientBin\Assets\Images\grade6.png" />
+    <Content Include="ClientBin\Assets\Images\hideleft.png" />
+    <Content Include="ClientBin\Assets\Images\home.png" />
+    <Content Include="ClientBin\Assets\Images\hour.png" />
+    <Content Include="ClientBin\Assets\Images\hourh.png" />
+    <Content Include="ClientBin\Assets\Images\i_about.png" />
+    <Content Include="ClientBin\Assets\Images\i_bookmark.png" />
+    <Content Include="ClientBin\Assets\Images\i_clickglobe.png" />
+    <Content Include="ClientBin\Assets\Images\i_fullextent.png" />
+    <Content Include="ClientBin\Assets\Images\i_globe.png" />
+    <Content Include="ClientBin\Assets\Images\i_info.png" />
+    <Content Include="ClientBin\Assets\Images\i_layers.png" />
+    <Content Include="ClientBin\Assets\Images\i_magnifyglass.png" />
+    <Content Include="ClientBin\Assets\Images\i_measure.png" />
+    <Content Include="ClientBin\Assets\Images\i_measurearea.png" />
+    <Content Include="ClientBin\Assets\Images\i_measuredistance.png" />
+    <Content Include="ClientBin\Assets\Images\i_nav.png" />
+    <Content Include="ClientBin\Assets\Images\i_next.png" />
+    <Content Include="ClientBin\Assets\Images\i_options.png" />
+    <Content Include="ClientBin\Assets\Images\i_overview.png" />
+    <Content Include="ClientBin\Assets\Images\i_pan.png" />
+    <Content Include="ClientBin\Assets\Images\i_previous.png" />
+    <Content Include="ClientBin\Assets\Images\i_radius.png" />
+    <Content Include="ClientBin\Assets\Images\i_search.png" />
+    <Content Include="ClientBin\Assets\Images\i_tools.png" />
+    <Content Include="ClientBin\Assets\Images\i_widget.png" />
+    <Content Include="ClientBin\Assets\Images\i_widget1.png" />
+    <Content Include="ClientBin\Assets\Images\i_zoomin.png" />
+    <Content Include="ClientBin\Assets\Images\i_zoomnext.png" />
+    <Content Include="ClientBin\Assets\Images\i_zoomout.png" />
+    <Content Include="ClientBin\Assets\Images\i_zoomprevious.png" />
+    <Content Include="ClientBin\Assets\Images\legendTip.png" />
+    <Content Include="ClientBin\Assets\Images\logo.png" />
+    <Content Include="ClientBin\Assets\Images\magnifyer.png" />
+    <Content Include="ClientBin\Assets\Images\mycollapse.png" />
+    <Content Include="ClientBin\Assets\Images\myexpand.png" />
+    <Content Include="ClientBin\Assets\Images\n_add.png" />
+    <Content Include="ClientBin\Assets\Images\n_center.png" />
+    <Content Include="ClientBin\Assets\Images\n_center1.png" />
+    <Content Include="ClientBin\Assets\Images\n_decrease.png" />
+    <Content Include="ClientBin\Assets\Images\n_down.png" />
+    <Content Include="ClientBin\Assets\Images\n_left.png" />
+    <Content Include="ClientBin\Assets\Images\n_right.png" />
+    <Content Include="ClientBin\Assets\Images\n_up.png" />
+    <Content Include="ClientBin\Assets\Images\overview.png" />
+    <Content Include="ClientBin\Assets\Images\pined.png" />
+    <Content Include="ClientBin\Assets\Images\play\mute.png" />
+    <Content Include="ClientBin\Assets\Images\play\pause.png" />
+    <Content Include="ClientBin\Assets\Images\play\play.png" />
+    <Content Include="ClientBin\Assets\Images\play\stop.png" />
+    <Content Include="ClientBin\Assets\Images\pointscatter1.png" />
+    <Content Include="ClientBin\Assets\Images\qxt.png" />
+    <Content Include="ClientBin\Assets\Images\qxth.png" />
+    <Content Include="ClientBin\Assets\Images\real\1_63.png" />
+    <Content Include="ClientBin\Assets\Images\real\1_65.png" />
+    <Content Include="ClientBin\Assets\Images\real\1_67.png" />
+    <Content Include="ClientBin\Assets\Images\real\clikme.png" />
+    <Content Include="ClientBin\Assets\Images\real\close.png" />
+    <Content Include="ClientBin\Assets\Images\real\intr.png" />
+    <Content Include="ClientBin\Assets\Images\real\max1_13.png" />
+    <Content Include="ClientBin\Assets\Images\real\mianme.png" />
+    <Content Include="ClientBin\Assets\Images\real\mix-1_15.png" />
+    <Content Include="ClientBin\Assets\Images\real\pig1_11.png" />
+    <Content Include="ClientBin\Assets\Images\real\realdata.png" />
+    <Content Include="ClientBin\Assets\Images\real\r_rorl.png" />
+    <Content Include="ClientBin\Assets\Images\real\sf1_17.png" />
+    <Content Include="ClientBin\Assets\Images\real\stationinf.png" />
+    <Content Include="ClientBin\Assets\Images\real\stationpho.png" />
+    <Content Include="ClientBin\Assets\Images\real\topbg.png" />
+    <Content Include="ClientBin\Assets\Images\real\topbgf.png" />
+    <Content Include="ClientBin\Assets\Images\real\toptit.png" />
+    <Content Include="ClientBin\Assets\Images\real\torb.png" />
+    <Content Include="ClientBin\Assets\Images\rectangle1.png" />
+    <Content Include="ClientBin\Assets\Images\refresh.png" />
+    <Content Include="ClientBin\Assets\Images\report.png" />
+    <Content Include="ClientBin\Assets\Images\showleft.png" />
+    <Content Include="ClientBin\Assets\Images\stationpushpin\1_05.png" />
+    <Content Include="ClientBin\Assets\Images\stationpushpin\1_07.png" />
+    <Content Include="ClientBin\Assets\Images\stationpushpin\1_09.png" />
+    <Content Include="ClientBin\Assets\Images\stationpushpin\dcfs - 副本.png" />
+    <Content Include="ClientBin\Assets\Images\stationpushpin\dcfs.png" />
+    <Content Include="ClientBin\Assets\Images\stationpushpin\hssz - 副本.png" />
+    <Content Include="ClientBin\Assets\Images\stationpushpin\hssz.png" />
+    <Content Include="ClientBin\Assets\Images\stationpushpin\noise - 副本.png" />
+    <Content Include="ClientBin\Assets\Images\stationpushpin\noise.png" />
+    <Content Include="ClientBin\Assets\Images\stationpushpin\triangle.png" />
+    <Content Include="ClientBin\Assets\Images\stationpushpin\water-real.png" />
+    <Content Include="ClientBin\Assets\Images\stationpushpin\water-rea_bak.png" />
+    <Content Include="ClientBin\Assets\Images\stationpushpin\water.png" />
+    <Content Include="ClientBin\Assets\Images\stationpushpin\WaterReal.png" />
+    <Content Include="ClientBin\Assets\Images\stationpushpin\wry - 副本.png" />
+    <Content Include="ClientBin\Assets\Images\stationpushpin\wry.png" />
+    <Content Include="ClientBin\Assets\Images\stationpushpin\橙.png" />
+    <Content Include="ClientBin\Assets\Images\stationpushpin\紫.png" />
+    <Content Include="ClientBin\Assets\Images\stationpushpin\红.png" />
+    <Content Include="ClientBin\Assets\Images\stationpushpin\绿.png" />
+    <Content Include="ClientBin\Assets\Images\stationpushpin\蓝.png" />
+    <Content Include="ClientBin\Assets\Images\stationpushpin\褐红.png" />
+    <Content Include="ClientBin\Assets\Images\stationpushpin\黄.png" />
+    <Content Include="ClientBin\Assets\Images\SymbolOfAir1.png" />
+    <Content Include="ClientBin\Assets\Images\SymbolOfAir2.png" />
+    <Content Include="ClientBin\Assets\Images\unpin.png" />
+    <Content Include="ClientBin\Assets\Images\V.gif" />
+    <Content Include="ClientBin\Assets\Images\VI.gif" />
+    <Content Include="ClientBin\Assets\Images\WaterLegend.png" />
+    <Content Include="ClientBin\Assets\Images\副本 acidrainrate.png" />
+    <Content Include="ClientBin\wContourToSliverlight.xap" />
+    <Content Include="crossdomain.xml" />
+    <Content Include="js\jquery-1[1].3.2.js" />
+    <Content Include="js\jsFileOpera.js" />
+    <Content Include="js\jsIndex.js" />
+    <Content Include="mapLatLon\river\浙江\上塘河.txt" />
+    <Content Include="Silverlight.js" />
+    <Content Include="wContourToSliverlightTestPage.aspx" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>17252</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>True</UseCustomServer>
+          <CustomServerUrl>http://localhost:9827/</CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

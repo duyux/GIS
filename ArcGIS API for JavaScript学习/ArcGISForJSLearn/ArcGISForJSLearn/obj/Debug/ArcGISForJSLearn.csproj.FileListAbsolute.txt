@@ -5,3 +5,10 @@ E:\学习\src\GIS学习\ArcGIS API for JavaScript学习\ArcGISForJSLearn\ArcGISF
 E:\学习\src\GIS学习\ArcGIS API for JavaScript学习\ArcGISForJSLearn\ArcGISForJSLearn\obj\Debug\ArcGISForJSLearn.pdb
 E:\学习\src\GIS学习\ArcGIS API for JavaScript学习\ArcGISForJSLearn\ArcGISForJSLearn\bin\ArcGISForJSLearn.dll.config
 E:\学习\src\GIS学习\ArcGIS API for JavaScript学习\ArcGISForJSLearn\ArcGISForJSLearn\bin\Microsoft.Web.Infrastructure.xml
+E:\学习\src\GIS\ArcGIS API for JavaScript学习\ArcGISForJSLearn\ArcGISForJSLearn\bin\ArcGISForJSLearn.dll.config
+E:\学习\src\GIS\ArcGIS API for JavaScript学习\ArcGISForJSLearn\ArcGISForJSLearn\bin\ArcGISForJSLearn.dll
+E:\学习\src\GIS\ArcGIS API for JavaScript学习\ArcGISForJSLearn\ArcGISForJSLearn\bin\ArcGISForJSLearn.pdb
+E:\学习\src\GIS\ArcGIS API for JavaScript学习\ArcGISForJSLearn\ArcGISForJSLearn\bin\Microsoft.Web.Infrastructure.xml
+E:\学习\src\GIS\ArcGIS API for JavaScript学习\ArcGISForJSLearn\ArcGISForJSLearn\obj\Debug\ArcGISForJSLearn.csprojResolveAssemblyReference.cache
+E:\学习\src\GIS\ArcGIS API for JavaScript学习\ArcGISForJSLearn\ArcGISForJSLearn\obj\Debug\ArcGISForJSLearn.dll
+E:\学习\src\GIS\ArcGIS API for JavaScript学习\ArcGISForJSLearn\ArcGISForJSLearn\obj\Debug\ArcGISForJSLearn.pdb

@@ -137,11 +137,14 @@
     <Content Include="Create2DMap.html" />
     <Content Include="TestMap2017.html" />
     <Content Include="TestMap.html" />
+    <Content Include="天地图.html" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="测试天地图%28AJS4x%29.html" />
+    <Content Include="测试天地图%28AJS3x%29.html" />
     <Content Include="web.config" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>

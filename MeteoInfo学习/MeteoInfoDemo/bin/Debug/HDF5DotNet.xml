@@ -1,0 +1,5485 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        "HDF5DotNet"
+    </assembly>
+    <members>
+        <member name="M:HDF5DotNet.H5L.getNameByIndex(HDF5DotNet.H5FileOrGroupId,System.String,HDF5DotNet.H5IndexType,HDF5DotNet.H5IterationOrder,System.UInt64,HDF5DotNet.H5PropertyListId)">
+            <summary>
+Retrieves name of the nth link in a group, according to the order 
+within a specified field or index.
+</summary>
+            <param name="fileOrGroupId">
+IN: File or group identifier specifying location of subject group
+</param>
+            <param name="groupName">
+IN: Name of subject group
+</param>
+            <param name="indexType">
+IN: Index or field which determines the order
+</param>
+            <param name="iterationOrder">
+IN: Order within field or index
+</param>
+            <param name="position">
+IN: Link for which to retrieve information
+</param>
+            <param name="linkAccessPropertyList">
+IN: Link access property list
+</param>
+            <returns>
+A string containing the requested name.
+</returns>
+            <exception cref="T:HDF5DotNet.H5LgetNameByIndexException">
+throws H5LgetNameByIndexException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5L.getNameByIndex(HDF5DotNet.H5FileOrGroupId,System.String,HDF5DotNet.H5IndexType,HDF5DotNet.H5IterationOrder,System.UInt64)">
+            <summary>
+Retrieves name of the nth link in a group, according to the order 
+within a specified field or index.
+</summary>
+            <param name="fileOrGroupId">
+IN: File or group identifier specifying location of subject group
+</param>
+            <param name="groupName">
+IN: Name of subject group
+</param>
+            <param name="indexType">
+IN: Index or field which determines the order
+</param>
+            <param name="iterationOrder">
+IN: Order within field or index
+</param>
+            <param name="position">
+IN: Link for which to retrieve information
+</param>
+            <returns>
+A string containing the requested name.
+</returns>
+            <exception cref="T:HDF5DotNet.H5LgetNameByIndexException">
+throws H5LgetNameByIndexException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5L.getInfoByIndex(HDF5DotNet.H5FileOrGroupId,System.String,HDF5DotNet.H5IndexType,HDF5DotNet.H5IterationOrder,System.UInt64)">
+            <summary>
+Retrieves metadata for a link in a group, according to the order 
+within a field or index.
+</summary>
+            <param name="fileOrGroupId">
+IN: File or group identifier specifying location of subject group
+</param>
+            <param name="groupName">
+IN: Name of subject group
+</param>
+            <param name="indexType">
+IN: Index or field which determines the order
+</param>
+            <param name="iterationOrder">
+IN: Order within field or index
+</param>
+            <param name="position">
+IN: Link for which to retrieve information
+</param>
+            <returns cref="T:HDF5DotNet.H5LinkInfo">
+H5LinkInfo
+</returns>
+            <exception cref="T:HDF5DotNet.H5LgetInfoByIndexException">
+throws H5LgetInfoByIndexException on failure.
+</exception>
+        </member>
+        <member name="T:HDF5DotNet.H5L">
+            <summary>
+The H5L contains static member function for each of the supported
+H5L calls of the HDF5 library.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5LIterateDelegate">
+            <summary>
+Delegate used in H5L.iterate.
+</summary>
+            <param name="group">
+IN: Identifier specifying subject group
+</param>
+            <param name="name">
+IN: object name
+</param>
+            <param name="info">
+IN: H5LinkInfo for the object.
+</param>
+            <param name="objData">
+IN/Out: Handle to user-supplied data.
+</param>
+        </member>
+        <member name="T:HDF5DotNet.H5LinkInfo">
+            <summary>
+ The H5LinkInfo class contains properties that provide read-only access
+ to its data members.
+</summary>
+        </member>
+        <member name="M:HDF5DotNet.H5D.getStorageSize(HDF5DotNet.H5DataSetId)">
+            <summary>
+Returns the amount of storage required for a dataset.
+</summary>
+            <param name="dataSetId">
+In: Identifier of dataset to query.
+</param>
+            <returns>
+Returns the amount of storage space allocated for the dataset, 
+not counting meta data; otherwise returns 0 (zero).
+</returns>
+        </member>
+        <member name="M:HDF5DotNet.H5D.getType(HDF5DotNet.H5DataSetId)">
+            <summary>
+Returns an identifier for a copy of the datatype for a
+dataset.
+</summary>
+            <param name="dataSetId">
+In: Identifier of dataset to query.
+</param>
+            <returns>
+Returns a datatype identifier if successful.
+</returns>
+            <exception cref="T:HDF5DotNet.H5DgetTypeException">
+throws H5DgetTypeException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5D.getSpace(HDF5DotNet.H5DataSetId)">
+            <summary>
+Returns an identifier for a copy of the dataspace for a
+dataset.
+</summary>
+            <param name="dataSetId">
+IN: Identifier of the dataset to query.
+</param>
+            <returns>
+Returns a dataspace identifier if successful.
+</returns>
+            <remarks>
+H5Dget_space returns an identifier for a copy of the dataspace
+for a dataset. The dataspace identifier should be released with
+the H5S.close function.
+</remarks>
+            <exception cref="T:HDF5DotNet.H5DgetSpaceException">
+throws H5DgetSpaceException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5D.open(HDF5DotNet.H5FileOrGroupId,System.String,HDF5DotNet.H5PropertyListId)">
+            <summary>
+Opens an existing dataset.
+</summary>
+            <param name="groupOrFileId">
+IN: Identifier of the file or
+group within which the dataset to be accessed will be found. 
+</param>
+            <param name="dataSetName">
+IN: The name of the dataset to access.
+</param>
+            <param name="dataSetAccessPropertyList">
+IN: Dataset access property list
+</param>
+            <exception cref="T:HDF5DotNet.H5DopenException">
+throws H5DopenException on failure.
+</exception>
+            <remarks>
+H5Dopen opens an existing dataset for access in the file or 
+group specified in groupOrFileId. name is a dataset name and 
+is used to identify the dataset in the file.
+</remarks>
+        </member>
+        <member name="M:HDF5DotNet.H5D.open(HDF5DotNet.H5FileOrGroupId,System.String)">
+            <summary>
+Opens an existing dataset.
+</summary>
+            <param name="groupOrFileId">
+IN: Identifier of the file or
+group within which the dataset to be accessed will be found. 
+</param>
+            <param name="dataSetName">
+IN: The name of the dataset to access.
+</param>
+            <exception cref="T:HDF5DotNet.H5DopenException">
+throws H5DopenException on failure.
+</exception>
+            <remarks>
+H5Dopen opens an existing dataset for access in the file or 
+group specified in groupOrFileId. name is a dataset name and 
+is used to identify the dataset in the file.
+</remarks>
+        </member>
+        <member name="M:HDF5DotNet.H5D.close(HDF5DotNet.H5DataSetId)">
+            <summary>
+Close a data set.
+</summary>
+            <param name="id">
+IN: Id of data set to close.
+</param>
+            <exception cref="T:HDF5DotNet.H5DcloseException"> 
+throws H5DcloseException if close fails
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5D.readScalar``1(HDF5DotNet.H5DataSetId,HDF5DotNet.H5DataTypeId,``0@)">
+            <summary>
+Reads raw data from a dataset into a buffer.
+</summary>
+            <param name="dataSetId">
+IN: Identifier of the dataset read from.
+</param>
+            <param name="memTypeId">
+IN: Identifier of the memory datatype.
+</param>
+            <param name="data">
+OUT: Memory to receive data read from file.
+</param>
+            <returns>
+void
+</returns>
+            <exception cref="T:HDF5DotNet.H5DreadException">
+throws H5DreadException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5D.read``1(HDF5DotNet.H5DataSetId,HDF5DotNet.H5DataTypeId,HDF5DotNet.H5Array`1{``0})">
+            <summary>
+Reads raw data from a dataset into a buffer.
+</summary>
+            <param name="dataSetId">
+IN: Identifier of the dataset read from.
+</param>
+            <param name="memTypeId">
+IN: Identifier of the memory datatype.
+</param>
+            <param name="data">
+OUT: Array to receive data read from file.
+</param>
+            <returns>
+void
+</returns>
+            <exception cref="T:HDF5DotNet.H5DreadException">
+throws H5DreadException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5D.readScalar``1(HDF5DotNet.H5DataSetId,HDF5DotNet.H5DataTypeId,HDF5DotNet.H5DataSpaceId,HDF5DotNet.H5DataSpaceId,HDF5DotNet.H5PropertyListId,``0@)">
+            <summary>
+Reads raw data from a dataset into a buffer.
+</summary>
+            <param name="dataSetId">
+IN: Identifier of the dataset read from.
+</param>
+            <param name="memTypeId">
+IN: Identifier of the memory datatype.
+</param>
+            <param name="memSpaceId">
+IN: Identifier of the memory dataspace.
+</param>
+            <param name="fileSpaceId">
+IN: Identifier of the dataset's dataspace in the file.
+</param>
+            <param name="xferPropListId">
+IN: Identifier of a transfer property list for this I/O operation.
+</param>
+            <param name="data">
+OUT: Memory to receive data read from file.
+</param>
+            <returns>
+void
+</returns>
+            <exception cref="T:HDF5DotNet.H5DreadException">
+throws H5DreadException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5D.read``1(HDF5DotNet.H5DataSetId,HDF5DotNet.H5DataTypeId,HDF5DotNet.H5DataSpaceId,HDF5DotNet.H5DataSpaceId,HDF5DotNet.H5PropertyListId,HDF5DotNet.H5Array`1{``0})">
+            <summary>
+Reads raw data from a dataset into a buffer.
+</summary>
+            <param name="dataSetId">
+IN: Identifier of the dataset read from.
+</param>
+            <param name="memTypeId">
+IN: Identifier of the memory datatype.
+</param>
+            <param name="memSpaceId">
+IN: Identifier of the memory dataspace.
+</param>
+            <param name="fileSpaceId">
+IN: Identifier of the dataset's dataspace in the file.
+</param>
+            <param name="xferPropListId">
+IN: Identifier of a transfer property list for this I/O operation.
+</param>
+            <param name="data">
+OUT: Array to receive data read from file.
+</param>
+            <returns>
+void
+</returns>
+            <exception cref="T:HDF5DotNet.H5DreadException">
+throws H5DreadException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5D.writeScalar``1(HDF5DotNet.H5DataSetId,HDF5DotNet.H5DataTypeId,``0@)">
+            <summary>
+Writes raw data from a buffer to a dataset.
+</summary>
+            <param name="dataSetId">
+IN: Identifier of the dataset to write to.
+</param>
+            <param name="memTypeId">
+IN: Identifier of the memory datatype.
+</param>
+            <param name="data">
+IN: Memory with data to be written to the file.
+</param>
+            <returns>
+void
+</returns>
+            <exception cref="T:HDF5DotNet.H5DwriteException">
+throws H5DwriteException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5D.write``1(HDF5DotNet.H5DataSetId,HDF5DotNet.H5DataTypeId,HDF5DotNet.H5Array`1{``0})">
+            <summary>
+Writes raw data from a buffer to a dataset.
+</summary>
+            <param name="dataSetId">
+IN: Identifier of the dataset to write to.
+</param>
+            <param name="memTypeId">
+IN: Identifier of the memory datatype.
+</param>
+            <param name="data">
+IN: Array with data to be written to the file.
+</param>
+            <returns>
+void
+</returns>
+            <exception cref="T:HDF5DotNet.H5DwriteException">
+throws H5DwriteException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5D.writeScalar``1(HDF5DotNet.H5DataSetId,HDF5DotNet.H5DataTypeId,HDF5DotNet.H5DataSpaceId,HDF5DotNet.H5DataSpaceId,HDF5DotNet.H5PropertyListId,``0@)">
+            <summary>
+Writes raw data from a buffer to a dataset.
+</summary>
+            <param name="dataSetId">
+IN: Identifier of the dataset to write to.
+</param>
+            <param name="memTypeId">
+IN: Identifier of the memory datatype.
+</param>
+            <param name="memSpaceId">
+IN: Identifier of the memory dataspace.
+</param>
+            <param name="fileSpaceId">
+IN: Identifier of the dataset's dataspace in the file.
+</param>
+            <param name="xferPropListId">
+IN: Identifier of a transfer property list for this I/O operation.
+</param>
+            <param name="data">
+IN: Memory with data to be written to the file.
+</param>
+            <returns>
+void
+</returns>
+            <exception cref="T:HDF5DotNet.H5DwriteException">
+throws H5DwriteException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5D.write``1(HDF5DotNet.H5DataSetId,HDF5DotNet.H5DataTypeId,HDF5DotNet.H5DataSpaceId,HDF5DotNet.H5DataSpaceId,HDF5DotNet.H5PropertyListId,HDF5DotNet.H5Array`1{``0})">
+            <summary>
+Writes raw data from a buffer to a dataset.
+</summary>
+            <param name="dataSetId">
+IN: Identifier of the dataset to write to.
+</param>
+            <param name="memTypeId">
+IN: Identifier of the memory datatype.
+</param>
+            <param name="memSpaceId">
+IN: Identifier of the memory dataspace.
+</param>
+            <param name="fileSpaceId">
+IN: Identifier of the dataset's dataspace in the file.
+</param>
+            <param name="xferPropListId">
+IN: Identifier of a transfer property list for this I/O operation.
+</param>
+            <param name="data">
+IN: Array with data to be written to the file.
+</param>
+            <returns>
+void
+</returns>
+            <exception cref="T:HDF5DotNet.H5DwriteException">
+throws H5DwriteException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5D.vlenReclaim``1(HDF5DotNet.H5DataTypeId,HDF5DotNet.H5DataSpaceId,HDF5DotNet.H5PropertyListId,HDF5DotNet.H5Array`1{``0})">
+            <summary>
+Reclaims VL datatype memory buffers.
+</summary>
+            <param name="typeId">
+IN: Identifier of the datatype.
+</param>
+            <param name="spaceId">
+IN: Identifier of the dataspace.
+</param>
+            <param name="plistId">
+IN: Identifier of the property list used to create the buffer.
+</param>
+            <param name="data">
+IN: The buffer to be reclaimed.
+</param>
+            <returns>
+void
+</returns>
+            <exception cref="T:HDF5DotNet.H5DvlenReclaimException">
+throws H5DvlenReclaimException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5D.create(HDF5DotNet.H5FileOrGroupId,System.String,HDF5DotNet.H5DataTypeId,HDF5DotNet.H5DataSpaceId,HDF5DotNet.H5PropertyListId,HDF5DotNet.H5PropertyListId,HDF5DotNet.H5PropertyListId)">
+            <summary>
+Creates a new dataset and links it into the file.
+</summary>
+            <param name="groupOrFileId">
+IN: Location identifier
+</param>
+            <param name="dataSetName">
+IN: Dataset name
+</param>
+            <param name="dataType">
+IN: Datatype identifier
+</param>
+            <param name="dataspaceId">
+IN: Dataspace identifier
+</param>
+            <param name="linkCreationPropertyList">
+IN: Link creation property list
+</param>
+            <param name="dataSetCreationPropertyList">
+IN: Dataset creation property list
+</param>
+            <param name="dataSetAccessPropertyList">
+IN: Dataset access property list
+</param>
+            <returns>
+A H5DataSetId associated with the created dataset.
+</returns>
+            <exception cref="T:HDF5DotNet.H5DcreateException">
+throws H5DcreateException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5D.create(HDF5DotNet.H5FileOrGroupId,System.String,HDF5DotNet.H5T.H5Type,HDF5DotNet.H5DataSpaceId,HDF5DotNet.H5PropertyListId,HDF5DotNet.H5PropertyListId,HDF5DotNet.H5PropertyListId)">
+            <summary>
+Creates a new dataset and links it into the file.
+</summary>
+            <param name="groupOrFileId">
+IN: Location identifier
+</param>
+            <param name="dataSetName">
+IN: Dataset name
+</param>
+            <param name="dataType">
+IN: H5T::H5Type dataType
+</param>
+            <param name="dataspaceId">
+IN: Dataspace identifier
+</param>
+            <param name="linkCreationPropertyList">
+IN: Link creation property list
+</param>
+            <param name="dataSetCreationPropertyList">
+IN: Dataset creation property list
+</param>
+            <param name="dataSetAccessPropertyList">
+IN: Dataset access property list
+</param>
+            <returns>
+A H5DataSetId associated with the created dataset.
+</returns>
+            <exception cref="T:HDF5DotNet.H5DcreateException">
+throws H5DcreateException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5D.create(HDF5DotNet.H5FileOrGroupId,System.String,HDF5DotNet.H5DataTypeId,HDF5DotNet.H5DataSpaceId)">
+            <summary>
+Creates a new dataset and links it into the file.
+</summary>
+            <param name="groupOrFileId">
+IN: Location identifier
+</param>
+            <param name="dataSetName">
+IN: Dataset name
+</param>
+            <param name="dataTypeId">
+IN: Datatype identifier
+</param>
+            <param name="dataspaceId">
+IN: Dataspace identifier
+</param>
+            <returns>
+A H5DataSetId associated with the created dataset.
+</returns>
+            <exception cref="T:HDF5DotNet.H5DcreateException">
+throws H5DcreateException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5D.create(HDF5DotNet.H5FileOrGroupId,System.String,HDF5DotNet.H5T.H5Type,HDF5DotNet.H5DataSpaceId)">
+            <summary>
+Creates a new dataset and links it into the file.
+</summary>
+            <param name="groupOrFileId">
+IN: Location identifier
+</param>
+            <param name="dataSetName">
+IN: Dataset name
+</param>
+            <param name="dataType">
+IN: H5T::H5Type dataType
+</param>
+            <param name="dataspaceId">
+IN: Dataspace identifier
+</param>
+            <returns>
+A H5DataSetId associated with the created dataset.
+</returns>
+            <exception cref="T:HDF5DotNet.H5DcreateException">
+throws H5DcreateException on failure.
+</exception>
+        </member>
+        <member name="T:HDF5DotNet.H5D">
+            <summary>
+The H5D contains static member function for each of the supported
+H5D calls of the HDF5 library.
+</summary>
+        </member>
+        <member name="M:HDF5DotNet.H5A.getNumberOfAttributes(System.Int32)">
+            <summary>
+Public forms of the getNumberOfAttributes call use this 
+</summary>
+        </member>
+        <member name="M:HDF5DotNet.H5A.openIndex(System.Int32,System.UInt32)">
+            <summary>
+Public forms of the openIndex call use this openIndex to do most
+of the work.
+</summary>
+        </member>
+        <member name="M:HDF5DotNet.H5A.openName(System.Int32,System.String)">
+            <summary>
+Public forms of the openName call use this openName to do most
+of the work.
+</summary>
+        </member>
+        <member name="M:HDF5DotNet.H5A.createByName(System.Int32,System.String,System.String,HDF5DotNet.H5DataTypeId,HDF5DotNet.H5DataSpaceId,HDF5DotNet.H5PropertyListId,HDF5DotNet.H5PropertyListId,HDF5DotNet.H5PropertyListId)">
+            <summary>
+Public forms of the create call use this create to do most
+of the work.
+</summary>
+        </member>
+        <member name="M:HDF5DotNet.H5A.getInfo(HDF5DotNet.H5AttributeId)">
+            <summary>
+Retrieves attribute information, by attribute identifier.
+</summary>
+            <param name="id">
+IN: Attribute identifier
+</param>
+            <returns cref="T:HDF5DotNet.H5AttributeInfo">
+H5AttributeInfo 
+</returns>
+            <exception cref="T:HDF5DotNet.H5AgetInfoException">
+throws H5AgetInfoException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5A.iterate(HDF5DotNet.H5ObjectWithAttributes,HDF5DotNet.H5IndexType,HDF5DotNet.H5IterationOrder,System.UInt64@,HDF5DotNet.H5AIterateDelegate,System.Object,HDF5DotNet.H5PropertyListId)">
+            <summary>
+Calls user-defined function for each attribute on an object.
+</summary>
+            <param name="objectId">
+IN: Identifier for object to which attributes are attached; 
+may be group, dataset, or named datatype.
+</param>
+            <param name="indexType">
+IN: Type of index
+</param>
+            <param name="iterationOrder">
+IN: Order in which to iterate over index
+</param>
+            <param name="position">
+IN/OUT: Initial and returned offset within index
+</param>
+            <param name="iterateDelegate">
+IN: User-defined function to pass each attribute to
+</param>
+            <param name="opData">
+IN/OUT: User data to pass through to and to be returned by 
+iterator operator function
+</param>
+            <param name="linkAccessPropertyListId">
+IN: Link access property list.
+</param>
+            <returns>
+H5IterationResult
+</returns>
+            <exception cref="T:HDF5DotNet.H5AiterateException">
+throws H5AiterateException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5A.iterate(HDF5DotNet.H5ObjectWithAttributes,HDF5DotNet.H5IndexType,HDF5DotNet.H5IterationOrder,System.UInt64@,HDF5DotNet.H5AIterateDelegate,System.Object)">
+            <summary>
+Calls user-defined function for each attribute on an object.
+</summary>
+            <param name="objectId">
+IN: Identifier for object to which attributes are attached; 
+may be group, dataset, or named datatype.
+</param>
+            <param name="indexType">
+IN: Type of index
+</param>
+            <param name="iterationOrder">
+IN: Order in which to iterate over index
+</param>
+            <param name="position">
+IN/OUT: Initial and returned offset within index
+</param>
+            <param name="iterateDelegate">
+IN: User-defined function to pass each attribute to
+</param>
+            <param name="opData">
+IN/OUT: User data to pass through to and to be returned by 
+iterator operator function
+</param>
+            <returns>
+H5IterationResult
+</returns>
+            <exception cref="T:HDF5DotNet.H5AiterateException">
+throws H5AiterateException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5A.getSpace(HDF5DotNet.H5AttributeId)">
+            <summary>
+H5Aget_space retrieves a copy of the dataspace for an attribute. 
+The dataspace identifier returned from this function must be 
+released with H5S.close  or resource leaks will develop.
+</summary>
+            <param name="attributeId">
+IN: Identifier of an attribute.
+</param>
+            <returns>
+H5DataSpaceId
+</returns>
+            <exception cref="T:HDF5DotNet.H5AgetSpaceException">
+throws H5AgetSpaceException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5A.openByIndex(HDF5DotNet.H5ObjectWithAttributes,System.String,HDF5DotNet.H5IndexType,HDF5DotNet.H5IterationOrder,System.UInt64,HDF5DotNet.H5PropertyListId,HDF5DotNet.H5PropertyListId)">
+            <summary>
+H5A.openByIndex opens an existing attribute that is attached to 
+an object specified by location and name, loc_id and obj_name, 
+respectively. If loc_id fully specifies the object to which the 
+attribute is attached, obj_name should be '.' (a dot).
+</summary>
+            <param name="dataSetOrGroupOrDataTypeId">
+IN: Location of object to which attribute is attached
+</param>
+            <param name="objectName">
+IN: Name of object to which attribute is attached, relative to 
+location
+</param>
+            <param name="indexType">
+IN: Type of index
+</param>
+            <param name="traversalOrder">
+IN: Index traversal order
+</param>
+            <param name="position">
+IN: Attribute's position in index
+</param>
+            <param name="attributeAccessPropertyList">
+IN: Attribute access property list
+</param>
+            <param name="linkAccessPropertyList">
+IN: Link access property list
+</param>
+            <returns>
+H5AttributeId for the requested attribute.
+</returns>
+            <exception cref="T:HDF5DotNet.H5AopenByIndexException">
+throws H5AopenByIndexException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5A.openByIndex(HDF5DotNet.H5ObjectWithAttributes,System.String,HDF5DotNet.H5IndexType,HDF5DotNet.H5IterationOrder,System.UInt64,HDF5DotNet.H5PropertyListId)">
+            <summary>
+H5A.openByIndex opens an existing attribute that is attached to 
+an object specified by location and name, loc_id and obj_name, 
+respectively. If loc_id fully specifies the object to which the 
+attribute is attached, obj_name should be '.' (a dot).
+</summary>
+            <param name="dataSetOrGroupOrDataTypeId">
+IN: Location of object to which attribute is attached
+</param>
+            <param name="objectName">
+IN: Name of object to which attribute is attached, relative to 
+location
+</param>
+            <param name="indexType">
+IN: Type of index
+</param>
+            <param name="traversalOrder">
+IN: Index traversal order
+</param>
+            <param name="position">
+IN: Attribute's position in index
+</param>
+            <param name="attributeAccessPropertyList">
+IN: Attribute access property list
+</param>
+            <returns>
+H5AttributeId for the requested attribute.
+</returns>
+            <exception cref="T:HDF5DotNet.H5AopenByIndexException">
+throws H5AopenByIndexException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5A.openByIndex(HDF5DotNet.H5ObjectWithAttributes,System.String,HDF5DotNet.H5IndexType,HDF5DotNet.H5IterationOrder,System.UInt64)">
+            <summary>
+H5A.openByIndex opens an existing attribute that is attached to 
+an object specified by location and name, loc_id and obj_name, 
+respectively. If loc_id fully specifies the object to which the 
+attribute is attached, obj_name should be '.' (a dot).
+</summary>
+            <param name="dataSetOrGroupOrDataTypeId">
+IN: Location of object to which attribute is attached
+</param>
+            <param name="objectName">
+IN: Name of object to which attribute is attached, relative to 
+location
+</param>
+            <param name="indexType">
+IN: Type of index
+</param>
+            <param name="traversalOrder">
+IN: Index traversal order
+</param>
+            <param name="position">
+IN: Attribute's position in index
+</param>
+            <returns>
+H5AttributeId for the requested attribute.
+</returns>
+            <exception cref="T:HDF5DotNet.H5AopenByIndexException">
+throws H5AopenByIndexException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5A.open(HDF5DotNet.H5ObjectWithAttributes,System.String)">
+            <summary>
+Opens an attribute for an object specified by object identifier 
+and attribute name.
+</summary>
+            <param name="objectWithAttributes">
+IN: Identifer for object to which attribute is attached
+</param>
+            <param name="attributeName">
+IN: Name of attribute to open
+</param>
+            <returns>
+H5AttributeId associated with the opened attribute.
+</returns>
+            <exception cref="T:HDF5DotNet.H5AopenException">
+throws H5AopenException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5A.open(HDF5DotNet.H5ObjectWithAttributes,System.String,HDF5DotNet.H5PropertyListId)">
+            <summary>
+Opens an attribute for an object specified by object identifier 
+and attribute name.
+</summary>
+            <param name="objectWithAttributes">
+IN: Identifer for object to which attribute is attached
+</param>
+            <param name="attributeName">
+IN: Name of attribute to open
+</param>
+            <param name="propertyList">
+IN: Attribute access property list
+</param>
+            <returns>
+H5AttributeId associated with the opened attribute.
+</returns>
+            <exception cref="T:HDF5DotNet.H5AopenException">
+throws H5AopenException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5A.getNameByIndex(HDF5DotNet.H5ObjectWithAttributes,System.String,HDF5DotNet.H5IndexType,HDF5DotNet.H5IterationOrder,System.UInt64,HDF5DotNet.H5PropertyListId)">
+            <summary>
+Gets an attribute name, by attribute index position
+</summary>
+            <param name="objectId">
+IN: Location of object to which attribute is attached
+</param>
+            <param name="objName">
+IN: Name of object to which attribute is attached, relative to 
+location
+</param>
+            <param name="indexType">
+IN: Type of index
+</param>
+            <param name="iterationOrder">
+IN: Index traversal order
+</param>
+            <param name="position">
+IN: Attribute's position in index
+</param>
+            <param name="propertyList">
+IN: Link access property list
+</param>
+            <returns>
+A string containing the attribute name.
+</returns>
+            <exception cref="T:HDF5DotNet.H5AgetNameByIndexException">
+throws H5AgetNameByIndexException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5A.getNameByIndex(HDF5DotNet.H5ObjectWithAttributes,System.String,HDF5DotNet.H5IndexType,HDF5DotNet.H5IterationOrder,System.UInt64)">
+            <summary>
+Gets an attribute name, by attribute index position
+</summary>
+            <param name="objectId">
+IN: Location of object to which attribute is attached
+</param>
+            <param name="objName">
+IN: Name of object to which attribute is attached, relative to 
+location
+</param>
+            <param name="indexType">
+IN: Type of index
+</param>
+            <param name="iterationOrder">
+IN: Index traversal order
+</param>
+            <param name="position">
+IN: Attribute's position in index
+</param>
+            <returns>
+A string containing the attribute name.
+</returns>
+            <exception cref="T:HDF5DotNet.H5AgetNameByIndexException">
+throws H5AgetNameByIndexException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5A.getName(HDF5DotNet.H5AttributeId)">
+            <summary>
+Gets an attribute name.
+</summary>
+            <param name="attributeId">
+IN: Identifier of the attribute.
+</param>
+            <returns>
+A string containing the attribute name.
+</returns>
+            <exception cref="T:HDF5DotNet.H5AgetNameException">
+throws H5AgetNameException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5A.DeleteByName(HDF5DotNet.H5ObjectWithAttributes,System.String,System.String,HDF5DotNet.H5PropertyListId)">
+            <summary>
+Removes an attribute from a specified location.
+</summary>
+            <param name="objectId">
+IN: Location or object identifier; may be dataset or group
+</param>
+            <param name="objectName">
+IN: Name of object, relative to location, from which attribute is 
+to be removed
+</param>
+            <param name="attributeName">
+IN: Name of attribute to delete
+</param>
+            <param name="linkAccessPropertyListId">
+IN: Link access property list
+</param>
+            <returns>
+void
+</returns>
+            <exception cref="T:HDF5DotNet.H5AdeleteByNameException">
+throws H5AdeleteByNameException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5A.DeleteByName(HDF5DotNet.H5ObjectWithAttributes,System.String,System.String)">
+            <summary>
+Removes an attribute from a specified location.
+</summary>
+            <param name="objectId">
+IN: Location or object identifier; may be dataset or group
+</param>
+            <param name="objectName">
+IN: Name of object, relative to location, from which attribute is 
+to be removed
+</param>
+            <param name="attributeName">
+IN: Name of attribute to delete
+</param>
+            <returns>
+void
+</returns>
+            <exception cref="T:HDF5DotNet.H5AdeleteByNameException">
+throws H5AdeleteByNameException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5A.Delete(HDF5DotNet.H5ObjectWithAttributes,System.String)">
+            <summary>
+Deletes an attribute from a specified location.
+</summary>
+            <param name="objectId">
+IN: Identifier of the dataset, group, or named datatype to 
+have the attribute deleted from.
+</param>
+            <param name="attributeName">
+IN: Name of the attribute to delete.
+</param>
+            <returns>
+void
+</returns>
+            <exception cref="T:HDF5DotNet.H5ADeleteException">
+throws H5ADeleteException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5A.close(HDF5DotNet.H5AttributeId)">
+            <summary>
+Closes the specified attribute.
+</summary>
+            <param name="id">
+IN: Attribute to release access to.
+</param>
+            <returns>
+void
+</returns>
+            <exception cref="T:HDF5DotNet.H5AcloseException">
+throws H5AcloseException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5A.getNumberOfAttributes(HDF5DotNet.H5ObjectWithAttributes)">
+            <summary>
+Determines the number of attributes attached to an object.
+</summary>
+            <param name="objectId">
+IN: Identifier of a group, dataset, or named datatype.
+</param>
+            <returns>
+Returns the number of attributes.
+</returns>
+            <exception cref="T:HDF5DotNet.H5AgetNumberOfAttributesException">
+throws H5AgetNumberOfAttributesException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5A.getType(HDF5DotNet.H5AttributeId)">
+            <summary>
+Gets an attribute datatype.
+</summary>
+            <param name="attributeId">
+IN: Identifier of an attribute.
+</param>
+            <returns>
+H5DataTypeId
+</returns>
+            <exception cref="T:HDF5DotNet.H5AgetTypeException">
+throws H5AgetTypeException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5A.openIndex(HDF5DotNet.H5ObjectWithAttributes,System.UInt32)">
+            <summary>
+Opens the attribute specified by its index. (deprecated in 1.8)
+</summary>
+            <param name="objectId">
+IN: Identifier of the group, dataset, or named datatype attribute 
+to be attached to.
+</param>
+            <param name="index">
+IN: Index of the attribute to open.
+</param>
+            <returns>
+Returns attribute identifier
+</returns>
+            <exception cref="T:HDF5DotNet.H5AopenIndexException">
+throws H5AopenIndexException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5A.openName(HDF5DotNet.H5ObjectWithAttributes,System.String)">
+            <summary>
+Opens an attribute specified by name. (deprecated in 1.8)
+</summary>
+            <param name="objectId">
+IN: Identifier of a group, dataset, or named datatype that 
+attribute is attached to.
+</param>
+            <param name="name">
+IN: Attribute name.
+</param>
+            <returns>
+Returns attribute identifier 
+</returns>
+            <exception cref="T:HDF5DotNet.H5AopenNameException">
+throws H5AopenNameException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5A.read``1(HDF5DotNet.H5AttributeId,HDF5DotNet.H5DataTypeId,HDF5DotNet.H5Array`1{``0})">
+            <summary>
+Reads an attribute.
+</summary>
+            <param name="attributeId">
+IN: Identifier of an attribute to write.
+</param>
+            <param name="memTypeId">
+IN: Identifier of the attribute datatype (in memory).
+</param>
+            <param name="buffer">
+IN: Data to be written.
+</param>
+            <returns>
+void
+</returns>
+            <exception cref="T:HDF5DotNet.H5AreadException">
+throws H5AreadException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5A.write``1(HDF5DotNet.H5AttributeId,HDF5DotNet.H5DataTypeId,HDF5DotNet.H5Array`1{``0})">
+            <summary>
+Writes data to an attribute.
+</summary>
+            <param name="attributeId">
+IN: Identifier of an attribute to write.
+</param>
+            <param name="memTypeId">
+IN: Identifier of the attribute datatype (in memory).
+</param>
+            <param name="buffer">
+IN: Data to be written.
+</param>
+            <returns>
+void
+</returns>
+            <exception cref="T:HDF5DotNet.H5AwriteException">
+throws H5AwriteException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5A.openByName(HDF5DotNet.H5ObjectWithAttributes,System.String,System.String,HDF5DotNet.H5PropertyListId,HDF5DotNet.H5PropertyListId)">
+            <summary>
+Opens an attribute for an object by object name and attribute name.
+</summary>
+            <param name="objectId">
+IN: Location from which to find object to which attribute is 
+attached
+</param>
+            <param name="objectName">
+IN: Name of object to which attribute is attached, relative to 
+loc_id
+</param>
+            <param name="attributeName">
+IN: Name of attribute to open
+</param>
+            <param name="attributeAccessPropertyListId">
+IN: Attribute access property list
+</param>
+            <param name="linkAccessPropertyListId">
+IN: Link access property list
+</param>
+            <returns>
+Returns an attribute identifier 
+</returns>
+            <exception cref="T:HDF5DotNet.H5AopenByNameException">
+throws H5AopenByNameException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5A.openByName(HDF5DotNet.H5ObjectWithAttributes,System.String,System.String)">
+            <summary>
+Opens an attribute for an object by object name and attribute name.
+</summary>
+            <param name="objectId">
+IN: Location from which to find object to which attribute is 
+attached
+</param>
+            <param name="objectName">
+IN: Name of object to which attribute is attached, relative to 
+loc_id
+</param>
+            <param name="attributeName">
+IN: Name of attribute to open
+</param>
+            <returns>
+Returns an attribute identifier 
+</returns>
+            <exception cref="T:HDF5DotNet.H5AopenByNameException">
+throws H5AopenByNameException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5A.createByName(HDF5DotNet.H5ObjectWithAttributes,System.String,System.String,HDF5DotNet.H5DataTypeId,HDF5DotNet.H5DataSpaceId)">
+            <summary>
+Creates an attribute attached to a specified object.
+</summary>
+            <param name="object">
+IN: Location or object identifier; may be dataset or group
+</param>
+            <param name="objectName">
+IN: Name, relative to loc_id, of object that attribute is to 
+be attached to
+</param>
+            <param name="attributeName">
+IN: Attribute name
+</param>
+            <param name="typeId">
+IN: Attribute datatype identifier
+</param>
+            <param name="spaceId">
+IN: Attribute dataspace identifier
+</param>
+            <returns>
+H5AttributeId associated with the created attribute.
+</returns>
+            <exception cref="T:HDF5DotNet.H5AcreateByNameException">
+throws H5AcreateByNameException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5A.createByName(HDF5DotNet.H5ObjectWithAttributes,System.String,System.String,HDF5DotNet.H5DataTypeId,HDF5DotNet.H5DataSpaceId,HDF5DotNet.H5PropertyListId,HDF5DotNet.H5PropertyListId,HDF5DotNet.H5PropertyListId)">
+            <summary>
+Creates an attribute attached to a specified object.
+</summary>
+            <param name="object">
+IN: Location or object identifier; may be dataset or group
+</param>
+            <param name="objectName">
+IN: Name, relative to loc_id, of object that attribute is to 
+be attached to
+</param>
+            <param name="attributeName">
+IN: Attribute name
+</param>
+            <param name="typeId">
+IN: Attribute datatype identifier
+</param>
+            <param name="spaceId">
+IN: Attribute dataspace identifier
+</param>
+            <param name="attributeCreationProperties">
+IN: Attribute creation property list identifier
+-- Currently not used.
+</param>
+            <param name="attributePermissionsProperties">
+IN: Attribute access property list identifier
+-- Currently not used.
+</param>
+            <param name="linkAccessProperties">
+IN: Link access property list
+</param>
+            <returns>
+H5AttributeId associated with the created attribute.
+</returns>
+            <exception cref="T:HDF5DotNet.H5AcreateByNameException">
+throws H5AcreateByNameException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5A.create(HDF5DotNet.H5ObjectWithAttributes,System.String,HDF5DotNet.H5DataTypeId,HDF5DotNet.H5DataSpaceId,HDF5DotNet.H5PropertyListId,HDF5DotNet.H5PropertyListId)">
+            <summary>
+Creates an attribute attached to a specified object.
+</summary>
+            <param name="objectId">
+IN: Location or object identifier; may be dataset or group
+</param>
+            <param name="attributeName">
+IN: Attribute name
+</param>
+            <param name="typeId">
+IN: Attribute datatype identifier
+</param>
+            <param name="spaceId">
+IN: Attribute dataspace identifier
+</param>
+            <param name="creationPropertyListId">
+IN: Attribute creation property list identifier
+</param>
+            <param name="accessPropertyListId">
+IN: Attribute access property list identifier
+</param>
+            <returns>
+H5AttributeId for the created attribute.
+</returns>
+            <exception cref="T:HDF5DotNet.H5AcreateException">
+throws H5AcreateException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5A.create(HDF5DotNet.H5ObjectWithAttributes,System.String,HDF5DotNet.H5DataTypeId,HDF5DotNet.H5DataSpaceId,HDF5DotNet.H5PropertyListId)">
+            <summary>
+Creates an attribute attached to a specified object.
+</summary>
+            <param name="objectId">
+IN: Location or object identifier; may be dataset or group
+</param>
+            <param name="attributeName">
+IN: Attribute name
+</param>
+            <param name="typeId">
+IN: Attribute datatype identifier
+</param>
+            <param name="spaceId">
+IN: Attribute dataspace identifier
+</param>
+            <param name="creationPropertyListId">
+IN: Attribute creation property list identifier
+</param>
+            <returns>
+H5AttributeId for the created attribute.
+</returns>
+            <exception cref="T:HDF5DotNet.H5AcreateException">
+throws H5AcreateException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5A.create(HDF5DotNet.H5ObjectWithAttributes,System.String,HDF5DotNet.H5DataTypeId,HDF5DotNet.H5DataSpaceId)">
+            <summary>
+Creates an attribute attached to a specified object.
+</summary>
+            <param name="objectId">
+IN: Location or object identifier; may be dataset or group
+</param>
+            <param name="attributeName">
+IN: Attribute name
+</param>
+            <param name="typeId">
+IN: Attribute datatype identifier
+</param>
+            <param name="spaceId">
+IN: Attribute dataspace identifier
+</param>
+            <returns>
+H5AttributeId for the created attribute.
+</returns>
+            <exception cref="T:HDF5DotNet.H5AcreateException">
+throws H5AcreateException on failure.
+</exception>
+        </member>
+        <member name="T:HDF5DotNet.H5A">
+            <summary>
+The H5A class contains static member function for each of the supported
+H5A calls of the HDF5 library.
+The purpose of these calls is to create and manipulate attributes and 
+information about attributes.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5AIterateDelegate">
+            <summary>
+Delegate used for H5Aiterate. The delegate provides the function
+that will be called once for each attribute.
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.H5AttributeInfo.dataSize_">
+            <summary> 
+dataSize indicates the size, in the number of characters, of the 
+attribute.
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.H5AttributeInfo.characterSet_">
+            <summary> 
+characterSet indicates the character set used for the attribute's 
+name. 
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.H5AttributeInfo.creationOrder_">
+            <summary> 
+creationOrder is a positive integer containing the 
+creation order of the attribute. This value is 0-based, so, for 
+example, the third attribute created will have a corder value of 2.
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.H5AttributeInfo.creationOrderValid_">
+            <summary> 
+creationOrder valid indicates whether the 
+creation order data is valid for this attribute. Note that if 
+creation order is not being tracked, no creation order data will 
+be valid. 
+</summary>
+        </member>
+        <member name="M:HDF5DotNet.H5AttributeInfo.#ctor(System.Boolean,System.UInt32,HDF5DotNet.H5T.CharSet,System.UInt64)">
+            <summary> 
+The constructor takes the parameters returned from
+H5Aget_info.
+</summary>
+        </member>
+        <member name="P:HDF5DotNet.H5AttributeInfo.dataSize">
+            <summary> 
+dataSize indicates the size, in the number of characters, of the 
+attribute.
+</summary>
+        </member>
+        <member name="P:HDF5DotNet.H5AttributeInfo.characterSet">
+            <summary> 
+characterSet indicates the character set used for the attribute's 
+name. 
+</summary>
+        </member>
+        <member name="P:HDF5DotNet.H5AttributeInfo.creationOrder">
+            <summary> 
+creationOrder is a positive integer containing the 
+creation order of the attribute. This value is 0-based, so, for 
+example, the third attribute created will have a corder value of 2.
+</summary>
+        </member>
+        <member name="P:HDF5DotNet.H5AttributeInfo.creationOrderValid">
+            <summary> 
+creationOrder valid indicates whether the 
+creation order data is valid for this attribute. Note that if 
+creation order is not being tracked, no creation order data will 
+be valid. 
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5AttributeInfo">
+            <summary>
+ An instance of the class is generated from a call to H5A.getInfo.
+ The information it contains includes the validity of the creation 
+ order, creation order, character set, and data size.
+</summary>
+        </member>
+        <member name="M:HDF5DotNet.H5F.close(HDF5DotNet.H5FileId)">
+            <summary> close an open file.  It is necessary to close open 
+files to prevent resource leaks. 
+</summary>
+        </member>
+        <member name="M:HDF5DotNet.H5F.open(System.String,HDF5DotNet.H5F.OpenMode,HDF5DotNet.H5PropertyListId)">
+            <summary> open an existing HDF5 file. </summary>
+            <param name="filename">
+IN: Name of the file to access.
+</param>
+            <param name="mode">
+IN: File access mode (e.g., OpenMode.ACC_RDONLY)
+</param>
+            <param name="propertyListId">
+IN: Identifier for the file access properties list. If
+parallel file access is desired, this is a collective call
+according to the communicator stored in the access_id.
+</param>
+            <summary> open an existing HDF5 file. </summary>
+        </member>
+        <member name="M:HDF5DotNet.H5F.open(System.String,HDF5DotNet.H5F.OpenMode)">
+            <summary> open an existing HDF5 file. </summary>
+            <param name="filename">
+IN: Name of the file to access.
+</param>
+            <param name="mode">
+IN: File access mode (e.g., OpenMode.ACC_RDONLY)
+</param>
+        </member>
+        <member name="M:HDF5DotNet.H5F.create(System.String,HDF5DotNet.H5F.CreateMode,HDF5DotNet.H5PropertyListId,HDF5DotNet.H5PropertyListId)">
+            <summary> Create a HDF5 file </summary>
+            <param name="filename"> filename for new HDF5 file</param>
+            <param name="mode"> H5F.CreateMode enumeration type that specifies
+such modes as read-only (H5F.CreateMode.ACC_RDONLY) </param>
+            <param name="creationPropertyList">
+IN: File creation property list identifier, used when
+modifying default file meta-data.
+</param>
+            <param name="accessPropertyList">
+IN: File access property list identifier. If parallel file
+access is desired, this is a collective call according to the
+communicator stored in the access_id.
+</param>
+            <exception> throws H5CreateException when create fails
+</exception>
+            <returns> a vaild H5FileId for the created file </returns>
+            <remarks>
+us the opportunity for future source-compatible library upgrades.
+</remarks>
+        </member>
+        <member name="M:HDF5DotNet.H5F.create(System.String,HDF5DotNet.H5F.CreateMode,HDF5DotNet.H5PropertyListId)">
+            <summary> Create a HDF5 file </summary>
+            <param name="filename"> filename for new HDF5 file</param>
+            <param name="mode"> H5F.CreateMode enumeration type that specifies
+such modes as read-only (H5F.CreateMode.ACC_RDONLY) </param>
+            <exception> throws H5CreateException when create fails
+</exception>
+            <returns> a vaild H5FileId for the created file </returns>
+            <remarks>
+Keeping the H5Id class implemented as an abstract data type 
+provides
+us the opportunity for future source-compatible library upgrades.
+</remarks>
+        </member>
+        <member name="M:HDF5DotNet.H5F.create(System.String,HDF5DotNet.H5F.CreateMode)">
+            <summary> Create a HDF5 file </summary>
+            <param name="filename"> filename for new HDF5 file</param>
+            <param name="mode"> H5F.CreateMode enumeration type that specifies
+such modes as read-only (H5F.CreateMode.ACC_RDONLY) </param>
+            <exception> throws H5CreateException when create fails
+</exception>
+            <returns> a vaild H5FileId for the created file </returns>
+            <remarks>
+Keeping the H5Id class implemented as an abstract data type 
+provides
+us the opportunity for future source-compatible library upgrades.
+</remarks>
+            <example>
+                <para> [C#] </para>
+                <code>
+try
+{
+   // Create an HDF5 file.
+   H5FileId fileId = H5F.create("myCSharp.h5", 
+                                 H5F.CreateMode.ACC_TRUNC);
+   H5F.close(openId);
+}
+catch (HDFException e)
+{
+   Console.WriteLine(e.Message);
+}
+</code>
+                <para> [Visual Basic .NET] </para>
+Imports HDF5DotNet
+<code>
+Module Module1
+ Sub Main()
+     Dim FileId As H5FileId
+        Try
+            FileId = H5F.create("HDF5_fromVB", _
+                                 H5F.CreateMode.ACC_TRUNC)
+            H5F.close(FileId)
+        Catch ex As HDFException
+            Console.WriteLine(ex.Message())
+        End Try
+        Console.WriteLine("Processing complete!")
+        Console.ReadLine()
+    End Sub
+End Module
+</code><para> [C++/Cli] </para><code>
+try
+{
+  // Create an HDF5 file.
+  H5FileId^ fileId = H5F::create("myCpp.h5", 
+	                         H5F::CreateMode::ACC_TRUNC);
+  // Close the file
+  H5F::close(fileId);
+}
+catch (HDFException^ e)
+{
+   Console::WriteLine(e-&gt;Message);
+}
+</code></example>
+        </member>
+        <member name="F:HDF5DotNet.H5F.OpenMode.ACC_DEBUG">
+            <summary> debug mode. </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5F.OpenMode.ACC_RDWR">
+            <summary> Read/Write mode. </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5F.OpenMode.ACC_RDONLY">
+            <summary> Read only mode. </summary>
+        </member>
+        <member name="T:HDF5DotNet.H5F.OpenMode">
+            <summary>
+H5F.OpenMode provides the HDF5 file access modes available
+when opening a file.
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.H5F.CreateMode.ACC_CREAT">
+            <summary> Create the file. </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5F.CreateMode.ACC_DEBUG">
+            <summary> debug mode. </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5F.CreateMode.ACC_EXCL">
+            <summary> Read only mode. </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5F.CreateMode.ACC_TRUNC">
+            <summary> Truncate (delete) data in existing file. </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5F.CreateMode.ACC_RDWR">
+            <summary> Read/Write mode. </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5F.CreateMode.ACC_RDONLY">
+            <summary> Read only mode. </summary>
+        </member>
+        <member name="T:HDF5DotNet.H5F.CreateMode">
+            <summary>
+H5F.CreateMode provides the HDF5 file access modes available
+when creating a file.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5F">
+            <summary>
+The H5F contains static member function for each of the supported
+H5F calls of the HDF5 library.  H5F indicates that this group of
+function operates on files.
+</summary>
+        </member>
+        <member name="M:HDF5DotNet.ObjectInfo.#ctor(H5G_stat_t@)">
+Copy the information from a H5G_stat_t to an ObjectInfo class.
+</member>
+        <member name="M:HDF5DotNet.H5G.getInfoByName(HDF5DotNet.H5FileOrGroupId,System.String,HDF5DotNet.H5PropertyListId)">
+            <summary>
+Retrieves information about a file or group.
+</summary>
+            <param name="fileOrGroup">
+IN: File or group identifier
+</param>
+            <param name="groupName">
+IN: Name of group for which information is to be retrieved
+</param>
+            <param name="linkAccessPropertyList">
+IN: Link access property list
+</param>
+            <returns cref="T:HDF5DotNet.H5GInfo">
+H5GInfo
+</returns>
+            <exception cref="T:HDF5DotNet.H5GgetInfoByNameException">
+throws H5GgetInfoByNameException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5G.getInfoByName(HDF5DotNet.H5FileOrGroupId,System.String)">
+            <summary>
+Retrieves information about a file or group.
+</summary>
+            <param name="fileOrGroup">
+IN: File or group identifier
+</param>
+            <param name="groupName">
+IN: Name of group for which information is to be retrieved
+</param>
+            <returns cref="T:HDF5DotNet.H5GInfo">
+H5GInfo
+</returns>
+            <exception cref="T:HDF5DotNet.H5GgetInfoByNameException">
+throws H5GgetInfoByNameException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5G.getInfoByName(HDF5DotNet.H5GroupId)">
+            <summary>
+Retrieves information about a file or group.
+</summary>
+            <param name="fileOrGroup">
+IN: File or group identifier
+</param>
+            <returns cref="T:HDF5DotNet.H5GInfo">
+H5GInfo
+</returns>
+            <exception cref="T:HDF5DotNet.H5GgetInfoByNameException">
+throws H5GgetInfoByNameException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5G.getInfo(HDF5DotNet.H5GroupId)">
+            <summary>
+H5Gget_info retrieves information about the group specified by 
+group_id. The information is returned in an object of type H5GInfo.
+</summary>
+            <param name="groupId">
+IN: Group identifier
+</param>
+            <returns cref="T:HDF5DotNet.H5GInfo">
+H5GInfo
+</returns>
+            <exception cref="T:HDF5DotNet.H5GgetInfoException">
+throws H5GgetInfoException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5G.getObjectInfo(HDF5DotNet.H5LocId,System.String,System.Boolean)">
+            <summary>
+Returns information about an object.
+</summary>
+            <param name="groupOrFileId"> 
+IN: File or group Id.
+</param>
+            <param name="name"> 
+IN: Name of the object for which status is being sought.
+</param>
+            <param name="followLink"> 
+IN: If the object is a symbolic link and followLink is false,
+then the information returned is that for the link itself;
+otherwise the link is followed and information is returned
+about the object to which the link points.
+</param>
+            <returns>
+The filenumber and objectnumber properties contain two values
+each.  Together, these four values uniquely
+identify an object among those HDF5 files which are open: if
+all four values are the same between two objects, then the two
+objects are the same (provided both files are still open).
+<ul><li>
+Note that if a file is closed and re-opened, the value in
+fileno will change.
+</li><li>
+If a VFL driver either does not or cannot detect that two
+H5Fopen calls referencing the same file actually open the same
+file, each will get a different fileno.
+</li></ul><p>
+The nHardLinks property is the number of hard links to the
+object or zero when information is being returned about a
+symbolic link (symbolic links do not have hard links but all
+other objects always have at least one).
+</p><p>
+The objectType property contains the type of the object, one of
+H5GType.GROUP, H5GType.DATASET, H5GType.LINK, or H5GType.TYPE.
+</p><p>
+The modificationTime property contains the modification time.
+</p><p>
+If information is being returned about a symbolic link then
+the linkLength property will be the length of the link value 
+(the name of the
+pointed-to object with the null terminator); otherwise it
+will be zero.
+</p><p>
+The headerSize property is the total size of all the object 
+header information in the file (for all chunks).
+</p><p>
+The unusedHeaderSpace property is the size of unused space in
+the object header.
+</p><p>
+The nHeaderMessages property is the number of object header
+messages.
+</p><p>
+The nHeaderChunks property is the number of chunks the 
+object header is broken up into. 
+</p></returns>
+        </member>
+        <member name="M:HDF5DotNet.H5G.iterate(HDF5DotNet.H5LocId,System.String,HDF5DotNet.H5GIterateDelegate,System.Object,System.Int32@)">
+            <summary>
+Iterates an operation over the entries of a group.
+</summary>
+            <param name="loc"> 
+IN: File or group identifier.
+</param>
+            <param name="name"> 
+IN: Group over which the iteration is performed.
+</param>
+            <param name="func"> 
+IN: Operation to be performed on an object at each step of the
+iteration.
+</param>
+            <param name="startIndex"> 
+  IN: Location at which to begin the iteration
+</param>
+            <returns>
+Returns the return value of the last operator if it was
+non-zero, or zero if all group members were processed. 
+</returns>
+            <remarks />
+        </member>
+        <member name="M:HDF5DotNet.H5G.getObjectNameByIndex(HDF5DotNet.H5GroupId,System.Int32)">
+            <summary>
+Gets the name of the object with the specified object index.
+</summary>
+            <param name="groupId"> IN: Group in which object is a
+member.
+</param>
+            <exception cref="T:HDF5DotNet.H5GgetObjectNameByIndexException"> 
+throws H5GgetObjectNameByIndexException if request fails 
+</exception>
+            <remarks />
+        </member>
+        <member name="M:HDF5DotNet.H5G.getNumObjects(HDF5DotNet.H5GroupId)">
+            <summary>
+Gets the number of objects in the specified group.
+</summary>
+            <param name="groupId"> IN: Group identifier
+</param>
+            <exception cref="T:HDF5DotNet.H5GgetNumObjectsException"> 
+throws H5GgetNumObjectsException if request fails 
+</exception>
+            <remarks />
+        </member>
+        <member name="M:HDF5DotNet.H5G.close(HDF5DotNet.H5GroupId)">
+            <summary>
+Closes the specified group.
+</summary>
+            <param name="groupId"> IN: Group identifier to release. 
+</param>
+            <remarks> H5Gclose releases resources used by a group which
+was opened by H5Gcreate or H5Gopen. After closing a group, the
+group_id cannot be used again. 
+</remarks>
+            <exception>
+throws H5GcloseException if the close fails.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5G.open(HDF5DotNet.H5LocId,System.String,HDF5DotNet.H5PropertyListId)">
+            <summary>
+ Opens an existing group for modification and returns a group
+identifier for that group.
+</summary>
+            <param name="groupOrFileId">
+IN: File or group identifier
+within which group is to be open. 
+</param>
+            <param name="groupName"> 
+IN: Name of group to open.
+</param>
+            <remarks>
+H5G.open opens an existing group with the specified name
+at the specified location, groupOrFileId. The location is 
+identified 
+by a file or group identifier.  H5G.open returns a group
+identifier for the group that was opened. This group
+identifier should be released by calling H5G.close when it is
+no longer needed. 
+</remarks>
+            <exception>
+H5G.open throws H5GopenException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5G.create(HDF5DotNet.H5LocId,System.String,HDF5DotNet.H5PropertyListId,HDF5DotNet.H5PropertyListId,HDF5DotNet.H5PropertyListId)">
+            <summary>
+Create a HDF5 group.  Creates a new empty group and gives 
+ it a name.
+</summary>
+            <param name="groupOrFileId"> IN: provides a group or file id. 
+</param>
+            <param name="groupName"> IN: Absolute or relative name of the
+new group.
+</param>
+            <param name="linkCreation" />
+            <param name="groupCreation" />
+            <param name="groupAccess" />
+            <returns> Returns a valid group identifier 
+</returns>
+            <remarks>
+                <para>
+H5G.create creates a new group with the specified name at the 
+specified location, loc_id. The location is identified by a 
+file or group identifier. The name must not already be 
+taken by some other object and all parent groups must already 
+exist.
+</para>
+                <para> 
+The return value is a group identifier for the open group. 
+This group identifier should be closed by calling H5G.close
+when it is no longer needed.  
+</para>
+            </remarks>
+            <exception>
+throws H5GcreateException if the creation fails.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5G.create(HDF5DotNet.H5LocId,System.String)">
+            <summary>
+Create a HDF5 group.  Creates a new empty group and gives 
+ it a name.
+</summary>
+            <param name="groupOrFileId"> IN: provides a group or file id. 
+</param>
+            <param name="groupName"> IN: Absolute or relative name of the
+new group.
+</param>
+            <returns> Returns a valid group identifier 
+</returns>
+            <remarks>
+                <para>
+H5G.create creates a new group with the specified name at the 
+specified location, loc_id. The location is identified by a 
+file or group identifier. The name must not already be 
+taken by some other object and all parent groups must already 
+exist.
+</para>
+                <para> 
+The return value is a group identifier for the open group. 
+This group identifier should be closed by calling H5G.close
+when it is no longer needed.  
+</para>
+            </remarks>
+            <exception>
+throws H5GcreateException if the creation fails.
+</exception>
+        </member>
+        <member name="T:HDF5DotNet.H5G">
+            <summary>
+The H5G contains static member function for each of the supported
+H5G calls of the HDF5 library.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5GIterateDelegate">
+            <summary>
+Delegate used in H5G.iterate.
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.ObjectInfo.nchunks_">
+            <summary> Number of object header chunks </summary>
+        </member>
+        <member name="F:HDF5DotNet.ObjectInfo.nmesgs_">
+            <summary> Number of object header messages </summary>
+        </member>
+        <member name="F:HDF5DotNet.ObjectInfo.free_">
+            <summary> Free space within object header </summary>
+        </member>
+        <member name="F:HDF5DotNet.ObjectInfo.size_">
+            <summary> Total size of object header in file </summary>
+        </member>
+        <member name="F:HDF5DotNet.ObjectInfo.linklen_">
+            <summary> symbolic link value length </summary>
+        </member>
+        <member name="F:HDF5DotNet.ObjectInfo.mtime_">
+            <summary> modification time </summary>
+        </member>
+        <member name="F:HDF5DotNet.ObjectInfo.type_">
+            <summary> basic object type </summary>
+        </member>
+        <member name="F:HDF5DotNet.ObjectInfo.nlink_">
+            <summary> number of hard links to object </summary>
+        </member>
+        <member name="F:HDF5DotNet.ObjectInfo.objno_">
+            <summary> object number </summary>
+        </member>
+        <member name="F:HDF5DotNet.ObjectInfo.fileno_">
+            <summary> file number </summary>
+        </member>
+        <member name="P:HDF5DotNet.ObjectInfo.nHeaderChunks">
+            <summary> Number of object header chunks </summary>
+        </member>
+        <member name="P:HDF5DotNet.ObjectInfo.nHeaderMessages">
+            <summary> Number of object header messages </summary>
+        </member>
+        <member name="P:HDF5DotNet.ObjectInfo.unusedHeaderSpace">
+            <summary> Free space within object header </summary>
+        </member>
+        <member name="P:HDF5DotNet.ObjectInfo.headerSize">
+            <summary> Total size of object header in file </summary>
+        </member>
+        <member name="P:HDF5DotNet.ObjectInfo.linkLength">
+            <summary> symbolic link value length </summary>
+        </member>
+        <member name="P:HDF5DotNet.ObjectInfo.modificationTime">
+            <summary> modification time </summary>
+        </member>
+        <member name="P:HDF5DotNet.ObjectInfo.objectType">
+            <summary> basic object type </summary>
+        </member>
+        <member name="P:HDF5DotNet.ObjectInfo.nHardLinks">
+            <summary> number of hard links to object </summary>
+        </member>
+        <member name="P:HDF5DotNet.ObjectInfo.objectNumber">
+            <summary> object number </summary>
+        </member>
+        <member name="P:HDF5DotNet.ObjectInfo.fileNumber">
+            <summary> file number </summary>
+        </member>
+        <member name="T:HDF5DotNet.ObjectInfo">
+            <summary>
+An instance of this class is returned from H5G.getObjectInfo.  The
+class provides properties for the following values:
+ file number, object number, number of hard links to object,
+ basic object type, modification time, symbolic link value length,
+ size of object header, free space in object header, number of 
+ header messages, and the number of object header chunks.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.LinkType">
+            <summary>
+Enumeration type of the LinkType.  Values include ERROR, HARD, and SOFT.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5GType">
+            <summary>
+Enumeration type for H5G.  Values include GROUP, DATASET, LINK, 
+and TYPE.
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.H5GType.TYPE">
+            <summary> HDF5 Data Type </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5GType.LINK">
+            <summary> HDF5 Link </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5GType.DATASET">
+            <summary> HDF5 Data Set </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5GType.GROUP">
+            <summary> HDF5 Group </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5GInfo.maxCreationOrder_">
+            <summary>
+Current maximum creation order for the group.
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.H5GInfo.nLinks_">
+            <summary>
+Number of links in the group.
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.H5GInfo.linkStorageType_">
+            <summary>
+Type of storage for links in group.  Storage types include 
+COMPACT, DENSE, and SYMBOL_TABLE.
+</summary>
+        </member>
+        <member name="P:HDF5DotNet.H5GInfo.maxCreationOrder">
+            <summary>
+Current maximum creation order for the group.
+</summary>
+        </member>
+        <member name="P:HDF5DotNet.H5GInfo.nLinks">
+            <summary>
+Number of links in the group.
+</summary>
+        </member>
+        <member name="P:HDF5DotNet.H5GInfo.linkStorageType">
+            <summary>
+Type of storage for links in group.  Storage types include 
+COMPACT, DENSE, and SYMBOL_TABLE.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5GInfo">
+            <summary>
+An instance of H5GInfo is returned from H5G.getInfo.  It contains 
+properties that provide the link storage type, the number of links,
+and the current maximum creation order for the group.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5GStorageType">
+            <summary>
+Enumeration for storage type (COMPACT, DENSE, or SYMBOL_TABLE)
+</summary>
+        </member>
+        <member name="M:HDF5DotNet.HDFException.#ctor">
+            <summary />
+        </member>
+        <member name="M:HDF5DotNet.H5E.suppressPrinting">
+            <summary>
+ Turns automatic error printing off
+</summary>
+            <returns>
+void
+</returns>
+            <exception cref="T:HDF5DotNet.H5EsuppressPrintingException">
+throws rH5EsuppressPrintingException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5E.suppressPrinting(System.Int32)">
+            <summary>
+ Turns automatic error printing off
+</summary>
+            <param name="errorStackId">
+IN: Error stack identifier.
+</param>
+            <returns>
+void
+</returns>
+            <exception cref="T:HDF5DotNet.H5EsuppressPrintingException">
+throws rH5EsuppressPrintingException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5E.setAuto(System.Int32,HDF5DotNet.H5AutoDelegate,System.Void*)">
+            <summary>
+Turns automatic error printing on or off - assigns delegate to
+be called on error conditions.
+</summary>
+            <param name="errorStackId">
+IN: Error stack identifier.
+</param>
+            <param name="autoDelegate">
+IN: Delegate to be called upon an error condition.
+</param>
+            <param name="clientData">
+IN: Data passed to the error function (not a pointer to garbage 
+collected memory).
+</param>
+            <returns>
+void
+</returns>
+            <exception cref="T:HDF5DotNet.H5EsetAutoException">
+throws H5EsetAutoException on failure.
+</exception>
+        </member>
+        <member name="T:HDF5DotNet.H5E">
+            <summary>
+The H5E contains static member function for each of the supported
+H5E calls of the HDF5 library.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5AutoDelegate">
+            <summary>
+Delegate invoked when error conditions occur (see setAuto).
+</summary>
+            <param name="estackId">
+IN: Error stack identifier.
+</param>
+            <param name="alloc_info">
+IN: Data passed to the error function. Note that this memory,
+and all memory used with void* must be pinned or otherwise
+immune to garbage collection or rellocation.
+</param>
+        </member>
+        <member name="M:HDF5DotNet.H5O.getInfoByIndex(HDF5DotNet.H5LocId,System.String,H5_index_t,HDF5DotNet.H5IterationOrder,System.UInt64,HDF5DotNet.H5PropertyListId)">
+            <summary>
+Retrieves the metadata for an object, identifying the 
+object by an index position.
+</summary>
+            <param name="locId">
+IN: File or group identifier specifying location of group in 
+which object is located
+</param>
+            <param name="groupName">
+IN: Name of group in which object is located
+</param>
+            <param name="index">
+IN: Index or field that determines the order
+</param>
+            <param name="iterationOrder">
+IN: Order within field or index
+</param>
+            <param name="position">
+IN: Object for which information is to be returned
+</param>
+            <param name="linkAccessPropertyListId">
+OUT: Buffer in which to return object information
+</param>
+            <returns cref="T:HDF5DotNet.H5ObjectInfo">
+H5ObjectInfo
+</returns>
+            <exception cref="T:HDF5DotNet.H5OgetInfoByIndexException">
+throws H5OgetInfoByIndexException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5O.getInfoByIndex(HDF5DotNet.H5LocId,System.String,H5_index_t,HDF5DotNet.H5IterationOrder,System.UInt64)">
+            <summary>
+Retrieves the metadata for an object, identifying the 
+object by an index position.
+</summary>
+            <param name="locId">
+IN: File or group identifier specifying location of group in 
+which object is located
+</param>
+            <param name="groupName">
+IN: Name of group in which object is located
+</param>
+            <returns cref="T:HDF5DotNet.H5ObjectInfo">
+H5ObjectInfo
+</returns>
+            <exception cref="T:HDF5DotNet.H5OgetInfoByIndexException">
+throws H5OgetInfoByIndexException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5O.getInfoByName(HDF5DotNet.H5Id,System.String,HDF5DotNet.H5PropertyListId)">
+            <summary>
+Retrieves the metadata for an object, identifying the object by 
+location and relative name.
+</summary>
+            <param name="objectId">
+IN: File or group identifier specifying location of 
+group in which object is located
+</param>
+            <param name="name">
+IN: Name of group, relative to loc_id
+</param>
+            <param name="linkAccessPropertyListId">
+IN: Link access property list
+</param>
+            <returns cref="T:HDF5DotNet.H5ObjectInfo">
+H5ObjectInfo
+</returns>
+            <exception cref="T:HDF5DotNet.H5OgetInfoByNameException">
+throws H5OgetInfoByNameException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5O.getInfoByName(HDF5DotNet.H5Id,System.String)">
+            <summary>
+Retrieves the metadata for an object, identifying the object by 
+location and relative name.
+</summary>
+            <param name="objectId">
+IN: File or group identifier specifying location of 
+group in which object is located
+</param>
+            <param name="name">
+IN: Name of group, relative to loc_id
+</param>
+            <returns cref="T:HDF5DotNet.H5ObjectInfo">
+H5ObjectInfo
+</returns>
+            <exception cref="T:HDF5DotNet.H5OgetInfoByNameException">
+throws H5OgetInfoByNameException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5O.getInfoByName(HDF5DotNet.H5Id)">
+            <summary>
+Retrieves the metadata for an object, identifying the object by 
+location and relative name.
+</summary>
+            <param name="objectId">
+IN: File or group identifier specifying location of 
+group in which object is located
+</param>
+            <returns cref="T:HDF5DotNet.H5ObjectInfo">
+H5ObjectInfo
+</returns>
+            <exception cref="T:HDF5DotNet.H5OgetInfoByNameException">
+throws H5OgetInfoByNameException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5O.getInfo(HDF5DotNet.H5Id)">
+            <summary>
+Retrieves the metadata for an object specified by an identifier.
+</summary>
+            <param name="objectId">
+IN: Identifier for target object
+</param>
+            <returns cref="T:HDF5DotNet.H5ObjectInfo">
+H5ObjectInfo
+</returns>
+            <exception cref="T:HDF5DotNet.H5OgetInfoException">
+throws H5OgetInfoException on failure.
+</exception>
+        </member>
+        <member name="T:HDF5DotNet.H5O">
+            <summary>
+The H5O contains static member function for each of the supported
+H5O calls of the HDF5 library.
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.H5ObjectInfo.num_attrs_">
+            <summary>
+Number of attributes attached to the object.
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.H5ObjectInfo.btime_">
+            <summary>
+Birth time in Unix (time since 1/1/1970)
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.H5ObjectInfo.ctime_">
+            <summary>
+Change time in Unix (time since 1/1/1970)
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.H5ObjectInfo.mtime_">
+            <summary>
+Modification time in Unix (time since 1/1/1970)
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.H5ObjectInfo.atime_">
+            <summary>
+ Access time in Unix (time since 1/1/1970)
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.H5ObjectInfo.rc_">
+            <summary>
+ Reference count of object.
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.H5ObjectInfo.type_">
+            <summary>
+ Basic object type (group, dataset, etc.)
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.H5ObjectInfo.addr_">
+            <summary>
+Object address in file.
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.H5ObjectInfo.fileno_">
+            <summary>
+ Object file number.
+</summary>
+        </member>
+        <member name="P:HDF5DotNet.H5ObjectInfo.nAttributes">
+            <summary>
+Number of attributes attached to the object.
+</summary>
+        </member>
+        <member name="P:HDF5DotNet.H5ObjectInfo.birthSecondsSince1970">
+            <summary>
+Birth time in Unix (time since 1/1/1970)
+</summary>
+        </member>
+        <member name="P:HDF5DotNet.H5ObjectInfo.birthTime">
+            <summary>
+Birth time in .NET DataTime format.
+</summary>
+        </member>
+        <member name="P:HDF5DotNet.H5ObjectInfo.changeSecondsSince1970">
+            <summary>
+Change time in Unix (time since 1/1/1970)
+</summary>
+        </member>
+        <member name="P:HDF5DotNet.H5ObjectInfo.changeTime">
+            <summary>
+Change time in .NET DataTime format.
+</summary>
+        </member>
+        <member name="P:HDF5DotNet.H5ObjectInfo.modificationSecondsSince1970">
+            <summary>
+Modification time in Unix (time since 1/1/1970)
+</summary>
+        </member>
+        <member name="P:HDF5DotNet.H5ObjectInfo.modificationTime">
+            <summary>
+Modification time in .NET DataTime format.
+</summary>
+        </member>
+        <member name="P:HDF5DotNet.H5ObjectInfo.accessSecondsSince1970">
+            <summary>
+ Access time in Unix (time since 1/1/1970)
+</summary>
+        </member>
+        <member name="P:HDF5DotNet.H5ObjectInfo.accessTime">
+            <summary>
+Access time in .NET DataTime format.
+</summary>
+        </member>
+        <member name="P:HDF5DotNet.H5ObjectInfo.referenceCount">
+            <summary>
+ Reference count of object.
+</summary>
+        </member>
+        <member name="P:HDF5DotNet.H5ObjectInfo.objectType">
+            <summary>
+ Basic object type (group, dataset, etc.)
+</summary>
+        </member>
+        <member name="P:HDF5DotNet.H5ObjectInfo.address">
+            <summary>
+Object address in file.
+</summary>
+        </member>
+        <member name="P:HDF5DotNet.H5ObjectInfo.fileNumber">
+            <summary>
+ Object file number.
+</summary>
+        </member>
+        <member name="P:HDF5DotNet.H5ObjectInfo.metaSize">
+            <summary>
+ Meta information.
+</summary>
+        </member>
+        <member name="P:HDF5DotNet.H5ObjectInfo.header">
+            <summary>
+Header information.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5ObjectInfo">
+            <summary>
+An instance of this class is returned by the H5G.getInfo calls.
+It contains header and metasize data about the object as well as
+file number, address, object type, access time, modification time,
+birth time, and number of attributes.
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.MetaSize.attribute_">
+            <summary>
+v2 B-tree and heap for attributes
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.MetaSize.object_">
+            <summary>
+v1/v2 B-tree and local/fractal heap fro groups, B-tree fro chunked
+datasets.
+</summary>
+        </member>
+        <member name="P:HDF5DotNet.MetaSize.attribute">
+            <summary>
+v2 B-tree and heap for attributes
+</summary>
+        </member>
+        <member name="P:HDF5DotNet.MetaSize.object">
+            <summary>
+v1/v2 B-tree and local/fractal heap fro groups, B-tree for chunked
+datasets.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.MetaSize">
+            <summary>
+MetaSize is the component of H5ObjectInfo that contains the object
+meta information.
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.Header.message_">
+            <summary>
+Message type info.
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.Header.space_">
+            <summary>
+Object that contains properties about object space usage.
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.Header.flags_">
+            <summary>
+Object header status flags
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.Header.nchunks_">
+            <summary>
+Number of object header chunks
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.Header.nmesgs_">
+            <summary>
+Number of object header messages
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.Header.version_">
+            <summary>
+Version number of header format in file
+</summary>
+        </member>
+        <member name="P:HDF5DotNet.Header.message">
+            <summary>
+Message type info.
+</summary>
+        </member>
+        <member name="P:HDF5DotNet.Header.space">
+            <summary>
+Object that contains properties about object space usage.
+</summary>
+        </member>
+        <member name="P:HDF5DotNet.Header.flags">
+            <summary>
+Object header status flags
+</summary>
+        </member>
+        <member name="P:HDF5DotNet.Header.nChunks">
+            <summary>
+Number of object header chunks
+</summary>
+        </member>
+        <member name="P:HDF5DotNet.Header.nMessages">
+            <summary>
+Number of object header messages
+</summary>
+        </member>
+        <member name="P:HDF5DotNet.Header.version">
+            <summary>
+Version number of header format in file
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.Header">
+            <summary>
+Object header information.
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.Message.shared_">
+            <summary>
+Flags to indicate message type is shared in header 
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.Message.present_">
+            <summary>
+Flags to indicate presence of message type in header
+</summary>
+        </member>
+        <member name="P:HDF5DotNet.Message.shared">
+            <summary>
+Flags to indicate message type is shared in header 
+</summary>
+        </member>
+        <member name="P:HDF5DotNet.Message.present">
+            <summary>
+Flags to indicate presence of message type in header
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.Message">
+            <summary>
+Message type info.
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.Space.free_">
+            <summary>
+Free space within object header
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.Space.mesg_">
+            <summary>
+Space within header for actual message information 
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.Space.meta_">
+            <summary>
+Space within header for object header metadata
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.Space.total_">
+            <summary>
+Total space for storing object header in file 
+</summary>
+        </member>
+        <member name="P:HDF5DotNet.Space.free">
+            <summary>
+Free space within object header
+</summary>
+        </member>
+        <member name="P:HDF5DotNet.Space.message">
+            <summary>
+Space within header for actual message information 
+</summary>
+        </member>
+        <member name="P:HDF5DotNet.Space.meta">
+            <summary>
+Space within header for object header metadata
+</summary>
+        </member>
+        <member name="P:HDF5DotNet.Space.total">
+            <summary>
+Total space for storing object header in file 
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.Space">
+            <summary>
+Object that contains properties about object space usage.
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.IhInfo.heapSize_">
+            <summary>
+The heap size
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.IhInfo.indexSize_">
+            <summary>
+Index size (btree and/or list)
+</summary>
+        </member>
+        <member name="P:HDF5DotNet.IhInfo.heapSize">
+            <summary>
+The heap size
+</summary>
+        </member>
+        <member name="P:HDF5DotNet.IhInfo.indexSize">
+            <summary>
+btree and/or list
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.IhInfo">
+            <summary>
+Object that contains index and heap sizes.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5ObjectType">
+            <summary>
+ Enumerates the different H5Object types.
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.H5ObjectType.NAMED_DATATYPE">
+            <summary> The type of this object is "data type." </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5ObjectType.DATASET">
+            <summary> The type of this object is "data set." </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5ObjectType.GROUP">
+            <summary> The type of this object is "group." </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5ObjectType.UNKNOWN">
+            <summary> The type of this object is unknown. </summary>
+        </member>
+        <member name="M:HDF5DotNet.H5TB.#ctor">
+            <summary>
+Disallow the creation of instances of this class.
+</summary>
+        </member>
+        <member name="M:HDF5DotNet.H5TB.getFieldInfo(HDF5DotNet.H5LocId,System.String)">
+            <summary>
+Gets information about a table.
+</summary>
+            <param name="loc">
+IN: Identifier of the file or group to read the table within. 
+</param>
+            <param name="tableName">
+IN: The name of the dataset to read.
+</param>
+            <returns>
+ An instance of TableFieldInfo containing the table field 
+information.
+</returns>
+            <exception cref="T:HDF5DotNet.H5TBgetFieldInfoException">
+throws H5TBgetFieldInfoException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5TB.getTableInfo(HDF5DotNet.H5LocId,System.String)">
+            <summary>
+Gets the table dimensions.
+</summary>
+            <param name="loc">
+IN: Identifier of the file or group to read the table within. 
+</param>
+            <param name="tableName">
+IN: The name of the dataset to read.
+</param>
+            <returns>
+ An instance of TableInfo containing the dimensions.
+</returns>
+            <exception cref="T:HDF5DotNet.H5TBgetTableInfoException">
+throws H5TBgetTableInfoException on failure.
+</exception>
+        </member>
+        <member name="T:HDF5DotNet.H5TB">
+            <summary>
+The H5TB contains static member function for each of the supported
+H5TB calls of the HDF5 library.
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.TableFieldInfo.typeSize_">
+            <summary>
+An array containing the size of the HDF5 type associated with the 
+table.
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.TableFieldInfo.fieldOffset_">
+            <summary>
+An array containing the offsets of the fields. 
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.TableFieldInfo.fieldSize_">
+            <summary>
+An array containing the size of the fields. 
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.TableFieldInfo.fieldName_">
+            <summary>
+An array containing the names of the fields. 
+</summary>
+        </member>
+        <member name="P:HDF5DotNet.TableFieldInfo.typeSize">
+            <summary>
+An array containing the size of the HDF5 type associated with the 
+table.
+</summary>
+        </member>
+        <member name="P:HDF5DotNet.TableFieldInfo.fieldOffset">
+            <summary>
+An array containing the offsets of the fields. 
+</summary>
+        </member>
+        <member name="P:HDF5DotNet.TableFieldInfo.fieldSize">
+            <summary>
+An array containing the size of the fields. 
+</summary>
+        </member>
+        <member name="P:HDF5DotNet.TableFieldInfo.fieldName">
+            <summary>
+An array containing the names of the fields. 
+</summary>
+        </member>
+        <member name="M:HDF5DotNet.TableFieldInfo.#ctor(System.String[],System.UInt32[],System.UInt32[],System.UInt32[])">
+            <summary>
+Constructor for table info takes values returned from
+H5TBget_field_info.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.TableFieldInfo">
+            <summary>
+ Object returned from H5TB.getFieldInfo.  Properties include the name
+of each field, the size of
+each field, offset of each field, and type size of each field. 
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.TableInfo.nRecords_">
+            <summary>
+Number of table records (rows).
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.TableInfo.nFields_">
+            <summary>
+Number of table fields (columns).
+</summary>
+        </member>
+        <member name="M:HDF5DotNet.TableInfo.ToString">
+            <summary>
+Produce string containg TableInfo .
+</summary>
+        </member>
+        <member name="P:HDF5DotNet.TableInfo.nRecords">
+            <summary>
+Number of table records (rows).
+</summary>
+        </member>
+        <member name="P:HDF5DotNet.TableInfo.nFields">
+            <summary>
+Number of table fields (columns).
+</summary>
+        </member>
+        <member name="M:HDF5DotNet.TableInfo.#ctor(System.UInt32,System.UInt32)">
+            <summary>
+Constructor takes number of fields and number of records as
+parameters. 
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.TableInfo">
+            <summary>
+ Object returned from getTableInfo.  Properties include number of 
+table fields and number of table records.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5IndexType">
+            <summary>
+Enumeration type for Index Type (NAME or CRT_ORDER).
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.H5IndexType.CRT_ORDER">
+            <summary> 
+ An index by creation order
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.H5IndexType.NAME">
+            <summary> 
+An alpha-numeric index by attribute name
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5IterationOrder">
+            <summary>
+Enumeration class for iteration order (UNKNOWN, INCREASING,
+DECREASING, or NATIVE).
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.H5IterationOrder.NATIVE">
+            <summary> 
+HDF5 iterates in the fastest-available order. No information 
+is provided as to the order, but HDF5 ensures that each 
+element in the index will be visited if the iteration 
+completes successfully. 
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.H5IterationOrder.DECREASING">
+            <summary> 
+Iteration starts at the end of the index, i.e., a 
+bottom-up iteration decrementing the index position at each 
+step. 
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.H5IterationOrder.INCREASING">
+            <summary> 
+Iteration is from beginning to end, i.e., a 
+top-down iteration incrementing the index position at each 
+step. 
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.H5IterationOrder.UNKNOWN">
+            <summary> 
+Unknown iteration order.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5IterationResult">
+            <summary>
+Enumeration type returned from iteration function
+ (HALT_WITH_FAILURE, SUCCESS, SHORT_CIRCUIT_SUCCESS).
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.H5AttributeId.id_">
+            <summary />
+        </member>
+        <member name="M:HDF5DotNet.H5AttributeId.#ctor">
+            <summary>
+The default constructor is disallowed.  Only HDF5 library
+routines are capable of creating an instance of
+H5AttributeId and they must supply an id when doing so.
+</summary>
+        </member>
+        <member name="P:HDF5DotNet.H5AttributeId.Id">
+            <summary>
+Allow read-only access to the internal HDF5 id to HDF5 library
+members. (members of this assembly).
+</summary>
+        </member>
+        <member name="M:HDF5DotNet.H5AttributeId.#ctor(System.Int32)">
+            <remarks>
+This is the only constructor used to create an
+H5AttributeId.
+It can only be invoked by HDF5DotNet library functions.
+</remarks>
+            <param name="id"> is an HDF5 library-generated identification
+number that serves as a unique indentifier. </param>
+        </member>
+        <member name="T:HDF5DotNet.H5AttributeId">
+            <summary>
+H5AttributeId uniquely identifies an attribute.
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.H5PropertyListId.freeDelegate_">
+            <summary>
+ freeDelegate_ holds a handle to the last free delegate 
+ assigned in setVlenMemManager to insure that the 
+ garbage collector will not release the delegate even if the user's
+ instance of H5FreeDelegate is deleted.
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.H5PropertyListId.allocDelegate_">
+            <summary>
+ allocDelegate_ holds a handle to the last alloc delegate 
+ assigned in setVlenMemManager to insure that the 
+ garbage collector will not release the delegate even if the user's
+ instance of H5AllocDelegate is deleted.
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.H5PropertyListId.id_">
+            <summary />
+        </member>
+        <member name="M:HDF5DotNet.H5PropertyListId.#ctor">
+            <summary>
+The default constructor is disallowed.  Only HDF5 library
+routines are capable of creating an instance of
+H5PropertyListId and they must supply an id when doing so.
+</summary>
+        </member>
+        <member name="M:HDF5DotNet.H5PropertyListId.setFreeDelegate(HDF5DotNet.H5FreeDelegate)">
+            <summary>
+   Allow library functions to set the allocDelegate_.
+</summary>
+        </member>
+        <member name="M:HDF5DotNet.H5PropertyListId.setAllocDelegate(HDF5DotNet.H5AllocDelegate)">
+            <summary>
+   Allow library functions to set the allocDelegate_.
+</summary>
+        </member>
+        <member name="P:HDF5DotNet.H5PropertyListId.Id">
+            <summary>
+Allow read-only access to the internal HDF5 id to HDF5 library
+members. (members of this assembly).
+</summary>
+        </member>
+        <member name="M:HDF5DotNet.H5PropertyListId.#ctor(System.Int32)">
+            <remarks>
+This is the only constructor used to create an
+H5PropertyListId.
+It can only be invoked by HDF5DotNet library functions.
+</remarks>
+            <param name="id"> is an HDF5 library-generated identification
+number that serves as a unique indentifier. </param>
+        </member>
+        <member name="T:HDF5DotNet.H5PropertyListId">
+            <summary>
+H5PropertyListId uniquely identifies a property list.
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.H5DataTypeId.id_">
+            <summary />
+        </member>
+        <member name="M:HDF5DotNet.H5DataTypeId.#ctor">
+            <summary>
+The default constructor is disallowed.  Only HDF5 library
+routines are capable of creating an instance of H5DataTypeId
+and they must supply an id when doing so.
+</summary>
+        </member>
+        <member name="P:HDF5DotNet.H5DataTypeId.Id">
+            <summary>
+Allow read-only access to the internal HDF5 id to HDF5 library
+members. (members of this assembly).
+</summary>
+        </member>
+        <member name="M:HDF5DotNet.H5DataTypeId.#ctor(System.Int32)">
+            <remarks>
+This is the only constructor used to create an H5DataTypeId.
+It can only be invoked by HDF5DotNet library functions.
+</remarks>
+            <param name="id"> is an HDF5 library-generated identification
+number that serves as a unique indentifier. </param>
+        </member>
+        <member name="F:HDF5DotNet.H5DataSetId.id_">
+            <summary />
+        </member>
+        <member name="M:HDF5DotNet.H5DataSetId.#ctor">
+            <summary>
+The default constructor is disallowed.  Only HDF5 library
+routines are capable of creating an instance of H5DataSetId
+and they must supply an id when doing so.
+</summary>
+        </member>
+        <member name="P:HDF5DotNet.H5DataSetId.Id">
+            <summary>
+Allow read-only access to the internal HDF5 id to HDF5 library
+members. (members of this assembly).
+</summary>
+        </member>
+        <member name="M:HDF5DotNet.H5DataSetId.#ctor(System.Int32)">
+            <remarks>
+This is the only constructor used to create an H5DataSetId.
+It can only be invoked by HDF5DotNet library functions.
+</remarks>
+            <param name="id"> is an HDF5 library-generated identification
+number that serves as a unique indentifier. </param>
+        </member>
+        <member name="T:HDF5DotNet.H5DataSetId">
+            <summary> H5DataSetId uniquely identifies a data set. </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5DataSpaceId.id_">
+            <summary />
+        </member>
+        <member name="M:HDF5DotNet.H5DataSpaceId.#ctor">
+            <summary>
+The default constructor is disallowed.  Only HDF5 library
+routines are capable of creating an instance of H5DataSpaceId
+and they must supply an id when doing so.
+</summary>
+        </member>
+        <member name="P:HDF5DotNet.H5DataSpaceId.Id">
+            <summary>
+Allow read-only access to the internal HDF5 id to HDF5 library
+members. (members of this assembly).
+</summary>
+        </member>
+        <member name="M:HDF5DotNet.H5DataSpaceId.#ctor(System.Int32)">
+            <remarks>
+This is the only constructor used to create an H5DataSpaceId.
+It can only be invoked by HDF5DotNet library functions.
+</remarks>
+            <param name="id"> is an HDF5 library-generated identification
+number that serves as a unique indentifier. </param>
+        </member>
+        <member name="T:HDF5DotNet.H5DataSpaceId">
+            <summary> H5DataSpaceId uniquely identifies a data space. </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5GroupId.id_">
+            <summary />
+        </member>
+        <member name="M:HDF5DotNet.H5GroupId.#ctor">
+            <summary>
+The default constructor is disallowed.  Only HDF5 library
+routines are capable of creating an instance of H5GroupId and they
+must supply an id when doing so.
+</summary>
+        </member>
+        <member name="P:HDF5DotNet.H5GroupId.Id">
+            <summary>
+Allow read-only access to the internal HDF5 id to HDF5 library
+members. (members of this assembly).
+</summary>
+        </member>
+        <member name="M:HDF5DotNet.H5GroupId.#ctor(System.Int32)">
+            <remarks>
+This is the only constructor used to create an H5GroupId.  It can
+only be invoked by HDF5DotNet library functions.
+</remarks>
+            <param name="id"> is an HDF5 library-generated identification
+number that serves as a unique indentifier. </param>
+        </member>
+        <member name="T:HDF5DotNet.H5GroupId">
+            <summary> H5GroupId uniquely identifies a group. </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5FileId.id_">
+            <summary />
+        </member>
+        <member name="M:HDF5DotNet.H5FileId.#ctor">
+            <summary>
+The default constructor is disallowed.  Only HDF5 library
+routines are capable of creating an instance of H5FileId and they
+must supply an id when doing so.
+</summary>
+        </member>
+        <member name="P:HDF5DotNet.H5FileId.Id">
+            <summary>
+Allow read-only access to the internal HDF5 id to HDF5 library
+members. (members of this assembly).
+</summary>
+        </member>
+        <member name="M:HDF5DotNet.H5FileId.#ctor(System.Int32)">
+            <remarks>
+This is the only constructor used to create an H5FileId.  It can
+only be invoked by HDF5DotNet library functions.
+</remarks>
+            <param name="id"> is an HDF5 library-generated identification
+number that serves as a unique indentifier. </param>
+        </member>
+        <member name="T:HDF5DotNet.H5FileId">
+            <example>
+                <para> [C#] </para>
+                <code>
+try
+{
+   // Create an HDF5 file.
+   H5FileId fileId = H5F.create("myCSharp.h5", 
+                                 H5F.CreateMode.ACC_TRUNC);
+   // Create a HDF5 group.  
+   H5GroupId groupId = H5G.create(fileId, "/cSharpGroup", 0);
+   H5G.close(groupId);
+   H5F.close(openId);
+}
+catch (HDFException e)
+{
+   Console.WriteLine(e.Message);
+}
+</code>
+                <para> [Visual Basic .NET] </para>
+Imports HDF5DotNet
+<code>
+Module Module1
+ Sub Main()
+     Dim FileId As H5FileId
+     Dim GroupId As H5GroupId
+
+        Try
+            FileId = H5F.create("HDF5_fromVB", H5F.CreateMode.ACC_TRUNC)
+            GroupId = H5G.create(FileId, "/vbGroup", _
+                                H5F.CreateMode.ACC_TRUNC)
+            
+            H5G.close(GroupId)
+            H5F.close(FileId)
+        Catch ex As HDFException
+            Console.WriteLine(ex.Message())
+
+        End Try
+        Console.WriteLine("Processing complete!")
+        Console.ReadLine()
+    End Sub
+End Module
+</code><para> [C++/Cli] </para>
+try
+{
+  // Create an HDF5 file.
+  H5FileId^ fileId = H5F::create("myCpp.h5", 
+	                         H5F::CreateMode::ACC_TRUNC);
+  // Create a HDF5 group.  
+  H5GroupId^ groupId = H5G::create(fileId, "/cppGroup", 0);
+
+  // Close the group.
+  H5G::close(groupId);
+
+  // Close the file
+  H5F::close(fileId);
+}
+catch (HDFException^ e)
+{
+   Console::WriteLine(e-&gt;Message);
+}
+<code /></example>
+            <summary>
+ H5FileId identifies an H5 file object.  Instances of this class are
+returned from H5create and H5open.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5ObjectWithAttributes">
+            <summary>
+ An interface supported by all Id's that can have attributes.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5FileOrGroupId">
+            <summary>
+ An interface supported by both H5FileId and H5GroupId
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5LocId">
+            <summary>
+ An interface supported by both H5FileId and H5GroupId
+</summary>
+        </member>
+        <member name="P:HDF5DotNet.H5Id.Id">
+            <summary>
+Allow read-only access to the internal HDF5 id to HDF5 library
+members. (members of this assembly).
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5Id">
+            <summary>
+ H5Id identifies an H5 object.
+</summary>
+            <remarks> 
+Only HDF5 library routines may
+create an H5Id.  Application programmers use instances of H5Id that
+are returned from HDF5 library calls for subsequent calls.
+Keeping the H5Id class implemented as an abstract data type provides
+the opportunity for future source-compatible library upgrades.
+</remarks>
+            <summary>
+base class for all classes that provide hid_t to the unmanaged HDF5 API.
+</summary>
+            <remarks>
+  H5Id simply stores the hid_t id used by the unmanaged HDF5 API.
+Subclasses of this base class provide type saftey.
+</remarks>
+            <summary>
+ An interface supported by all H5 Id types.
+</summary>
+        </member>
+        <member name="M:HDF5DotNet.H5S.selectNone(HDF5DotNet.H5DataSpaceId)">
+            <summary>
+Verifies that the selection is within the extent of the
+dataspace.
+</summary>
+            <param name="spaceId">
+Identifier of the dataspace being queried.
+</param>
+            <returns>
+true if the selection is contained within the extent, false if
+it is not.  
+</returns>
+            <remarks />
+            <exception cref="T:HDF5DotNet.H5SselectNoneException">
+throws H5SselectNoneException on failure such as the selection
+or extent not being defined.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5S.getSimpleExtentDims(HDF5DotNet.H5DataSpaceId)">
+            <summary>
+H5S.getSimpleExtentDims returns the size of each 
+dimension of a dataspace.
+</summary>
+            <param name="spaceId">
+Identifier of the dataspace
+</param>
+            <returns>
+An array containing the size of each dimension.
+</returns>
+            <remarks />
+            <exception cref="T:HDF5DotNet.H5SgetSimpleExtentDimsException">
+throws H5SgetSimpleExtentDimsException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5S.getSimpleExtentMaxDims(HDF5DotNet.H5DataSpaceId)">
+            <summary>
+H5S.getSimpleExtentMaxDims returns the maximum size of each 
+dimension of a dataspace.
+</summary>
+            <param name="spaceId">
+Identifier of the dataspace
+</param>
+            <returns>
+An array containing the maximum size of each dimension.
+</returns>
+            <remarks />
+            <exception cref="T:HDF5DotNet.H5SgetSimpleExtentMaxDimsException">
+throws H5SgetSimpleExtentMaxDimsException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5S.getSimpleExtentNDims(HDF5DotNet.H5DataSpaceId)">
+            <summary>
+Determines the dimensionality of a dataspace.
+</summary>
+            <param name="spaceId">
+Identifier of the dataspace
+</param>
+            <returns>
+Returns the number of dimensions in the dataspace if
+successful.
+</returns>
+            <remarks>
+H5S.getSimpleExtentNDims determines the dimensionality (or
+rank) of a dataspace.
+</remarks>
+            <exception cref="T:HDF5DotNet.H5SgetSimpleExtentNDimsException">
+throws H5SgetSimpleExtentNDimsException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5S.selectHyperslab(HDF5DotNet.H5DataSpaceId,HDF5DotNet.H5S.SelectOperator,System.UInt64[],System.UInt64[])">
+            <summary>
+Selects a hyperslab region to add to the current selected
+region.
+</summary>
+            <param name="spaceId">
+IN: Identifier of dataspace selection to modify
+</param>
+            <param name="selectOperator">
+IN: Operation to perform on current selection.
+</param>
+            <param name="start">
+IN: Offset of start of hyperslab
+</param>
+            <param name="count">
+IN: Number of blocks included in hyperslab.
+</param>
+            <remarks>
+                <p>
+H5S.selectStridedHyperslab selects a hyperslab region to add to
+the current selected region for the dataspace specified by 
+space_id.
+</p>
+                <p>
+The start, count, and block arrays must be the same
+size as the rank of the dataspace.
+</p>
+                <p>
+The selection operator op determines how the new selection is
+to be combined with the already existing selection for the 
+dataspace. The following operators are supported:
+</p>
+                <ul>
+                    <li>
+H5S_SELECT_SET - Replaces the existing selection with the 
+parameters from this call. Overlapping blocks are not
+supported with this operator.
+</li>
+                    <li>
+H5S_SELECT_OR - Adds the new selection to the existing 
+selection. (Binary OR)
+</li>
+                    <li>
+H5S_SELECT_AND - Retains only the overlapping portions of the 
+new selection and the existing selection.    (Binary AND)
+</li>
+                    <li>
+H5S_SELECT_XOR - Retains only the elements that are members of
+the new selection or the existing selection, excluding
+elements that are members of both selections. (Binary 
+exclusive-OR, XOR)
+</li>
+                    <li>
+H5S_SELECT_NOTB - Retains only elements of the existing 
+selection that are not in the new selection.
+</li>
+                    <li>
+H5S_SELECT_NOTA - Retains only elements of the new selection
+that are not in the existing selection.
+</li>
+                </ul>
+                <p>
+The start array determines the starting coordinates of the 
+hyperslab to select.
+</p>
+                <p>
+The results of calling selectHyperslab are identical to
+calling selectStridedHyperslab, with stride values equal to 1.
+</p>
+                <p>
+The count array determines how many blocks to select from the 
+dataspace, in each dimension.
+</p>
+                <p>
+    The block array determines the size of the element block 
+selected from the dataspace. If the block parameter is
+omitted, the block size defaults to a single element in each 
+dimension (as if the block array were set to all 1's).
+</p>
+                <p>
+Regions selected with this function call default to 
+C order iteration when I/O is performed. 
+</p>
+            </remarks>
+        </member>
+        <member name="M:HDF5DotNet.H5S.selectHyperslab(HDF5DotNet.H5DataSpaceId,HDF5DotNet.H5S.SelectOperator,System.UInt64[],System.UInt64[],System.UInt64[])">
+            <summary>
+Selects a hyperslab region to add to the current selected
+region.
+</summary>
+            <param name="spaceId">
+IN: Identifier of dataspace selection to modify
+</param>
+            <param name="selectOperator">
+IN: Operation to perform on current selection.
+</param>
+            <param name="start">
+IN: Offset of start of hyperslab
+</param>
+            <param name="count">
+IN: Number of blocks included in hyperslab.
+</param>
+            <param name="block"> 
+IN: Size of block in hyperslab.
+</param>
+            <remarks>
+                <p>
+H5S.selectStridedHyperslab selects a hyperslab region to add to
+the current selected region for the dataspace specified by 
+space_id.
+</p>
+                <p>
+The start, count, and block arrays must be the same
+size as the rank of the dataspace.
+</p>
+                <p>
+The selection operator op determines how the new selection is
+to be combined with the already existing selection for the 
+dataspace. The following operators are supported:
+</p>
+                <ul>
+                    <li>
+H5S_SELECT_SET - Replaces the existing selection with the 
+parameters from this call. Overlapping blocks are not
+supported with this operator.
+</li>
+                    <li>
+H5S_SELECT_OR - Adds the new selection to the existing 
+selection. (Binary OR)
+</li>
+                    <li>
+H5S_SELECT_AND - Retains only the overlapping portions of the 
+new selection and the existing selection.    (Binary AND)
+</li>
+                    <li>
+H5S_SELECT_XOR - Retains only the elements that are members of
+the new selection or the existing selection, excluding
+elements that are members of both selections. (Binary 
+exclusive-OR, XOR)
+</li>
+                    <li>
+H5S_SELECT_NOTB - Retains only elements of the existing 
+selection that are not in the new selection.
+</li>
+                    <li>
+H5S_SELECT_NOTA - Retains only elements of the new selection
+that are not in the existing selection.
+</li>
+                </ul>
+                <p>
+The start array determines the starting coordinates of the 
+hyperslab to select.
+</p>
+                <p>
+The results of calling selectHyperslab are identical to
+calling selectStridedHyperslab, with stride values equal to 1.
+</p>
+                <p>
+The count array determines how many blocks to select from the 
+dataspace, in each dimension.
+</p>
+                <p>
+    The block array determines the size of the element block 
+selected from the dataspace. If the block parameter is
+omitted, the block size defaults to a single element in each 
+dimension (as if the block array were set to all 1's).
+</p>
+                <p>
+Regions selected with this function call default to 
+C order iteration when I/O is performed. 
+</p>
+            </remarks>
+        </member>
+        <member name="M:HDF5DotNet.H5S.selectStridedHyperslab(HDF5DotNet.H5DataSpaceId,HDF5DotNet.H5S.SelectOperator,System.UInt64[],System.UInt64[],System.UInt64[])">
+            <summary>
+Selects a hyperslab region to add to the current selected
+region.
+</summary>
+            <param name="spaceId">
+IN: Identifier of dataspace selection to modify
+</param>
+            <param name="selectOperator">
+IN: Operation to perform on current selection.
+</param>
+            <param name="start">
+IN: Offset of start of hyperslab
+</param>
+            <param name="stride">
+IN: Hyperslab stride.
+</param>
+            <param name="count">
+IN: Number of blocks included in hyperslab.
+</param>
+            <remarks>
+                <p>
+H5S.selectStridedHyperslab selects a hyperslab region to add to
+the current selected region for the dataspace specified by 
+space_id.
+</p>
+                <p>
+The start, stride, count, and block arrays must be the same
+size as the rank of the dataspace.
+</p>
+                <p>
+The selection operator op determines how the new selection is
+to be combined with the already existing selection for the 
+dataspace. The following operators are supported:
+</p>
+                <ul>
+                    <li>
+H5S_SELECT_SET - Replaces the existing selection with the 
+parameters from this call. Overlapping blocks are not
+supported with this operator.
+</li>
+                    <li>
+H5S_SELECT_OR - Adds the new selection to the existing 
+selection. (Binary OR)
+</li>
+                    <li>
+H5S_SELECT_AND - Retains only the overlapping portions of the 
+new selection and the existing selection.    (Binary AND)
+</li>
+                    <li>
+H5S_SELECT_XOR - Retains only the elements that are members of
+the new selection or the existing selection, excluding
+elements that are members of both selections. (Binary 
+exclusive-OR, XOR)
+</li>
+                    <li>
+H5S_SELECT_NOTB - Retains only elements of the existing 
+selection that are not in the new selection.
+</li>
+                    <li>
+H5S_SELECT_NOTA - Retains only elements of the new selection
+that are not in the existing selection.
+</li>
+                </ul>
+                <p>
+The start array determines the starting coordinates of the 
+hyperslab to select.
+</p>
+                <p>
+The stride array chooses array locations from the dataspace
+with each value in the stride array determining how many
+elements to move in each dimension. Setting a value in the 
+stride array to 1 moves to each element in that dimension of
+the dataspace; setting a value of 2 in alocation in the stride
+array moves to every other element in that dimension of the 
+dataspace. In other words, the stride determines the number of
+elements to move from the start location in each dimension. 
+Stride values of 0 are not allowed. 
+</p>
+                <p>
+The count array determines how many blocks to select from the 
+dataspace, in each dimension.
+</p>
+                <p>
+The block array determines the size of the element block 
+selected from the dataspace. If the block parameter is
+omitted, the block size defaults to a single element in each 
+dimension (as if the block array were set to all 1's).
+</p>
+                <p>
+For example, in a 2-dimensional dataspace, setting start 
+to [1,1], stride to [4,4], count to [3,7], and block to [2,2] 
+selects 21 2x2 blocks of array elements starting with 
+location (1,1) and selecting blocks at locations (1,1), 
+(5,1), (9,1), (1,5), (5,5), etc.
+</p>
+                <p>
+Regions selected with this function call default to 
+C order iteration when I/O is performed. 
+</p>
+            </remarks>
+        </member>
+        <member name="M:HDF5DotNet.H5S.selectStridedHyperslab(HDF5DotNet.H5DataSpaceId,HDF5DotNet.H5S.SelectOperator,System.UInt64[],System.UInt64[],System.UInt64[],System.UInt64[])">
+            <summary>
+Selects a hyperslab region to add to the current selected
+region.
+</summary>
+            <param name="spaceId">
+IN: Identifier of dataspace selection to modify
+</param>
+            <param name="selectOperator">
+IN: Operation to perform on current selection.
+</param>
+            <param name="start">
+IN: Offset of start of hyperslab
+</param>
+            <param name="stride">
+IN: Hyperslab stride.
+</param>
+            <param name="count">
+IN: Number of blocks included in hyperslab.
+</param>
+            <param name="block"> 
+IN: Size of block in hyperslab.
+</param>
+            <remarks>
+                <p>
+H5S.selectStridedHyperslab selects a hyperslab region to add to
+the current selected region for the dataspace specified by 
+space_id.
+</p>
+                <p>
+The start, stride, count, and block arrays must be the same
+size as the rank of the dataspace.
+</p>
+                <p>
+The selection operator op determines how the new selection is
+to be combined with the already existing selection for the 
+dataspace. The following operators are supported:
+</p>
+                <ul>
+                    <li>
+H5S_SELECT_SET - Replaces the existing selection with the 
+parameters from this call. Overlapping blocks are not
+supported with this operator.
+</li>
+                    <li>
+H5S_SELECT_OR - Adds the new selection to the existing 
+selection. (Binary OR)
+</li>
+                    <li>
+H5S_SELECT_AND - Retains only the overlapping portions of the 
+new selection and the existing selection.    (Binary AND)
+</li>
+                    <li>
+H5S_SELECT_XOR - Retains only the elements that are members of
+the new selection or the existing selection, excluding
+elements that are members of both selections. (Binary 
+exclusive-OR, XOR)
+</li>
+                    <li>
+H5S_SELECT_NOTB - Retains only elements of the existing 
+selection that are not in the new selection.
+</li>
+                    <li>
+H5S_SELECT_NOTA - Retains only elements of the new selection
+that are not in the existing selection.
+</li>
+                </ul>
+                <p>
+The start array determines the starting coordinates of the 
+hyperslab to select.
+</p>
+                <p>
+The stride array chooses array locations from the dataspace
+with each value in the stride array determining how many
+elements to move in each dimension. Setting a value in the 
+stride array to 1 moves to each element in that dimension of
+the dataspace; setting a value of 2 in alocation in the stride
+array moves to every other element in that dimension of the 
+dataspace. In other words, the stride determines the number of
+elements to move from the start location in each dimension. 
+Stride values of 0 are not allowed. 
+</p>
+                <p>
+The count array determines how many blocks to select from the 
+dataspace, in each dimension.
+</p>
+                <p>
+The block array determines the size of the element block 
+selected from the dataspace. If the block parameter is
+omitted, the block size defaults to a single element in each 
+dimension (as if the block array were set to all 1's).
+</p>
+                <p>
+For example, in a 2-dimensional dataspace, setting start 
+to [1,1], stride to [4,4], count to [3,7], and block to [2,2] 
+selects 21 2x2 blocks of array elements starting with 
+location (1,1) and selecting blocks at locations (1,1), 
+(5,1), (9,1), (1,5), (5,5), etc.
+</p>
+                <p>
+Regions selected with this function call default to 
+C order iteration when I/O is performed. 
+</p>
+            </remarks>
+        </member>
+        <member name="M:HDF5DotNet.H5S.create(HDF5DotNet.H5S.H5SClass)">
+            <summary>
+Creates a new dataspace of a specified type.
+</summary>
+            <param name="createClass"> 
+The type of dataspace to be created.
+</param>
+            <returns>
+Returns a dataspace identifier if successful.
+</returns>
+            <exception cref="T:HDF5DotNet.H5ScreateException">
+throws H5ScreateException on failure.
+</exception>
+            <remarks>
+H5Screate creates a new dataspace of a particular type. The
+types currently supported are H5SClass.SCALAR and H5SClass.SIMPLE;
+others are planned to be added later.
+</remarks>
+        </member>
+        <member name="T:HDF5DotNet.H5S.H5SClass">
+            <summary>
+Enumeration for H5S class includes SCALAR and SIMPLE.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5S.H5SType">
+            <summary>
+Enumeration for H5S type includes ALL and UNLIMITED.
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.H5S.SelectOperator.NOTA">
+            <summary>
+Retains only elements of the new selection that are not in
+the existing selection.
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.H5S.SelectOperator.NOTB">
+            <summary>
+Retains only elements of the existing selection that are not
+in the new selection.
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.H5S.SelectOperator.XOR">
+            <summary>
+Retains only the elements that are members of the new 
+selection or the existing selection, excluding elements that
+are members of both selections. (Binary exclusive-OR, XOR)
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.H5S.SelectOperator.AND">
+            <summary>
+Retains only the overlapping portions of the new selection
+and the existing selection. (Binary AND)
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.H5S.SelectOperator.OR">
+            <summary>
+Adds the new selection to the existing selection.    
+(Binary OR)
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.H5S.SelectOperator.SET">
+            <summary> 
+Replaces the existing selection with the 
+parameters from this call. Overlapping blocks are not 
+supported with this operator. 
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5S.SelectOperator">
+            <summary>
+Enumeration type for selection.
+</summary>
+        </member>
+        <member name="M:HDF5DotNet.H5S.close(HDF5DotNet.H5DataSpaceId)">
+            <summary>
+Releases and terminates access to a dataspace.
+</summary>
+            <param name="id"> Identifier of dataspace to release.
+</param>
+        </member>
+        <member name="M:HDF5DotNet.H5S.create_simple(System.Int32,System.UInt64[])">
+            <summary>
+Creates a new simple dataspace and opens it for access.
+</summary>
+            <param name="rank"> Number of dimensions of dataspace.
+</param>
+            <param name="dims">
+An array of the size of each dimension.
+</param>
+            <remarks>
+                <p>
+H5Screate_simple creates a new simple dataspace and opens it 
+ for access.
+</p>
+                <p>
+rank is the number of dimensions used in the dataspace.
+</p>
+                <p>
+The upper limit is the same as dims.
+</p>
+                <p>
+The dataspace identifier returned from this function must be
+released with H5Sclose or resource leaks will occur. 
+</p>
+            </remarks>
+        </member>
+        <member name="M:HDF5DotNet.H5S.create_simple(System.Int32,System.UInt64[],System.UInt64[])">
+            <summary>
+Creates a new simple dataspace and opens it for access.
+</summary>
+            <param name="rank"> Number of dimensions of dataspace.
+</param>
+            <param name="dims">
+An array of the size of each dimension.
+</param>
+            <param name="maxDims">
+An array of the maximum size of each dimension.
+</param>
+            <remarks>
+                <p>
+H5Screate_simple creates a new simple dataspace and opens it 
+ for access.
+</p>
+                <p>
+rank is the number of dimensions used in the dataspace.
+</p>
+                <p>
+dims is an array specifying the size of each dimension of the 
+dataset while maxdims is an array specifying the upper limit
+on the size of each dimension. maxdims may be the null
+pointer, in which case the upper limit is the same as dims.
+</p>
+                <p>
+If an element of maxdims is H5S_UNLIMITED, (-1), the maximum
+size of the corresponding dimension is unlimited. Otherwise,
+no element of maxdims should be smaller than the corresponding
+element of dims.
+</p>
+                <p>
+The dataspace identifier returned from this function must be
+released with H5Sclose or resource leaks will occur. 
+</p>
+            </remarks>
+        </member>
+        <member name="T:HDF5DotNet.H5S">
+            <summary>
+The H5S contains static member function for each of the supported
+H5S calls of the HDF5 library.
+</summary>
+        </member>
+        <member name="M:HDF5DotNet.H5T.getStdType(HDF5DotNet.H5T.H5Type)">
+            <summary>
+ Get the hid_t from the enumerated standard data type.
+</summary>
+        </member>
+        <member name="M:HDF5DotNet.H5T.enumInsert``1(HDF5DotNet.H5DataTypeId,System.String,``0@)">
+            <summary>
+Inserts a new enumeration datatype member.
+</summary>
+            <param name="typeId">
+IN: Enumeration datatype identifier.
+</param>
+            <param name="value">
+In: Value of the enumeration datatype.
+</param>
+            <returns>
+ void
+</returns>
+            <exception cref="T:HDF5DotNet.H5TenumInsertException">
+throws H5TenumInsertException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5T.enumNameOf``1(HDF5DotNet.H5DataTypeId,``0@)">
+            <summary>
+Returns the symbol name corresponding to a specified member of an 
+enumeration datatype.
+</summary>
+            <param name="typeId">
+IN: Enumeration datatype identifier.
+</param>
+            <param name="value">
+In: Value of the enumeration datatype.
+</param>
+            <returns>
+ String containing symbolic name for the specified value.
+</returns>
+            <exception cref="T:HDF5DotNet.H5TenumNameOfException">
+throws H5TenumNameOfException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5T.enumValueOf``1(HDF5DotNet.H5DataTypeId,System.String,``0@)">
+            <summary>
+Returns the value corresponding to a specified member of an 
+enumeration datatype.
+</summary>
+            <param name="typeId">
+IN: Enumeration datatype identifier.
+</param>
+            <param name="enumName">
+IN: Symbol name of the enumeration datatype.
+</param>
+            <param name="value">
+OUT: Reference for output of the value of the enumeration datatype.
+</param>
+            <returns>
+void
+</returns>
+            <exception cref="T:HDF5DotNet.H5TenumValueOfException">
+throws H5TenumValueOfException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5T.getMemberValue``1(HDF5DotNet.H5DataTypeId,System.UInt32,``0@)">
+            <summary>
+Returns the value of an enumeration datatype member.
+</summary>
+            <param name="typeId">
+IN: Datatype identifier for the enumeration datatype.
+</param>
+            <param name="memberNumber">
+IN: Number of the enumeration datatype member.
+</param>
+            <param name="value">
+OUT: Reference to hold output of the value of the enumeration 
+datatype member.
+</param>
+            <returns>
+void
+</returns>
+            <exception cref="T:HDF5DotNet.H5TgetMemberValueException">
+throws H5TgetMemberValueException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5T.commit(HDF5DotNet.H5LocId,System.String,HDF5DotNet.H5DataTypeId,HDF5DotNet.H5PropertyListId,HDF5DotNet.H5PropertyListId,HDF5DotNet.H5PropertyListId)">
+            <summary>
+Commits a transient datatype, linking it into the file and 
+creating a new named datatype.
+</summary>
+            <param name="location">
+IN: Location identifier
+</param>
+            <param name="dataTypeName">
+IN: Name given to committed datatype
+</param>
+            <param name="typeId">
+IN: Identifier of datatype to be committed
+</param>
+            <param name="linkCreationPropertyList">
+IN: Link creation property list
+</param>
+            <param name="dataTypeCreationPropertyList">
+IN: Datatype creation property list
+</param>
+            <param name="dataTypeAccessPropertyList">
+IN: Datatype access property list
+</param>
+            <returns>
+void
+</returns>
+            <exception cref="T:HDF5DotNet.H5TcommitException">
+throws H5TcommitException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5T.commit(HDF5DotNet.H5LocId,System.String,HDF5DotNet.H5DataTypeId)">
+            <summary>
+Commits a transient datatype, linking it into the file and 
+creating a new named datatype.
+</summary>
+            <param name="location">
+IN: Location identifier
+</param>
+            <param name="dataTypeName">
+IN: Name given to committed datatype
+</param>
+            <param name="typeId">
+IN: Identifier of datatype to be committed
+</param>
+            <returns>
+void
+</returns>
+            <exception cref="T:HDF5DotNet.H5TcommitException">
+throws H5TcommitException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5T.getFields(HDF5DotNet.H5DataTypeId)">
+            <summary>
+Retrieves floating point datatype bit field information.
+</summary>
+            <param name="typeId">
+IN: Identifier of datatype to query.
+</param>
+            <returns>
+Returns an instance of H5FloatingBitFields, which contains
+all the bit field information.
+</returns>
+            <exception cref="T:HDF5DotNet.H5TgetFieldsException">
+throws H5TgetFieldsException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5T.getNorm(HDF5DotNet.H5DataTypeId)">
+            <summary>
+Retrieves mantissa normalization of a floating-point datatype.
+</summary>
+            <param name="typeId">
+IN: Identifier of datatype to query.
+</param>
+            <returns>
+Returns a valid normalization type.
+</returns>
+            <exception cref="T:HDF5DotNet.H5TgetNormException">
+throws H5TgetNormException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5T.getMemberClass(HDF5DotNet.H5DataTypeId,System.UInt32)">
+            <summary>
+Returns datatype class of compound datatype member.
+</summary>
+            <param name="typeId"> 
+IN: Datatype identifier of compound object.
+</param>
+            <param name="memberNumber"> 
+IN: Compound object member number.
+</param>
+            <returns>
+Returns the datatype class if successful.
+</returns>
+            <exception cref="T:HDF5DotNet.H5TgetMemberClassException">
+throws H5TgetMemberClassException on failure.
+</exception>
+            <remarks>
+                <p>
+Given a compound datatype, typeId, the function 
+H5T.getMemberClass returns the datatype class of the compound
+datatype member specified by memberNumber.
+</p>
+            </remarks>
+        </member>
+        <member name="M:HDF5DotNet.H5T.getNMembers(HDF5DotNet.H5DataTypeId)">
+            <summary>
+Retrieves the number of elements in a compound or enumeration 
+datatype. 
+</summary>
+            <param name="typeId"> 
+Identifier of datatype to query.
+</param>
+            <returns>
+Returns the number of elements if successful.
+</returns>
+            <exception cref="T:HDF5DotNet.H5TgetNMembersException">
+throws H5TgetNMembersException on failure.
+</exception>
+            <remarks>
+H5Tget_nmembers retrieves the number of fields in a compound
+datatype or the number of members of an enumeration datatype.
+</remarks>
+        </member>
+        <member name="M:HDF5DotNet.H5T.getMemberType(HDF5DotNet.H5DataTypeId,System.UInt32)">
+            <summary>
+Returns the datatype of the specified member.
+</summary>
+            <param name="typeId"> 
+Identifier of datatype to query.
+</param>
+            <param name="fieldIndex"> 
+Field index (0-based) of the field type to retrieve.
+</param>
+            <returns>
+Returns the identifier of a copy of the datatype of the field
+if successful.
+</returns>
+            <exception cref="T:HDF5DotNet.H5TgetMemberTypeException">
+throws H5TgetMemberTypeException on failure.
+</exception>
+            <remarks>
+H5Tget_member_type returns the datatype of the specified
+member. The caller should invoke H5Tclose() to release
+resources associated with the type.
+</remarks>
+        </member>
+        <member name="M:HDF5DotNet.H5T.getMemberIndex(HDF5DotNet.H5DataTypeId,System.String)">
+            <summary>
+Retrieves the index of a compound or enumeration datatype
+member.
+</summary>
+            <param name="typeId"> 
+Identifier of datatype to query.
+</param>
+            <returns>
+Returns a valid field or member index if successful.
+</returns>
+            <exception cref="T:HDF5DotNet.H5TgetMemberIndexException">
+throws H5TgetMemberIndexException on failure.
+</exception>
+            <remarks>
+                <p>
+H5Tget_member_index retrieves the index of a field of a 
+compound datatype or an element of an enumeration datatype.
+</p>
+                <p>
+The name of the target field or element is specified in fieldname.
+</p>
+                <p>
+Fields are stored in no particular order with index values 
+of 0 through N-1, where N is the value returned by 
+H5T.getNMembers.  
+</p>
+            </remarks>
+        </member>
+        <member name="M:HDF5DotNet.H5T.getClass(HDF5DotNet.H5DataTypeId)">
+            <summary>
+Returns the datatype class identifier.
+</summary>
+            <param name="typeId"> Identifier of datatype to query.
+</param>
+            <remarks>
+                <p>
+H5Tget_class returns the datatype class identifier.
+</p>
+                <p>
+Valid class identifiers, as defined in H5Tpublic.h, are:  
+</p>
+                <ul>
+                    <li> H5T_INTEGER </li>
+                    <li> H5T_FLOAT </li>
+                    <li> H5T_TIME </li>
+                    <li> H5T_STRING </li>
+                    <li> H5T_BITFIELD </li>
+                    <li> H5T_OPAQUE </li>
+                    <li> H5T_COMPOUND </li>
+                    <li> H5T_REFERENCE </li>
+                    <li> H5T_ENUM </li>
+                    <li> H5T_VLEN </li>
+                    <li> H5T_ARRAY  </li>
+                </ul>
+            </remarks>
+            <exception cref="T:HDF5DotNet.H5TgetClassException">
+throws H5TgetClassException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5T.vlenCreate(HDF5DotNet.H5DataTypeId)">
+            <summary>
+Creates a new variable-length datatype.
+</summary>
+            <param name="baseId"> Base type of datatype to create.
+</param>
+            <exception cref="T:HDF5DotNet.H5TvlenCreateException">
+throws H5TvlenCreateException on failure.
+</exception>
+            <remarks>
+                <p>
+H5Tvlen_create creates a new variable-length (VL) datatype.
+</p>
+                <p>
+   The base datatype will be the datatype that the sequence 
+is composed of, characters for character strings, vertex 
+coordinates for polygon lists, etc. The base type specified 
+for the VL datatype can be of any HDF5 datatype, including 
+another VL datatype, a compound datatype or an atomic datatype.
+</p>
+                <p>
+When necessary, use H5Tget_super to determine the base type of
+the VL datatype.
+</p>
+                <p>
+The datatype identifier returned from this function 
+should be released with H5Tclose or resource leaks will result. 
+</p>
+            </remarks>
+        </member>
+        <member name="M:HDF5DotNet.H5T.getNativeType(HDF5DotNet.H5DataTypeId,HDF5DotNet.H5T.Direction)">
+            <summary>
+Returns the native datatype of a specified datatype.
+</summary>
+            <param name="typeId"> 
+Datatype identifier for the dataset datatype.
+</param>
+            <param name="direction">
+Direction of search.
+</param>
+            <exception cref="T:HDF5DotNet.H5TgetNativeTypeException">
+throws H5TgetNativeTypeException on failure.
+</exception>
+            <remarks>
+                <p>
+H5Tget_native_type returns the equivalent native datatype for
+the datatype specified in type_id.
+</p>
+                <p> H5Tget_native_type is a high-level function designed 
+primarily to facilitate use of the H5Dread function, for which 
+users otherwise must undertake a multi-step process to determine 
+the native datatype of a dataset prior to reading it into memory. 
+It can be used not only to determine the native datatype for 
+atomic datatypes, but also to determine the native datatypes 
+of the individual components of a compound datatype, an 
+enumerated datatype, an array datatype, or a variable-length 
+datatype. </p>
+                <p>
+H5Tget_native_type selects the matching native datatype from
+the following list:
+</p>
+                <ul>
+                    <li>   H5T_NATIVE_CHAR   </li>
+                    <li>   H5T_NATIVE_SHORT        </li>
+                    <li>   H5T_NATIVE_INT          </li>
+                    <li>   H5T_NATIVE_LONG         </li>
+                    <li>   H5T_NATIVE_LLONG        </li>
+                    <li>   H5T_NATIVE_UCHAR </li>
+                    <li>   H5T_NATIVE_USHORT </li>
+                    <li>   H5T_NATIVE_UINT </li>
+                    <li>   H5T_NATIVE_ULONG </li>
+                    <li>   H5T_NATIVE_ULLONG </li>
+                    <li>   H5T_NATIVE_FLOAT </li>
+                    <li>   H5T_NATIVE_DOUBLE </li>
+                    <li>   H5T_NATIVE_LDOUBLE </li>
+                </ul>
+                <p>
+The direction parameter indicates the order in which the
+library searches for a native datatype match. Valid values for 
+direction are as follows:
+</p>
+                <ul>
+                    <li>
+H5T_DIR_ASCEND searches the above list in ascending size of
+the datatype, i.e., from top to bottom. (Default) 
+</li>
+                    <li>
+H5T_DIR_DESCEND searches the above list in descending size of 
+the datatype, i.e., from bottom to top.
+</li>
+                </ul>
+                <p>
+H5Tget_native_type is designed primarily for use with intenger
+and floating point datatypes. Time, bifield, opaque, and 
+reference datatypes are returned as a copy of type_id.
+</p>
+                <p>
+The identifier returned by H5Tget_native_type should
+eventually be closed by calling H5Tclose to release resources. 
+</p>
+            </remarks>
+        </member>
+        <member name="M:HDF5DotNet.H5T.insert(HDF5DotNet.H5DataTypeId,System.String,System.UInt32,HDF5DotNet.H5T.H5Type)">
+            <summary>
+H5Tinsert adds another member to the compound datatype
+type_id. The new member has a name which must be unique within
+the compound datatype. The offset argument defines the start
+of the member in an instance of the compound datatype, and
+field_id is the datatype identifier of the new member.
+</summary>
+            <param name="compoundDataType"> Identifier of compound data
+type to modify.
+</param>
+            <param name="fieldName">
+Name of the field to insert.
+</param>
+            <param name="offset">
+Offset in memory structure of the field to insert.
+</param>
+            <param name="fieldId">
+Datatype identifier of the field to insert.
+</param>
+            <exception cref="T:HDF5DotNet.H5TinsertException">
+throws H5TinsertException on failure.
+</exception>
+            <remarks>
+Members of a compound datatype do not have to be atomic
+datatypes; a compound datatype can have a member which is a
+compound datatype.
+</remarks>
+        </member>
+        <member name="M:HDF5DotNet.H5T.insert(HDF5DotNet.H5DataTypeId,System.String,System.UInt32,HDF5DotNet.H5DataTypeId)">
+            <summary>
+H5Tinsert adds another member to the compound datatype
+type_id. The new member has a name which must be unique within
+the compound datatype. The offset argument defines the start
+of the member in an instance of the compound datatype, and
+field_id is the datatype identifier of the new member.
+</summary>
+            <param name="compoundDataType"> Identifier of compound data
+type to modify.
+</param>
+            <param name="fieldName">
+Name of the field to insert.
+</param>
+            <param name="offset">
+Offset in memory structure of the field to insert.
+</param>
+            <param name="fieldId">
+Datatype identifier of the field to insert.
+</param>
+            <exception cref="T:HDF5DotNet.H5TinsertException">
+throws H5TinsertException on failure.
+</exception>
+            <remarks>
+Members of a compound datatype do not have to be atomic
+datatypes; a compound datatype can have a member which is a
+compound datatype.
+</remarks>
+        </member>
+        <member name="M:HDF5DotNet.H5T.enumCreate(HDF5DotNet.H5T.H5Type)">
+            <summary>
+H5T.enumCreate creates a new enumeration datatype based on the
+specified base datatype parent_id, which must be an integer type. 
+</summary>
+            <param name="h5Type"> IN: Datatype identifier for the 
+base type.
+</param>
+            <returns>
+Returns the datatype identifier for the new enumeration
+datatype if successful.
+</returns>
+            <exception cref="T:HDF5DotNet.H5TenumCreateException">
+throws H5TenumCreateException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5T.enumCreate(HDF5DotNet.H5DataTypeId)">
+            <summary>
+H5T.enumCreate creates a new enumeration datatype based on the
+specified base datatype parent_id, which must be an integer type. 
+</summary>
+            <param name="parentId"> IN: Datatype identifier for the 
+base type. This must be an integer type.
+</param>
+            <returns>
+Returns the datatype identifier for the new enumeration
+datatype if successful.
+</returns>
+            <exception cref="T:HDF5DotNet.H5TenumCreateException">
+throws H5TenumCreateException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5T.getSign(HDF5DotNet.H5DataTypeId)">
+            <summary />
+            <param name="typeId"> 
+ 	IN: Identifier of datatype to query.
+</param>
+            <exception cref="T:HDF5DotNet.H5TgetSizeException"> 
+throws H5TgetSignException on failure.
+</exception>
+            <returns> 
+Returns an H5T.Sign that indicates the sign.  Possible results
+include H5T.Sign.UNSIGNED and H5T.Sign.TWOS_COMPLEMENT
+</returns>
+        </member>
+        <member name="M:HDF5DotNet.H5T.getSize(HDF5DotNet.H5DataTypeId)">
+            <summary> 
+getSize returns the size of a datatype in bytes.
+</summary>
+            <param name="typeId"> 
+ 	IN: Identifier of datatype to query.
+</param>
+            <exception cref="T:HDF5DotNet.H5TgetSizeException"> 
+throws H5TgetSizeException on failure.
+</exception>
+            <returns> 
+Returns the size of the datatype in bytes if successful.
+</returns>
+        </member>
+        <member name="M:HDF5DotNet.H5T.setOrder(HDF5DotNet.H5DataTypeId,HDF5DotNet.H5T.Order)">
+            <summary>
+Sets the byte ordering of an atomic datatype.
+</summary>
+            <param name="typeId">
+IN: Identifier of datatype to set.
+</param>
+            <param name="order">
+IN: Byte ordering constant.
+</param>
+            <returns>
+void
+</returns>
+            <exception cref="T:HDF5DotNet.H5TsetOrderException">
+throws H5TsetOrderException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5T.close(HDF5DotNet.H5DataTypeId)">
+            <summary>
+Releases a datatype.
+</summary>
+            <param name="typeId">
+IN: Identifier of datatype to release.
+</param>
+            <returns>
+void
+</returns>
+            <exception cref="T:HDF5DotNet.H5TcloseException">
+throws H5TcloseException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5T.isVariableString(HDF5DotNet.H5DataTypeId)">
+            <summary>
+Determines whether datatype is a variable-length string.
+</summary>
+            <param name="typeId">
+IN: Identifier of datatype to query.
+</param>
+            <returns>
+true if data type is variable string.
+</returns>
+            <exception cref="T:HDF5DotNet.H5TisVariableStringException">
+throws H5TisVariableStringException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5T.getMemberOffset(HDF5DotNet.H5DataTypeId,System.UInt32)">
+            <summary>
+Retrieves the offset of a field of a compound datatype.
+</summary>
+            <param name="typeId">
+IN: Identifier of datatype to query.
+</param>
+            <param name="memberNumber">
+IN: Number of the field whose offset is requested.
+</param>
+            <returns>
+Returns the byte offset of the field if successful; otherwise 
+returns 0 (zero). Note that zero is a valid offset and that this 
+function will fail only if a call to H5Tget_member_class() fails 
+with the same arguments.
+</returns>
+            <exception cref="T:HDF5DotNet.H5TgetMemberOffsetException">
+throws H5TgetMemberOffsetException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5T.getPrecision(HDF5DotNet.H5DataTypeId)">
+            <summary>
+Returns the precision of an atomic datatype.
+</summary>
+            <param name="typeId">
+IN: Identifier of datatype to query.
+</param>
+            <returns>
+Returns the number of significant bits if successful; otherwise 0.
+</returns>
+            <exception cref="T:HDF5DotNet.H5TgetPrecisionException">
+throws H5TgetPrecisionException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5T.getOffset(HDF5DotNet.H5DataTypeId)">
+            <summary>
+Retrieves the bit offset of the first significant bit.
+</summary>
+            <param name="typeId">
+IN: Identifier of datatype to query.
+</param>
+            <returns>
+void
+</returns>
+            <exception cref="T:HDF5DotNet.H5TgetOffsetException">
+throws H5TgetOffsetException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5T.setVariableSize(HDF5DotNet.H5DataTypeId)">
+            <summary>
+Sets a datatype to variable size.
+</summary>
+            <param name="typeId">
+IN: Identifier of datatype to change to variable size.
+</param>
+            <returns>
+void
+</returns>
+            <exception cref="T:HDF5DotNet.H5TsetSizeException">
+throws H5TsetSizeException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5T.setSize(HDF5DotNet.H5DataTypeId,System.UInt32)">
+            <summary>
+Sets the total size for an atomic datatype.
+</summary>
+            <param name="typeId">
+IN: Identifier of datatype to change size.
+</param>
+            <param name="size">
+IN: Size in bytes to modify datatype.
+</param>
+            <returns>
+void
+</returns>
+            <exception cref="T:HDF5DotNet.H5TsetSizeException">
+throws H5TsetSizeException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5T.copy(HDF5DotNet.H5DataSetId)">
+            <summary>
+Copies an existing datatype.
+</summary>
+            <param name="dataSetId">
+ Identifier of datatype to copy.
+</param>
+            <returns>
+A data type identifier.
+</returns>
+            <exception cref="T:HDF5DotNet.H5TcopyException">
+throws H5copyException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5T.copy(HDF5DotNet.H5DataTypeId)">
+            <summary>
+Copies an existing datatype.
+</summary>
+            <param name="typeId">
+ Identifier of datatype to copy.
+</param>
+            <returns>
+A data type identifier.
+</returns>
+            <exception cref="T:HDF5DotNet.H5TcopyException">
+throws H5copyException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5T.copy(HDF5DotNet.H5T.H5Type)">
+            <summary>
+Copies an existing datatype.
+</summary>
+            <param name="stdType">
+ Identifier of datatype to copy.
+</param>
+            <returns>
+A data type identifier.
+</returns>
+            <exception cref="T:HDF5DotNet.H5TcopyException">
+throws H5copyException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5T.create(HDF5DotNet.H5T.CreateClass,System.UInt32)">
+            <summary> 
+H5T.create creates a new data type of the specified class with
+the specified number of bytes.
+</summary>
+            <param name="createClass">
+ Available create classes include COMPOUND, OPAQUE, and ENUM.
+</param>
+            <param name="size">
+Number of bytes in the created data type.
+</param>
+            <exception cref="T:HDF5DotNet.H5TopenException"> throws H5TopenException 
+when open fails
+</exception>
+            <remarks>
+Use H5Tcopy to create integer or floating point data types.
+</remarks>
+            <returns> a vaild H5DataTypeId for the created data type 
+</returns>
+        </member>
+        <member name="M:HDF5DotNet.H5T.open(HDF5DotNet.H5FileOrGroupId,System.String)">
+            <summary> 
+H5T.open opens a named datatype at the location specified by
+groupOrFileId and returns an identifier for the datatype. 
+groupOrFileId is
+either a file or group identifier. The identifier should
+eventually be closed by calling H5Tclose to release resources.
+</summary>
+            <param name="groupOrFileId" />
+ 	IN: A file or group identifier.
+<param name="datatypeName"> 
+ 	IN: A datatype name, defined within the file or group
+identified by groupOrFileId.
+</param><exception cref="T:HDF5DotNet.H5TopenException"> throws H5TopenException 
+when open fails
+</exception><returns> a vaild H5DataTypeId for the opened data type 
+</returns></member>
+        <member name="M:HDF5DotNet.H5T.open(HDF5DotNet.H5FileOrGroupId,System.String,HDF5DotNet.H5PropertyListId)">
+            <summary> 
+H5T.open opens a named datatype at the location specified by
+groupOrFileId and returns an identifier for the datatype. 
+groupOrFileId is
+either a file or group identifier. The identifier should
+eventually be closed by calling H5Tclose to release resources.
+</summary>
+            <param name="groupOrFileId" />
+ 	IN: A file or group identifier.
+<param name="datatypeName"> 
+ 	IN: A datatype name, defined within the file or group
+identified by groupOrFileId.
+</param><param name="accessPropertyList">
+ 	IN: Datatype access property list identifier.
+</param><exception cref="T:HDF5DotNet.H5TopenException"> throws H5TopenException 
+when open fails
+</exception><returns> a vaild H5DataTypeId for the opened data type 
+</returns></member>
+        <member name="F:HDF5DotNet.H5T.H5TClass.ARRAY">
+            <summary> Array class </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.H5TClass.VLEN">
+            <summary> Vlen class </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.H5TClass.ENUM">
+            <summary> Enum class </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.H5TClass.REFERENCE">
+            <summary> Reference class </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.H5TClass.COMPOUND">
+            <summary> Compound class </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.H5TClass.OPAQUE">
+            <summary> Opaque class </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.H5TClass.BITFIELD">
+            <summary> Bitfield class </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.H5TClass.STRING">
+            <summary> String class (fixed or variable length) </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.H5TClass.TIME">
+            <summary> Time class </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.H5TClass.FLOAT">
+            <summary> Float class </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.H5TClass.INTEGER">
+            <summary> Integer class </summary>
+        </member>
+        <member name="T:HDF5DotNet.H5T.H5TClass">
+            <summary>
+Enumeration of type class.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5T.Norm">
+            <summary>
+Enumeration of Norm (IMPLIED, MSBSET, NONE)
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.CreateClass.ENUM">
+            <summary> Enum Data Type </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.CreateClass.OPAQUE">
+            <summary> Opaque Data Type </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.CreateClass.COMPOUND">
+            <summary> Compound Data Type </summary>
+        </member>
+        <member name="T:HDF5DotNet.H5T.CreateClass">
+            <summary> Allowable data types for H5TCreate </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.H5Type.C_S1">
+            <summary> IEEE 64-bit Floating (big endian) </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.H5Type.IEEE_F64BE">
+            <summary> IEEE 64-bit Floating (big endian) </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.H5Type.IEEE_F64LE">
+            <summary> IEEE 64-bit Floating (little endian) </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.H5Type.IEEE_F32BE">
+            <summary> IEEE 32-bit Floating (big endian) </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.H5Type.IEEE_F32LE">
+            <summary> IEEE 32-bit Floating (little endian) </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.H5Type.NATIVE_HBOOL">
+            <summary> Native hbool</summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.H5Type.NATIVE_HERR">
+            <summary> Native herr</summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.H5Type.NATIVE_HSSIZE">
+            <summary> Native hssize</summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.H5Type.NATIVE_HSIZE">
+            <summary> Native hsize </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.H5Type.NATIVE_HADDR">
+            <summary> Native haddr</summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.H5Type.NATIVE_OPAQUE">
+            <summary> Native opaque </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.H5Type.NATIVE_B64">
+            <summary> Native 64-bit bitfield </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.H5Type.NATIVE_B32">
+            <summary> Native 32-bit bitfield </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.H5Type.NATIVE_B16">
+            <summary> Native 16-bit bitfield </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.H5Type.NATIVE_B8">
+            <summary> Native 8-bit bitfield </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.H5Type.NATIVE_LDOUBLE">
+            <summary> Native long double </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.H5Type.NATIVE_DOUBLE">
+            <summary> Native double </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.H5Type.NATIVE_FLOAT">
+            <summary> Native float </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.H5Type.NATIVE_ULLONG">
+            <summary> Native unsigned long long </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.H5Type.NATIVE_LLONG">
+            <summary> Native signed long long </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.H5Type.NATIVE_ULONG">
+            <summary> Native unsigned long </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.H5Type.NATIVE_LONG">
+            <summary> Native signed long </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.H5Type.NATIVE_UINT">
+            <summary> Native unsigned int </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.H5Type.NATIVE_INT">
+            <summary> Native signed int </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.H5Type.NATIVE_USHORT">
+            <summary> Native unsigned short </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.H5Type.NATIVE_SHORT">
+            <summary> Native signed short </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.H5Type.NATIVE_UCHAR">
+            <summary> Native unsigned character </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.H5Type.NATIVE_SCHAR">
+            <summary> Native signed character </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.H5Type.STD_REF_DSETREG">
+            <summary> 8-bit signed integer (big endian)    </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.H5Type.STD_REF_OBJ">
+            <summary> 8-bit signed integer (big endian)    </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.H5Type.STD_B64LE">
+            <summary> 8-bit signed integer (little endian)    </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.H5Type.STD_B64BE">
+            <summary> 8-bit signed integer (big endian)    </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.H5Type.STD_B32LE">
+            <summary> 8-bit signed integer (little endian)    </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.H5Type.STD_B32BE">
+            <summary> 8-bit signed integer (big endian)    </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.H5Type.STD_B16LE">
+            <summary> 8-bit signed integer (little endian)    </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.H5Type.STD_B16BE">
+            <summary> 8-bit signed integer (big endian)    </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.H5Type.STD_B8LE">
+            <summary> 8-bit signed integer (little endian)    </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.H5Type.STD_B8BE">
+            <summary> 8-bit signed integer (big endian)    </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.H5Type.STD_U64LE">
+            <summary> 64-bit unsigned integer (little endian)    </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.H5Type.STD_U64BE">
+            <summary> 64-bit unsigned integer (big endian)    </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.H5Type.STD_U32LE">
+            <summary> 32-bit unsigned integer (little endian)    </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.H5Type.STD_U32BE">
+            <summary> 32-bit unsigned integer (big endian)    </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.H5Type.STD_U16LE">
+            <summary> 16-bit unsigned integer (little endian)    </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.H5Type.STD_U16BE">
+            <summary> 16-bit unsigned integer (big endian)    </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.H5Type.STD_U8LE">
+            <summary> 8-bit unsigned integer (little endian)    </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.H5Type.STD_U8BE">
+            <summary> 8-bit unsigned integer (big endian)    </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.H5Type.STD_I64LE">
+            <summary> 64-bit signed integer (little endian)    </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.H5Type.STD_I64BE">
+            <summary> 64-bit signed integer (big endian)    </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.H5Type.STD_I32LE">
+            <summary> 32-bit signed integer (little endian)    </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.H5Type.STD_I32BE">
+            <summary> 32-bit signed integer (big endian)    </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.H5Type.STD_I16LE">
+            <summary> 16-bit signed integer (little endian)    </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.H5Type.STD_I16BE">
+            <summary> 16-bit signed integer (big endian)    </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.H5Type.STD_I8LE">
+            <summary> 8-bit signed integer (little endian)    </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.H5Type.STD_I8BE">
+            <summary> 8-bit signed integer (big endian)    </summary>
+        </member>
+        <member name="T:HDF5DotNet.H5T.H5Type">
+            <summary>
+Enumeration of data types.
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.Direction.DESCEND">
+            <summary> Descending order </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.Direction.ASCEND">
+            <summary> Ascending order </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.Direction.DEFAULT">
+            <summary> The default direction is ascending. </summary>
+        </member>
+        <member name="T:HDF5DotNet.H5T.Direction">
+            <summary>
+Enumeration of Direction (DEFAULT, ASCEND, DESCEND)
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.Sign.TWOS_COMPLEMENT">
+            <summary> Two's complement  number </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.Sign.UNSIGNED">
+            <summary> Unsigned number </summary>
+        </member>
+        <member name="T:HDF5DotNet.H5T.Sign">
+            <summary>
+Enumeration of sign (UNSIGNED or TWOS_COMPLEMENT)
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.Order.BE">
+            <summary> Big endian </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.Order.LE">
+            <summary> Little endian </summary>
+        </member>
+        <member name="T:HDF5DotNet.H5T.Order">
+            <summary>
+Enumeration of endian (BE or LE).
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.CharSet.UTF8">
+            <summary> UTF-8 Unicode encoding </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.CharSet.ASCII">
+            <summary> US ASCII </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.CharSet.ERROR">
+            <summary>  Error code </summary>
+        </member>
+        <member name="T:HDF5DotNet.H5T.CharSet">
+            <summary>
+Enumeration of character sets.
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.LinkType.MAX">
+            <summary> Maximum Link Value </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.LinkType.EXTERNAL">
+            <summary> External Link </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.LinkType.SOFT">
+            <summary> Soft Link </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.LinkType.HARD">
+            <summary> Hard Link </summary>
+        </member>
+        <member name="F:HDF5DotNet.H5T.LinkType.ERROR">
+            <summary>  Error code </summary>
+        </member>
+        <member name="T:HDF5DotNet.H5T.LinkType">
+            <summary>
+Enumeration of link types.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5T">
+            <summary>
+The H5T contains static member function for each of the supported
+H5T calls of the HDF5 library.
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.H5FloatingBitFields.nMantissaBits_">
+            <summary>
+ Number of bits in the mantissa.
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.H5FloatingBitFields.mantissaBitPosition_">
+            <summary>
+Start bit number of the mantissa.
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.H5FloatingBitFields.nExponentBits_">
+            <summary>
+ Number of bits in the exponent.
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.H5FloatingBitFields.exponentBitPosition_">
+            <summary>
+Start bit number of the exponent.
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.H5FloatingBitFields.signBitPosition_">
+            <summary>
+Position of the sign bit.
+</summary>
+        </member>
+        <member name="M:HDF5DotNet.H5FloatingBitFields.ToString">
+            <summary>
+Create a string with a readable description of the bit values.
+</summary>
+        </member>
+        <member name="P:HDF5DotNet.H5FloatingBitFields.nMantissaBits">
+            <summary>
+ Number of bits in the mantissa.
+</summary>
+        </member>
+        <member name="P:HDF5DotNet.H5FloatingBitFields.mantissaBitPosition">
+            <summary>
+Start bit number of the mantissa.
+</summary>
+        </member>
+        <member name="P:HDF5DotNet.H5FloatingBitFields.nExponentBits">
+            <summary>
+ Number of bits in the exponent.
+</summary>
+        </member>
+        <member name="P:HDF5DotNet.H5FloatingBitFields.exponentBitPosition">
+            <summary>
+Start bit number of the exponent.
+</summary>
+        </member>
+        <member name="P:HDF5DotNet.H5FloatingBitFields.signBitPosition">
+            <summary>
+Position of the sign bit.
+</summary>
+        </member>
+        <member name="M:HDF5DotNet.H5FloatingBitFields.#ctor(System.UInt32,System.UInt32,System.UInt32,System.UInt32,System.UInt32)">
+            <summary>
+The constructor for H5FloatingBitFields takes the values
+returned from a call to H5TgetFields() as parameters.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5FloatingBitFields">
+            <summary>
+ An instance of this class is returned from H5T.getFields().  It
+ contains floating point bit field information including the 
+ positions of the sign bit, exponent field, mantissa field and the
+ number of bits in the exponent and mantissa.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.hvl_t">
+            <summary>
+Variable length data specifier.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5DataTypeId">
+            <summary>
+The H5D contains static member function for each of the supported
+H5D calls of the HDF5 library.
+</summary>
+            <summary> H5DataTypeId uniquely identifies a data type. </summary>
+        </member>
+        <member name="M:HDF5DotNet.H5P.setVlenMemManager(HDF5DotNet.H5PropertyListId,HDF5DotNet.H5AllocDelegate,System.Void*,HDF5DotNet.H5FreeDelegate,System.Void*)">
+            <summary>
+Sets the memory manager for variable-length datatype allocation 
+in H5Dread and H5Dvlen_reclaim.
+</summary>
+            <param name="plistId">
+IN: Identifier for the dataset transfer property list.
+</param>
+            <param name="allocDelegate">
+IN: User's allocate routine, or unassigned delegate for malloc.
+</param>
+            <param name="allocInfo">
+IN: Extra parameter for user's allocation routine.
+</param>
+            <param name="freeDelegate">
+IN: User's free routine, or or unassigned delegate for system free.
+</param>
+            <param name="freeInfo">
+IN: Extra parameter for user's free routine.
+</param>
+            <returns>
+void
+</returns>
+            <exception cref="T:HDF5DotNet.H5PsetVlenMemManagerException">
+throws H5PsetVlenMemManagerException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5P.setDeflate(HDF5DotNet.H5PropertyListId,System.UInt32)">
+            <summary>
+Sets compression method and compression level.
+</summary>
+            <param name="id">
+IN: Identifier for the dataset creation property list.
+</param>
+            <param name="level">
+IN: Compression level.
+</param>
+            <returns>
+void
+</returns>
+            <exception cref="T:HDF5DotNet.H5PsetDeflateException">
+throws H5PsetDeflateException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5P.setChunk(HDF5DotNet.H5PropertyListId,System.UInt64[])">
+            <summary>
+Sets the size of the chunks used to store a chunked layout dataset.
+</summary>
+            <param name="id">
+IN: Dataset creation property list identifier.
+</param>
+            <param name="dimensions">
+IN: An array defining the size, in dataset elements, of each chunk.
+</param>
+            <returns>
+void
+</returns>
+            <exception cref="T:HDF5DotNet.H5PsetChunkException">
+throws H5PsetChunkException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5P.close(HDF5DotNet.H5PropertyListId)">
+            <summary>
+Terminates access to a property list.
+</summary>
+            <param name="id">
+IN: Identifier of the property list to terminate access to.
+</param>
+            <returns>
+void
+</returns>
+            <exception cref="T:HDF5DotNet.H5PcloseException">
+throws H5PcloseException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5P.create(HDF5DotNet.H5P.Class)">
+            <summary>
+Creates a new property as an instance of a property list class.
+</summary>
+            <param name="listClass">
+IN: The class of the property list to create.
+</param>
+            <returns>
+The H5PropertyListId for the new property list.
+</returns>
+            <exception cref="T:HDF5DotNet.H5PcreateException">
+throws H5PcreateException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5P.setBuffer(HDF5DotNet.H5PropertyListId,HDF5DotNet.H5Memory,HDF5DotNet.H5Memory)">
+            <summary>
+Sets type conversion and background buffers.
+</summary>
+            <param name="id">
+IN: Identifier for the dataset transfer property list.
+</param>
+            <param name="typeConversionBuffer">
+IN: Pointer to application-allocated type conversion buffer.
+</param>
+            <param name="backgroundBuffer">
+IN: Pointer to application-allocated background buffer.
+</param>
+            <returns>
+void
+</returns>
+            <exception cref="T:HDF5DotNet.H5PsetBufferException">
+throws H5PsetBufferException on failure.
+</exception>
+        </member>
+        <member name="M:HDF5DotNet.H5P.setBuffer(HDF5DotNet.H5PropertyListId,System.UInt64,System.Void*,System.Void*)">
+            <summary>
+Sets type conversion and background buffers.
+</summary>
+            <param name="id">
+IN: Identifier for the dataset transfer property list.
+</param>
+            <param name="bufferSize">
+IN: Size, in bytes, of the type conversion and background buffers.
+</param>
+            <param name="typeConversionBuffer">
+IN: Pointer to application-allocated type conversion buffer.
+</param>
+            <param name="backgroundBuffer">
+IN: Pointer to application-allocated background buffer.
+</param>
+            <returns>
+void
+</returns>
+            <exception cref="T:HDF5DotNet.H5PsetBufferException">
+throws H5PsetBufferException on failure.
+</exception>
+        </member>
+        <member name="T:HDF5DotNet.H5P.Class">
+            <summary>
+Enumeration class for property list class.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5P.Template">
+            <summary>
+Enumeration class for Template (H5P_DEFAULT).
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5P">
+            <summary>
+The H5P contains static member function for each of the supported
+H5P calls of the HDF5 library.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5FreeDelegate">
+            <summary>
+Delegate for user-specified memory deallocation.
+</summary>
+            <param name="mem">
+Pointer to memory to reclaim.
+</param>
+            <param name="free_info">
+Void pointer to memory containing addional user-specified information.
+Note that all void* must point to memory that is pinned or 
+otherwise immune from relocation by the garbage collector.
+</param>
+        </member>
+        <member name="T:HDF5DotNet.H5AllocDelegate">
+            <summary>
+Delegate for user-specified memory allocation.
+</summary>
+            <param name="size">
+Number of bytes requested.
+</param>
+            <param name="alloc_info">
+Void pointer to memory containing addional user-specified information.
+Note that all void* must point to memory that is pinned or 
+otherwise immune from relocation by the garbage collector.
+</param>
+        </member>
+        <member name="F:HDF5DotNet.H5Memory.memoryIsAllocated_">
+            <summary>
+Flag is true if memory_ points to allocated memory - false if 
+memory has not been allocated or if previously allocated memory 
+has been deallocated. 
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.H5Memory.memory_">
+            <summary>
+Pointer to allocated memory.
+</summary>
+        </member>
+        <member name="F:HDF5DotNet.H5Memory.size_">
+            <summary>
+Size of allocated memory in bytes.
+</summary>
+        </member>
+        <member name="M:HDF5DotNet.H5Memory.Finalize">
+            <summary>
+Finalize destructor for H5Memory (deallocated memory if not 
+previously deallocted.)
+</summary>
+        </member>
+        <member name="M:HDF5DotNet.H5Memory.Dispose">
+            <summary>
+Destructor for H5Memory (deallocated memory if not previously 
+deallocted.)
+</summary>
+        </member>
+        <member name="M:HDF5DotNet.H5Memory.getElement``1(System.Int32)">
+            <summary>
+Get a value from the location in the allocated memory that 
+would correspond to memory[index] if the H5Memory were an array
+of the type specified.
+</summary>
+            <param name="index">
+ Offset into array - units are elements of Type (not bytes).
+</param>
+        </member>
+        <member name="M:HDF5DotNet.H5Memory.setElement``1(System.Int32,``0@)">
+            <summary>
+Copy a value to the location in the allocated memory that 
+would correspond to memory[index] if the H5Memory were an array
+of the same type as the value.
+</summary>
+            <param name="index">
+ Offset into array - units are elements of Type (not bytes).
+</param>
+        </member>
+        <member name="M:HDF5DotNet.H5Memory.set``1(HDF5DotNet.H5Array`1{``0},System.Int32)">
+            <summary>
+Copy nElements from the specified array into the allocated memory.
+</summary>
+            <param name="theArray">
+ Array to copy.
+</param>
+            <param name="nElements">
+ The number of elements to copy.
+</param>
+        </member>
+        <member name="M:HDF5DotNet.H5Memory.getVoidPtr">
+            <summary>
+Get a void pointer to the allocated memory.
+</summary>
+        </member>
+        <member name="M:HDF5DotNet.H5Memory.getSize">
+            <summary>
+Get the size (in bytes) of the allocated memory.
+</summary>
+        </member>
+        <member name="M:HDF5DotNet.H5Memory.#ctor(System.UInt32)">
+            <summary>
+Create an instance of H5Memory allocating a specified 
+amount of memory from the "C" run-time heap.
+</summary>
+            <param name="size">
+ Number of bytes to allocate.
+</param>
+        </member>
+        <member name="M:HDF5DotNet.H5Memory.#ctor">
+            <summary>
+Create an instance of H5Memory containing a null pointer.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5Memory">
+            <summary>
+H5Memory allocate and deallocates memory from the "C" run-time heap
+and wraps it so that it can be used from other .NET languages without
+using unsafe. 
+</summary>
+        </member>
+        <member name="M:HDF5DotNet.H5CrtHeap.free(System.Void*)">
+            <summary>
+Deallocate memory that was previously allocated with
+H5CrtHeap.alloc().
+</summary>
+            <param name="memory">
+memory is a pointer to memory previously allocted with 
+H5CrtHeap.alloc().
+</param>
+        </member>
+        <member name="M:HDF5DotNet.H5CrtHeap.alloc(System.UInt32)">
+            <summary>
+Allocate  memory from the "C" run-time heap.
+</summary>
+            <param name="size">
+ Size of memory to allocate in bytes.
+</param>
+        </member>
+        <member name="T:HDF5DotNet.H5CrtHeap">
+            <summary>
+H5CrtHeap provides allocation and deallocation from the "C" 
+run-time heap.  This memory is not garbage collected, so it can be
+used with void pointers that are passed to the HDF5 library.  To avoid
+memory leaks, all memory allocated with alloc must be freed with free.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5Array`1">
+            <summary>
+H5Array wraps arrays so that they can be passed as parameters and
+their addresses can be calculated regardless of the number of 
+dimensions they contain (up to 32 dimensions).
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5ArrayException">
+            <summary>
+H5Array throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5EsetAutoException">
+            <summary>
+H5EsetAuto throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5TBgetFieldInfoException">
+            <summary>
+H5TBgetFieldInfo throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5TBgetTableInfoException">
+            <summary>
+H5TBgetTableInfo throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5PsetVlenMemManagerException">
+            <summary>
+H5PsetVlenMemManager throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5PsetBufferException">
+            <summary>
+H5PsetBuffer throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5TgetFieldsException">
+            <summary>
+H5TgetFields throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5TgetMemberOffsetException">
+            <summary>
+H5TgetMemberOffset throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5TgetNormException">
+            <summary>
+H5TgetNorm throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5TgetPrecisionException">
+            <summary>
+H5TgetPrecision throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5TgetOffsetException">
+            <summary>
+H5TgetOffset throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5TgetMemberValueException">
+            <summary>
+H5TgetMemberValue throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5TenumValueOfException">
+            <summary>
+H5TenumValueOf throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5TenumNameOfException">
+            <summary>
+H5TenumNameOf throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5AdeleteByNameException">
+            <summary>
+H5AdeleteByName throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5AcreateByNameException">
+            <summary>
+H5AcreateByName throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5AopenByNameException">
+            <summary>
+H5AopenByName throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5GgetInfoByNameException">
+            <summary>
+H5GgetInfoByName throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5OgetInfoByNameException">
+            <summary>
+H5OgetInfoByName throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5DvlenReclaimException">
+            <summary>
+H5DvlenReclaim throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5DgetStorageSizeException">
+            <summary>
+H5DgetStorageSize throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5LgetInfoException">
+            <summary>
+H5LgetInfo throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5AopenException">
+            <summary>
+H5Aopen throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5LgetNameByIndexException">
+            <summary>
+H5LgetNameByIndex throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5GgetInfoException">
+            <summary>
+H5GgetInfo throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5OgetInfoException">
+            <summary>
+H5OgetInfo throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5AgetInfoException">
+            <summary>
+H5AgetInfo throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5AopenByIndexException">
+            <summary>
+H5AopenByIndex throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5AopenIndexException">
+            <summary>
+H5AopenIndex throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5AgetNameByIndexException">
+            <summary>
+H5AgetNameByIndex throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5LgetInfoByIndexException">
+            <summary>
+H5LgetInfoByIndex throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5OgetInfoByIndexException">
+            <summary>
+H5OgetInfoByIndex throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5TisVariableStringException">
+            <summary>
+H5TisVariableString throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5PsetDeflateException">
+            <summary>
+H5PsetDeflate throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5PsetChunkException">
+            <summary>
+H5PsetChunk throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5PcloseException">
+            <summary>
+H5Pclose throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5PcreateException">
+            <summary>
+H5Pcreate throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5ADeleteException">
+            <summary>
+H5ADelete throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5AiterateException">
+            <summary>
+H5Aiterate throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5AgetNumberOfAttributesException">
+            <summary>
+H5AgetNumberOfAttributes throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5AgetTypeException">
+            <summary>
+H5AgetType throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5AgetSpaceException">
+            <summary>
+H5AgetSpace throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5AopenNameException">
+            <summary>
+H5AopenName throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5AgetNameException">
+            <summary>
+H5AgetName throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5AcloseException">
+            <summary>
+H5Aclose throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5AreadException">
+            <summary>
+H5Aread throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5AwriteException">
+            <summary>
+H5Awrite throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5AcreateException">
+            <summary>
+H5Acreate throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5TcommitException">
+            <summary>
+H5Tcommit throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5EsuppressPrintingException">
+            <summary>
+H5EsuppressPrinting throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5GgetObjectNameByIndexException">
+            <summary>
+H5GgetObjectNameByIndex throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5GgetNumObjectsException">
+            <summary>
+H5GgetNumObjects throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5SselectNoneException">
+            <summary>
+H5SselectNone throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5SgetSimpleExtentNDimsException">
+            <summary>
+H5SgetSimpleExtentNDims throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5SgetSimpleExtentMaxDimsException">
+            <summary>
+H5SgetSimpleExtentMaxDims throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5SselectHyperslabException">
+            <summary>
+H5SselectHyperslab throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5SselectStridedHyperslabException">
+            <summary>
+H5SselectStridedHyperslab throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5TgetNMembersException">
+            <summary>
+H5TgetNMembers throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5TcreateException">
+            <summary>
+H5Tcreate throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5TgetMemberTypeException">
+            <summary>
+H5TgetMemberType throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5TgetMemberIndexException">
+            <summary>
+H5TgetMemberIndex throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5TgetMemberClassException">
+            <summary>
+H5TgetMemberClass throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5TgetMemberNameException">
+            <summary>
+H5TgetMemberName throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5TgetNmembersException">
+            <summary>
+H5TgetNmembers throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5TgetSignException">
+            <summary>
+H5TgetSign throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5TgetClassException">
+            <summary>
+H5TgetClass throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5TvlenCreateException">
+            <summary>
+H5TvlenCreate throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5TgetNativeTypeException">
+            <summary>
+H5TgetNativeType throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5TenumInsertException">
+            <summary>
+H5TenumInsert throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5TenumCreateException">
+            <summary>
+H5TenumCreate throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5TinsertException">
+            <summary>
+H5Tinsert throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5TopenException">
+            <summary>
+H5Topen throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5TsetOrderException">
+            <summary>
+H5TsetOrder throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5TgetSizeException">
+            <summary>
+H5TgetSize throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5TcloseException">
+            <summary>
+H5Tclose throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5TsetSizeException">
+            <summary>
+H5TsetSize throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5TcopyException">
+            <summary>
+H5Tcopy throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5ScloseException">
+            <summary>
+H5Sclose throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5SgetSimpleExtentDimsException">
+            <summary>
+H5SgetSimpleExtentDims throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5SgetSimpleExtentNdimsException">
+            <summary>
+H5SgetSimpleExtentNdims throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5ScreateException">
+            <summary>
+H5Screate throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5ScreateSimpleException">
+            <summary>
+H5ScreateSimple throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5GcloseException">
+            <summary>
+H5Gclose throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5GIterateException">
+            <summary>
+H5GIterate throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5GgetObjInfoException">
+            <summary>
+H5GgetObjInfo throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5GopenException">
+            <summary>
+H5Gopen throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5GcreateException">
+            <summary>
+H5Gcreate throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5FopenException">
+            <summary>
+H5Fopen throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5FcloseException">
+            <summary>
+H5Fclose throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5FcreateException">
+            <summary>
+H5Fcreate throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5DgetTypeException">
+            <summary>
+H5DgetType throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5DgetSpaceException">
+            <summary>
+H5DgetSpace throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5DwriteException">
+            <summary>
+H5Dwrite throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5DreadException">
+            <summary>
+H5Dread throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5DcloseException">
+            <summary>
+H5Dclose throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5DopenException">
+            <summary>
+H5Dopen throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="T:HDF5DotNet.H5DcreateException">
+            <summary>
+H5Dcreate throws this exception on any error condition.
+</summary>
+        </member>
+        <member name="M:HDF5DotNet.HDFException.#ctor(System.String,System.UInt32,System.Exception)">
+            <param name="message"> a text description of the problem</param>
+            <param name="previouslyThrownException"> When an exception is 
+thrown while handling a previous exception. previouslyThrownException 
+provides a handle to the previous exception. </param>
+        </member>
+        <member name="M:HDF5DotNet.HDFException.#ctor(System.String,System.UInt32)">
+            <summary>
+HDF Exception that includes a text description. 
+</summary>
+            <param name="message"> a text description of the problem </param>
+        </member>
+        <member name="T:HDF5DotNet.HDFException">
+            <summary>
+HDFException is the base class for all HDF exception classes.
+</summary>
+        </member>
+    </members>
+</doc>
