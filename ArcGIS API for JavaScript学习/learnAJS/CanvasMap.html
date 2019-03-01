@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+  <title>Intro to MapView - Create a 2D map - 4.8</title>
+  <style>
+    html,
+    body,
+    #viewDiv {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      width: 100%;
+    }
+  </style>
+
+  <link rel="stylesheet" href="https://js.arcgis.com/4.8/esri/css/main.css">
+  <script src="https://js.arcgis.com/4.8/"></script>
+
+  <script>
+    require([
+      "esri/Map",
+      "esri/views/MapView",
+      "esri/geometry/Point",
+      "dojo/domReady!"
+    ], function (Map, MapView, Point) {
+
+      var map = new Map({
+        basemap: "streets"
+      });
+
+      var view = new MapView({
+        container: "viewDiv",
+        map: map,
+        zoom: 4,
+        center: [15, 65] // longitude, latitude
+      });
+      //#endregion
+
+      var lnglats = []; //经纬度点的集合
+      var canvas = null; //定义canvas元素
+      var context = null; //上下文，canvas的api都是从这个变量中去调用;
+      var colors = ["#c1232b", "#27727b", "#fcce10", "#e87c25", "#b5c334", "#fe8463", "#9bca63",
+        "#fad860", "#f3a43b", "#60c0dd", "#d7504b", "#c6e579", "#f4e001", "#f0805a", "#26c0c0"
+      ];
+      var points = [];
+
+      view.when(function () {
+        drawCancas(map, view);
+      }, function (error) {
+        // Use the errback function to handle when the view doesn't load properly
+        console.log("The view's resources failed to load: ", error);
+      });
+
+      function drawCancas(pmap, pmapview) {
+
+        lnglats.push(new Point({
+          "x": 121.0987,
+          "y": 58.1232,
+          "spatialReference": {
+            "wkid": 4326
+          }
+        }));
+
+
+        lnglats.forEach(function (p) { //循环每一个经纬度点
+
+          var _point = pmapview.toScreen(p); //将经纬度点转为canvas坐标点
+          console.log(33, _point);
+          points.push({
+            pixel: _point,
+            size: 0,
+            speed: 0.5 + Math.random(),
+            max: Math.floor(Math.random() * 80),
+            color: colors[Math.floor(Math.random() * colors.length)]
+          }); //将转换后的canvas坐标点添加到points数组中
+        });
+
+        canvas = document.createElement("canvas");
+        //canvas =document.getElementById("myCanvas");    
+        context = canvas.getContext("2d");
+
+        canvas.width = 600;
+        canvas.height = 500;
+
+
+        // animate(pmap);
+
+        context.fillStyle = "#FF0000";
+        context.fillRect(0, 0, 150, 75);
+        document.appendChild(canvas);
+      }
+      /*======================点动画效果开始======================*/
+      function animate(pmap) {
+        console.log(132);
+        //点运动尾巴效果关键代码
+        //每绘制一次动画，canvas图层的透明度变成0.9，第2次透明度为0.9*0.9,第3次透明度为0.9*0.9*0.9...,以此类推
+        //这样重复绘制改变透明度后，已绘制的圆点将越来越透明
+        context.fillStyle = "rgba(0,0,0,0.95)";
+        var prev = context.globalCompositeOperation;
+        context.globalCompositeOperation = "destination-in";
+        context.fillRect(0, 0, pmap.width, pmap.height);
+        context.globalCompositeOperation = prev;
+
+        points.forEach(function (p) {
+          context.beginPath();
+          context.arc(p.pixel.x, p.pixel.y, p.size, 0, Math.PI * 2); //圆点x、y坐标，颜色等
+          context.strokeStyle = p.color; //圆点颜色
+          context.stroke();
+
+          //圆绘制到最大时，从头开始
+          p.size += p.speed;
+          if (p.size > p.max) {
+            p.size = 0;
+          }
+        });
+
+        console.log(567);
+      }
+
+      function drawCircle() {
+        context.beginPath();
+        context.arc(150, 100, radius, 0, Math.PI * 2);
+        context.closePath();
+        context.lineWidth = 2; //线条宽度
+        context.strokeStyle = 'rgba(250,250,50,1)'; //颜色
+        context.stroke();
+        radius += 0.5; //每一帧半径增加0.5
+
+        //半径radius大于30时，重置为0
+        if (radius > 30) {
+          radius = 0;
+        }
+      }
+
+    });
+  </script>
+</head>
+
+<body>
+  <div id="viewDiv">
+
+    <!-- <canvas id="myCanvas" width="200" height="100"
+    style="border:1px solid #000000;">
+    </canvas> -->
+  </div>
+
+</body>
+
+</html>

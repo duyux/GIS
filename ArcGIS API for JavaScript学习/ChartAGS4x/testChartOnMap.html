@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+  <title>Intro to MapView - Create a 2D map - 4.6</title>
+  <style>
+    html,
+    body,
+    #viewDiv {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      width: 100%;
+    }
+  </style>
+
+  <link rel="stylesheet" href="https://js.arcgis.com/4.6/esri/css/main.css">
+  <script>
+    //将 “G:\ArcGIS 范例\Chapter07\Sample7-2\js\CustomModules”目录下的ChartInfoWindow.js CustomTheme.js geometryUtils.js 三个文件打包为“CustomModules”添加到 引用之中
+    var dojoConfig = {
+        packages: [{
+            name: "CustomModules",
+            location: location.pathname.replace(/\/[^/]+$/, "") + "/Widget/CustomModules"
+        }]
+    };
+</script>
+  <script src="https://js.arcgis.com/4.6/"></script>
+ 
+
+  <script>
+    require([
+      "esri/Map",
+      "esri/WebMap",
+      "esri/views/MapView",
+      "esri/layers/MapImageLayer",
+      "esri/layers/FeatureLayer",
+      "esri/tasks/support/Query",
+      "esri/tasks/QueryTask",
+      //添加自定义类型的引用
+      "CustomModules/ChartInfoWindow",
+      "CustomModules/geometryUtils",
+      "dojo/_base/array",
+      "dojo/dom-construct",
+      "dojo/_base/window",
+      "dojox/charting/Chart",
+      "dojox/charting/themes/Claro",
+      "dojox/charting/plot2d/Pie",
+      "dojox/charting/action2d/Tooltip",
+      "dojox/charting/action2d/MoveSlice",
+      "dojox/charting/plot2d/Markers",
+      "dojox/charting/axis2d/Default",
+
+      "dojo/domReady!"
+    ], function (Map, WebMap, MapView, MapImageLayer, FeatureLayer, Query, QueryTask,
+      ChartInfoWindow, geometryUrils,
+      array, domConstruct, win, Chart, theme, Pie, Tooltip, MoveSlice
+    ) {
+
+        var map = new WebMap();
+
+        var layer = new MapImageLayer({
+          id: "myDMap",
+          url: "http://yzserver02:6080/arcgis/rest/services/scnew/MapServer"
+          //sublayers: sublayers
+        });
+        map.add(layer); // adds the layer to the map
+
+        var view = new MapView({
+          container: "viewDiv",
+          map: map,
+          zoom: 12,
+        });
+
+        // Carbon storage of trees in Warren Wilson College.
+        // var featureLayer = new FeatureLayer({
+        //   url: "http://yzserver02:6080/arcgis/rest/services/scnew/MapServer/3"
+        // });
+
+        //map.add(featureLayer);
+
+
+        view.then(function () {
+          displayChart();
+        });
+
+
+        ////============================================gzr==============
+        function displayChart() {
+          var query = new Query();
+          var queryUrl = 'http://yzserver02:6080/arcgis/rest/services/scnew/MapServer/3';
+          var queryTask = new QueryTask(queryUrl);
+          query.where = "1=1";
+          query.outSpatialReference = map.spatialReference;
+          query.returnGeometry = true;
+          query.outFields = ["*"];
+          queryTask.execute(query, processResults, error);
+        }
+        function processResults(results) {
+          console.log(results);
+          for (var i = 0; i < results.features.length; i++) {
+            var chartData = null;
+            chartData = [];
+            if (results.features[i].attributes[results.fields[7].name] != null
+              && results.features[i].attributes[results.fields[6].name] != null
+              && results.features[i].attributes[results.fields[5].name] != null
+              && results.features[i].attributes[results.fields[4].name] != null
+              && results.features[i].attributes[results.fields[3].name] != null) {
+              var nodeChart = null;
+              nodeChart = domConstruct.create("div", { id: 'nodeTest' + i, style: "width:300px;height:300px;" }, win.body());
+              var myChart = echarts.init(document.getElementById("nodeTest" + i));
+
+              //柱状图
+              var option = {
+                tooltip: {
+                  show: true
+                },
+                legend: {
+                  data: []
+                },
+                xAxis: [
+                  {
+                    type: 'category',
+                    data: ["08年", "09年", "10年", "11年", "12年"]
+                  }
+                ],
+                yAxis: [
+                  {
+                    type: 'value'
+                  }
+                ],
+                series: [
+                  {
+                    "name": "生产总值",
+                    "type": "bar",
+                    "data": [results.features[i].attributes[results.fields[7].name],
+                    results.features[i].attributes[results.fields[6].name],
+                    results.features[i].attributes[results.fields[5].name],
+                    results.features[i].attributes[results.fields[4].name],
+                    results.features[i].attributes[results.fields[3].name]]
+                  }
+                ]
+              };
+
+              // 为echarts对象加载数据
+              myChart.setOption(option);
+              //
+              var chartPoint = null;
+              chartPoint = geometryUrils.getPolygonCenterPoint(results.features[i].geometry);
+              var chartInfo = new ChartInfoWindow({
+                map: map,
+                chart: nodeChart,
+                chartPoint: chartPoint
+                //                        width: 320,
+                //                        height: 320
+              });
+            }
+          }
+        }
+        function error(e) {
+          alert(e.message);
+        }
+
+
+      });
+  </script>
+</head>
+
+<body>
+  <div id="viewDiv"></div>
+  <script src="echarts-2.2.7/build/dist/echarts-all.js"></script>
+</body>
+
+</html>
