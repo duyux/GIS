@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+  <title>Intro to MapView - Create a 2D map - 4.10</title>
+  <style>
+    html,
+    body,
+    #viewDiv {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      width: 100%;
+    }
+  </style>
+
+  <link rel="stylesheet" href="https://js.arcgis.com/4.10/esri/css/main.css">
+  <script src="https://js.arcgis.com/4.10/"></script>
+
+  <script>
+    require([
+      "esri/Map",
+      "esri/views/MapView",
+      "esri/widgets/DistanceMeasurement2D",
+      "esri/widgets/AreaMeasurement2D",
+      "esri/layers/GraphicsLayer",
+      "esri/widgets/Sketch",
+    ], function (Map, MapView,  DistanceMeasurement2D,AreaMeasurement2D,GraphicsLayer,Sketch) {
+
+      var map = new Map({
+        basemap: "streets"
+      });
+
+      var view = new MapView({
+        container: "viewDiv",
+        map: map,
+        zoom: 4,
+        center: [15, 65] // longitude, latitude
+      });
+      
+
+      // var measurementWidget=new AreaMeasurement2D({
+      //   view:view
+      // });
+      // view.ui.add(measurementWidget,'top-right');
+
+      const layer=new GraphicsLayer();
+      map.add(layer);
+
+      view.when(function() {
+        const sketch=new Sketch({
+          layer:layer,
+          view:view
+        });
+
+        view.ui.add(sketch,'top-right');
+      });
+      
+     
+
+    });
+  </script>
+</head>
+
+<body>
+  <div id="viewDiv"></div>
+</body>
+
+</html>
