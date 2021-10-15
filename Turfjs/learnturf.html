@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>显示一个地图</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.1.1/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.1.1/mapbox-gl.css' rel='stylesheet' />
+    <script src='https://npmcdn.com/@turf/turf/turf.min.js'></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id='map'></div>
+    <script>
+        mapboxgl.accessToken = 'pk.eyJ1IjoiZHV5dXgiLCJhIjoiY2o4bWl6OG02MHptcDJ3bnh4OTM2enNrYSJ9.QpDcYnXkmpfpHqxw-KXvfg';
+        var map = new mapboxgl.Map({
+            container: 'map', // container id
+            //style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
+            style: 'mapbox://styles/mapbox/satellite-v9', // stylesheet location
+            // center: [121.48, 31.23], // starting position [lng, lat]
+            //zoom: 9 // starting zoom
+        });
+
+        var line = turf.lineString([[-83, 30], [-84, 36], [-78, 41]]);
+var options = {units: 'miles'};
+console.log('ddd')
+
+var along = turf.along(line, 200, options);
+
+       
+    </script>
+
+</body>
+
+</html>

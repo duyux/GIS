@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no">
+  <title>Wind Animation</title>
+
+  <!-- <link rel="stylesheet" href="https://js.arcgis.com/3.20/esri/css/esri.css"> -->
+  <link rel="stylesheet" href="https://js.arcgis.com/4.13/esri/themes/light/main.css" />
+
+  <style>
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0px 0 0 0;
+    }
+
+
+
+  
+  </style>
+
+  <script>
+    var dojoConfig = {
+      paths: {
+        plugins: location.pathname.replace(/\/[^/]+$/, "") + "/plugins"
+      }
+    };
+  </script>
+  <script src="./windy.js"></script>
+  <!-- <script src="https://js.arcgis.com/3.20compact/"></script> -->
+  <script src="https://js.arcgis.com/4.13/"></script>
+  <script>
+    var map, rasterLayer;
+    var canvasSupport;
+
+    require(
+      ["esri/Map",
+        "esri/views/MapView",
+        "esri/request",
+        "plugins/RasterLayer",
+        "plugins/TestLayer",
+        "esri/layers/GraphicsLayer",
+        "esri/layers/Layer",
+        "dojo/dom-construct"
+      ], function (Map, MapView, esriRequest, RasterLayer,TestLayer, 
+      GraphicsLayer,Layer,domConstruct) {
+        var map = new Map({
+          basemap: "dark-gray"
+        });
+
+        var view = new MapView({
+          container: "viewDiv",
+          map: map,
+          zoom: 4,
+          center: [15, 65] // longitude, latitude
+
+        });
+
+        canvasSupport = supports_canvas();
+
+        view.when(function () {
+        //  mapLoaded();
+        }, function (error) {
+          // Use the errback function to handle when the view doesn't load properly
+          console.log("The view's resources failed to load: ", error);
+        });
+
+        function mapLoaded() {
+          // Add raster layer
+          if (canvasSupport) {
+            rasterLayer = new RasterLayer(map, view, {
+              opacity: 0.55
+            });
+            console.log('rasterLayer',rasterLayer)
+       
+            map.layers.add(rasterLayer);
+         
+
+            // map.on("extent-change", redraw);
+            // map.on("resize", function () { });
+            // map.on("zoom-start", redraw);
+            // map.on("pan-start", redraw);
+
+            esriRequest('./gfs.json', {
+              responseType: "json"
+            }).then(function (response) {
+              // The requested data
+              console.log('element', rasterLayer._element)
+              console.log('response', response)
+              //var pElement=getCanvasElement(view,view.container);
+             // windy = new Windy({ canvas: rasterLayer._element, data: response });
+              //windy = new Windy({ canvas: pElement, data: response });
+              //console.log('windy', windy)
+             // redraw();
+            }, function (error) {
+              console.log("Error: ", error.message);
+            });
+
+          } else {
+            dom.byId("viewDiv").innerHTML = "This browser doesn't support canvas. Visit <a target='_blank' href='http://www.caniuse.com/#search=canvas'>caniuse.com</a> for supported browsers";
+          }
+        }
+
+        function getCanvasElement(mapview,container){
+          
+            var element = this._element = domConstruct.create("canvas", {
+              id: "canvas",
+              width: mapview.width + "px",
+              height: mapview.height + "px",
+              style: "position: absolute; left: 200px; top: 500px;"
+            }, container);
+            
+            return element;
+        }
+        // does the browser support canvas?
+        function supports_canvas() {
+          return !!document.createElement("canvas").getContext;
+        }
+        function redraw() {
+          windy.stop();
+     
+          var extent = view.extent;
+          setTimeout(function () {
+            windy.start(
+              [[0, 0], [view.width, view.height]],
+              view.width,
+              view.height,
+              [[extent.xmin, extent.ymin], [extent.xmax, extent.ymax]]
+            );
+          }, 500);
+        }
+      });
+
+  </script>
+</head>
+
+<body >
+  <div id="viewDiv"></div>
+ 
+</body>
+
+</html>

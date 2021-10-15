@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <title>Intro to MapView - Create a 2D map - 4.13</title>
+  <style>
+    html,
+    body,
+    #viewDiv {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      width: 100%;
+    }
+  </style>
+
+  <link rel="stylesheet" href="https://js.arcgis.com/4.13/esri/themes/light/main.css" />
+  <script>
+    var dojoConfig = {
+      paths: {
+        plugins: location.pathname.replace(/\/[^/]+$/, "") + "/plugins"
+      }
+    };
+  </script>
+  <script src="https://js.arcgis.com/4.13/"></script>
+
+  <script>
+    require(["esri/Map",
+      "esri/views/MapView",
+     
+      "plugins/RasterLayer",
+
+    ], function (Map, MapView, RasterLayer) {
+      var map = new Map({
+        basemap: "streets"
+      });
+
+      var view = new MapView({
+        container: "viewDiv",
+        map: map,
+        zoom: 4,
+        center: [15, 65] // longitude, latitude
+      });
+
+      canvasSupport = supports_canvas();
+
+      view.when(function () {
+         mapLoaded();
+      }, function (error) {
+        console.log("The view's resources failed to load: ", error);
+      });
+
+       // does the browser support canvas?
+      function supports_canvas() {
+          return !!document.createElement("canvas").getContext;
+      }
+
+      function mapLoaded() {
+          // Add raster layer
+          if (canvasSupport) {
+            rasterLayer = new RasterLayer(map, view, {
+              opacity: 0.55
+            });
+            console.log('rasterLayer',rasterLayer)
+       
+            map.layers.add(rasterLayer);
+            console.log('map added')
+
+            // map.on("extent-change", redraw);
+            // map.on("resize", function () { });
+            // map.on("zoom-start", redraw);
+            // map.on("pan-start", redraw);
+
+            esriRequest('./gfs.json', {
+              responseType: "json"
+            }).then(function (response) {
+              // The requested data
+              console.log('element', rasterLayer)
+              console.log('response', response)
+              //var pElement=getCanvasElement(view,view.container);
+              //windy = new Windy({ canvas: rasterLayer._element, data: response });
+              windy = new Windy({ canvas: rasterLayer._context, data: response });
+              //windy = new Windy({ canvas: pElement, data: response });
+              console.log('windy', windy)
+              redraw();
+            }, function (error) {
+              console.log("Error: ", error.message);
+            });
+
+          } else {
+            dom.byId("viewDiv").innerHTML = "This browser doesn't support canvas. Visit <a target='_blank' href='http://www.caniuse.com/#search=canvas'>caniuse.com</a> for supported browsers";
+          }
+
+
+        }
+
+        function redraw() {
+          windy.stop();
+     
+          var extent = view.extent;
+          setTimeout(function () {
+            windy.start(
+              [[0, 0], [view.width, view.height]],
+              view.width,
+              view.height,
+              [[extent.xmin, extent.ymin], [extent.xmax, extent.ymax]]
+            );
+          }, 500);
+        }
+    });
+  </script>
+</head>
+
+<body>
+  <div id="viewDiv"></div>
+</body>
+
+</html>
