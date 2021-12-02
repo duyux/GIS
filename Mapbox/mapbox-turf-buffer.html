@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Turf buffer</title>
+    <meta
+      name="viewport"
+      content="initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v2.4.0/mapbox-gl.css"
+      rel="stylesheet"
+    />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.4.0/mapbox-gl.js"></script>
+    <script src="https://npmcdn.com/@turf/turf/turf.min.js"></script>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        position: absolute;
+        top: 30px;
+        bottom: 0;
+        width: 100%;
+      }
+      #lnglat {
+        left: 50px;
+        width: 150px;
+      }
+      #radius {
+        left: 50px;
+        width: 150px;
+      }
+      #btn {
+        left: 50px;
+        width: 50px;
+      }
+      #units {
+        left: 50px;
+        width: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <style></style>
+    <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;坐标：</label>
+    <input name="lnglat" id="lnglat" class="txt" value="116.394653 39.910790" />
+    <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;度量单位：</label>
+    <select id="units" name="units" size="1">
+      <option value="kilometers" selected="true">千米</option>
+      <option value="degrees">度</option>
+    </select>
+    <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;半径：</label>
+    <input name="radius" id="radius" class="txt" value="4" />
+    <button id="btn" class="btn" onclick="showbuffer()">显示</button>
+    <div id="map"></div>
+    <script>
+      mapboxgl.accessToken =
+        "pk.eyJ1IjoiZHV5dXgiLCJhIjoiY2o4bWl6OG02MHptcDJ3bnh4OTM2enNrYSJ9.QpDcYnXkmpfpHqxw-KXvfg";
+      const map = new mapboxgl.Map({
+        container: "map", // container ID
+        style: "mapbox://styles/mapbox/streets-v11", // style URL
+        // style:'mapbox://styles/mapbox/satellite-v9',
+        // center: [106.709177, 26.629907], // starting position [lng, lat]
+        center: [113, 22.5], // starting position [lng, lat
+        zoom: 8.35, // starting zoom
+      });
+
+      //按钮点击事件
+      function showbuffer() {
+        //获取中心点坐标
+        var lnglat = document.getElementById("lnglat").value.split(" ");
+        console.log(lnglat);
+        //获取缓冲半径
+        var radius = document.getElementById("radius").value;
+        console.log(radius);
+        //获取度量单位
+        var units =
+          document.getElementById("units").options[
+            document.getElementById("units").selectedIndex
+          ].value;
+        console.log(units);
+        //创建点
+        var point = turf.point([parseFloat(lnglat[0]), parseFloat(lnglat[1])]);
+        console.log(point);
+        //创建缓冲区面
+        var buffered = turf.buffer(point, parseFloat(radius), {
+          steps: 2,
+          units: units,
+        });
+        console.log(buffered);
+        //获取缓冲区面坐标数组
+        var coordinates = buffered.geometry.coordinates[0];
+        console.log(coordinates);
+        // 获取缓冲区四至
+        // 左下角坐标，min_lng，min_lat
+        var es = [180, 90];
+        // 右上角坐标，max_lng，max_lat
+        var wn = [0, 0];
+        for (var i = 0; i < coordinates.length; i++) {
+          console.log(coordinates[i]);
+          if (coordinates[i][0] < es[0]) {
+            es[0] = coordinates[i][0];
+          }
+          if (coordinates[i][1] < es[1]) {
+            es[1] = coordinates[i][1];
+          }
+          if (coordinates[i][0] > wn[0]) {
+            wn[0] = coordinates[i][0];
+          }
+          if (coordinates[i][1] > wn[1]) {
+            wn[1] = coordinates[i][1];
+          }
+        }
+        console.log([es, wn]);
+        //计算左下角到右上角的距离
+        var distance = turf.distance(turf.point(es), turf.point(wn), {
+          units: units,
+        });
+        console.log(distance);
+        //添加资源和图层
+        map.addSource("polygon", {
+          type: "geojson",
+          data: buffered,
+        });
+        map.addLayer({
+          id: "polygon",
+          type: "fill",
+          source: "polygon",
+          layout: {},
+          paint: {
+            "fill-color": "#088",
+            "fill-opacity": 0.8,
+          },
+        });
+
+        map.addSource("point", {
+          type: "geojson",
+          data: point,
+        });
+        map.addLayer({
+          id: "point",
+          type: "circle",
+          source: "point",
+          paint: {
+            "circle-radius": 6,
+            "circle-color": "#B42222",
+          },
+        });
+        //飞行至四至范围内
+        map.fitBounds([es, wn], {
+          padding: 20,
+        });
+      }
+    </script>
+  </body>
+</html>

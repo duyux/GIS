@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Turf Grid</title>
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="https://api.mapbox.com/mapbox-gl-js/v2.4.0/mapbox-gl.css" rel="stylesheet">
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.4.0/mapbox-gl.js"></script>
+<script src='https://npmcdn.com/@turf/turf/turf.min.js'></script>
+<style>
+body { margin: 0; padding: 0; }
+#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+</style>
+</head>
+<body>
+<div id="map"></div>
+<script>
+	mapboxgl.accessToken = 'pk.eyJ1IjoiZHV5dXgiLCJhIjoiY2o4bWl6OG02MHptcDJ3bnh4OTM2enNrYSJ9.QpDcYnXkmpfpHqxw-KXvfg';
+    const map = new mapboxgl.Map({
+        container: 'map', // container ID
+        style: 'mapbox://styles/mapbox/streets-v11', // style URL
+        // style:'mapbox://styles/mapbox/satellite-v9',
+       // center: [106.709177, 26.629907], // starting position [lng, lat]
+       center: [113, 22.5], // starting position [lng, lat
+        zoom: 8.35 // starting zoom
+    });
+
+
+    //turf.js生成格网(渔网)
+     var bbox=[112,22,114,23];//格网坐标minX,minY,maxX,maxY
+     var cellSide=5;//格网长度
+     var options={units:'kilometers'};//长度单位
+     var squareGrid=turf.squareGrid(bbox,cellSide,options);//生成格网
+    
+    //MapBox加载格网,使用常规的addSource及addLayer即可加载，指定source的类型为geojson即可
+    map.on("click",function(){
+        map.addSource('gridsource', {
+            type: 'geojson',
+            data: squareGrid
+        });
+        map.addLayer({
+            id: 'gridLyr',
+            type: 'fill',
+            source: 'gridsource',
+            paint: {
+                'fill-color': '#486DE0',
+                'fill-outline-color': '#ffffff'
+            }
+        });
+
+      
+    });
+
+
+
+    // map.on('load',() =>{
+    //     map.addLayer({
+    //         id:'terrain-data',
+    //         type:'line',
+    //         source:{
+    //             type:'vector',
+    //             url:'mapbox://mapbox.mapbox-terrain-v2'
+    //         },
+    //         'source-layer': 'contour'
+
+    //     });
+    // });
+</script>
+
+</body>
+</html>
