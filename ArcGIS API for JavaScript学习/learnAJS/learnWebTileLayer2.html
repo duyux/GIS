@@ -1,0 +1,71 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
+    <title>WebTileLayer | Sample | ArcGIS API for JavaScript 4.20</title>
+
+    <style>
+      html,
+      body,
+      #viewDiv {
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        width: 100%;
+      }
+    </style>
+
+    <link
+      rel="stylesheet"
+      href="https://js.arcgis.com/4.20/esri/themes/light/main.css"
+    />
+    <script src="https://js.arcgis.com/4.20/"></script>
+
+    <script>
+      require([
+        "esri/layers/WebTileLayer",
+        "esri/Map",
+        "esri/views/MapView"
+
+      ], (WebTileLayer, Map, MapView) => {
+        const map = new Map({
+          ground: "world-elevation"
+        });
+
+      
+        const view = new MapView({
+          container: "viewDiv",
+          map: map,
+        
+        });
+
+      
+        var tiledLayer = new WebTileLayer({
+            urlTemplate:
+              "http://59.215.186.129:9800/ext/yxmkt-proxy/img_w/wmts?ua_token=eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aG91YmFuIiwiY3JlYXRlZCI6MTYxNzE1NTc1NjE4MiwiZXhwIjoxNjUzOTMyODcyfQ.pwwuBsdjmpuWr4iLGBwCZo9kI5cxN8hnTx5W-THI_0FYxvJAhf9oF5FfuLne_L7KtUWMqG3J2FkhNAAtD_4FNw&service=wmts&request=GetTile&version=1.0.0&LAYER=img&tileMatrixSet=w&TileMatrix={z}&TileRow={y}&TileCol={x}&style=default&format=tiles&tk=5853c0e92459c816623625d1c54d4593",
+          
+          });
+
+
+          var tiledLayerLabel = new WebTileLayer({
+            urlTemplate:
+              "http://59.215.186.129:9800/ext/yxzjm-proxy/cia_w/wmts?ua_token=eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aG91YmFuIiwiY3JlYXRlZCI6MTYxNzE1NTc1NjE4MiwiZXhwIjoxNjUzOTMyODcyfQ.pwwuBsdjmpuWr4iLGBwCZo9kI5cxN8hnTx5W-THI_0FYxvJAhf9oF5FfuLne_L7KtUWMqG3J2FkhNAAtD_4FNw&service=wmts&request=GetTile&version=1.0.0&LAYER=cia&tileMatrixSet=w&TileMatrix={z}&TileRow={y}&TileCol={x}&style=default&format=tiles&tk=5853c0e92459c816623625d1c54d4593",
+          
+          });
+         
+
+
+        map.add(tiledLayer);
+        map.add(tiledLayerLabel);
+    
+      });
+    </script>
+  </head>
+
+  <body>
+    <div id="viewDiv"></div>
+  </body>
+</html>

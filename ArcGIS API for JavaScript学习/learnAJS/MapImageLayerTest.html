@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+  <title>Intro to MapView - Create a 2D map - 4.10</title>
+  <style>
+    html,
+    body,
+    #viewDiv {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      width: 100%;
+    }
+  </style>
+
+  <link rel="stylesheet" href="https://js.arcgis.com/4.22/esri/css/main.css">
+  <script src="https://js.arcgis.com/4.22/"></script>
+
+  <script>
+    require([
+      "esri/Map",
+      "esri/views/MapView",
+      "esri/geometry/Extent",
+      "esri/layers/GraphicsLayer",
+      "esri/layers/MapImageLayer",
+      "esri/layers/WebTileLayer",
+      "esri/Graphic"
+    ], function (Map, MapView,Extent, GraphicsLayer,MapImageLayer,WebTileLayer, Graphic) {
+
+     //测试增加地图中台图层
+       var gzdtztlayer = new WebTileLayer({
+            urlTemplate:
+              "http://59.215.221.30:9800/ext/tiandituyingxiang-proxy/img_c/wmts?ua_token=eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJIdWFuQmFvVGluZyIsImNyZWF0ZWQiOjE2NDU3NTMwNDIyMDEsImV4cCI6MTc1NjU2OTYwMH0.3tEoYA3ejdqXIV55wlGZsTYD9J77kZ2fG5ny4PHik-DkF_u2-GzhgSVpggP6MaRBWn36HD7eM75ZTPVzbVT7mA&service=wmts&request=GetTile&version=1.0.0&LAYER=img&tileMatrixSet=c&TileMatrix={z}&TileRow={y}&TileCol={x}&style=default&format=tiles&tk=5853c0e92459c816623625d1c54d4593",
+           
+          },
+        
+          
+          );
+          //标注图
+      var gzdtztlayerLable = new WebTileLayer({
+            urlTemplate: 
+            "http://59.215.221.30:9800/ext/tdtyxzj-proxy/cia_c/wmts?ua_token=eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJIdWFuQmFvVGluZyIsImNyZWF0ZWQiOjE2NDU3NTMwNDIyMDEsImV4cCI6MTc1NjU2OTYwMH0.3tEoYA3ejdqXIV55wlGZsTYD9J77kZ2fG5ny4PHik-DkF_u2-GzhgSVpggP6MaRBWn36HD7eM75ZTPVzbVT7mA&service=wmts&request=GetTile&version=1.0.0&LAYER=cia&tileMatrixSet=c&TileMatrix={z}&TileRow={y}&TileCol={x}&style=default&format=tiles&tk=5853c0e92459c816623625d1c54d4593",
+           
+          });
+      let parrLys = [gzdtztlayer, gzdtztlayerLable];
+      // var map=new Map();
+      var map = new Map({
+            basemap: {
+              baseLayers: parrLys
+            }
+          });
+    
+      var layer = new MapImageLayer({
+              url: "http://59.215.185.190:6080/arcgis/rest/services/guizhou_4490/MapServer",
+              id: "testID",
+             
+              sublayers: [{
+                  id: 9,
+                  visible: false
+                },
+                {
+                  id: 8,
+                  visible: false
+                },
+                {
+                  id: 7,
+                  visible: true
+                }, {
+                  id: 5,
+                  visible: false
+                }, {
+                  id: 3,
+                  visible: false
+                }, {
+                  id: 2,
+                  visible: false
+                }, {
+                  id: 1,
+                  visible: true
+                }, {
+                  id: 0,
+                  visible: false
+                }
+              ]
+            });
+      layer.opacity = 1;
+
+      var view = new MapView({
+        container: "viewDiv",
+        map: map,
+        zoom: 7,
+        center: [106.555, 75.12],
+        // spatialReference: {
+        //       wkid: 4326,
+        //     },
+      });
+      console.log("sp:",view.spatialReference)
+      // view.constraints = {
+      //       minScale: 18830831, // User cannot zoom out beyond a scale of 1:500,000
+      //       maxScale: 0, // User can overzoom tiles
+      //       rotationEnabled: false // Disables map rotation
+      //     };
+      //     var pExtent = new Extent({
+      //       xmax: 109.59043287756364,
+      //       xmin: 103.59912399372051,
+      //       spatialReference: {
+      //         wkid: 4490,
+      //       },
+      //     });
+
+         
+      //   if (pExtent) {
+      //         view.extent = pExtent.clone().expand(0.7);
+         
+      //     }
+      // console.log("view",view,map)
+     map.add(layer);
+ 
+      
+     
+      
+     
+
+    });
+  </script>
+</head>
+
+<body>
+  <div id="viewDiv"></div>
+</body>
+
+</html>

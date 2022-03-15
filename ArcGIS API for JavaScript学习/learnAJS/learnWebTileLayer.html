@@ -20,9 +20,9 @@
 
     <link
       rel="stylesheet"
-      href="https://js.arcgis.com/4.20/esri/themes/light/main.css"
+      href="https://js.arcgis.com/4.30/esri/themes/light/main.css"
     />
-    <script src="https://js.arcgis.com/4.20/"></script>
+    <script src="https://js.arcgis.com/4.30/"></script>
 
     <script>
       require([
@@ -31,35 +31,40 @@
         "esri/views/MapView"
 
       ], (WebTileLayer, Map, MapView) => {
-        const map = new Map({
-          ground: "world-elevation"
-        });
+        const map = new Map();
 
       
         const view = new MapView({
           container: "viewDiv",
           map: map,
-        
+         
         });
 
-      
         var tiledLayer = new WebTileLayer({
             urlTemplate:
-              "http://59.215.186.129:9800/ext/yxmkt-proxy/img_w/wmts?ua_token=eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aG91YmFuIiwiY3JlYXRlZCI6MTYxNzE1NTc1NjE4MiwiZXhwIjoxNjUzOTMyODcyfQ.pwwuBsdjmpuWr4iLGBwCZo9kI5cxN8hnTx5W-THI_0FYxvJAhf9oF5FfuLne_L7KtUWMqG3J2FkhNAAtD_4FNw&service=wmts&request=GetTile&version=1.0.0&LAYER=img&tileMatrixSet=w&TileMatrix={z}&TileRow={y}&TileCol={x}&style=default&format=tiles&tk=5853c0e92459c816623625d1c54d4593",
+              "http://59.215.221.30:9800/arcgis/rest/services/Map/GZDOMimg2019/MapServer/WMTS/tile/1.0.0/Map_GZDOMimg2019/{Style}/{TileMatrixSet}/{level}/{row}/{col}.png",
           
           });
 
-
-          var tiledLayerLabel = new WebTileLayer({
-            urlTemplate:
-              "http://59.215.186.129:9800/ext/yxzjm-proxy/cia_w/wmts?ua_token=eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aG91YmFuIiwiY3JlYXRlZCI6MTYxNzE1NTc1NjE4MiwiZXhwIjoxNjUzOTMyODcyfQ.pwwuBsdjmpuWr4iLGBwCZo9kI5cxN8hnTx5W-THI_0FYxvJAhf9oF5FfuLne_L7KtUWMqG3J2FkhNAAtD_4FNw&service=wmts&request=GetTile&version=1.0.0&LAYER=cia&tileMatrixSet=w&TileMatrix={z}&TileRow={y}&TileCol={x}&style=default&format=tiles&tk=5853c0e92459c816623625d1c54d4593",
+        map.add(tiledLayer);
+       // map.add(tiledLayerLabel);
+        // var tiledLayer = new WebTileLayer({
+        //     urlTemplate:
+        //       "http://59.215.186.129:9800/ext/yxmkt-proxy/img_w/wmts?ua_token=eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aG91YmFuIiwiY3JlYXRlZCI6MTYxNzE1NTc1NjE4MiwiZXhwIjoxNjUzOTMyODcyfQ.pwwuBsdjmpuWr4iLGBwCZo9kI5cxN8hnTx5W-THI_0FYxvJAhf9oF5FfuLne_L7KtUWMqG3J2FkhNAAtD_4FNw&service=wmts&request=GetTile&version=1.0.0&LAYER=img&tileMatrixSet=w&TileMatrix={z}&TileRow={y}&TileCol={x}&style=default&format=tiles&tk=5853c0e92459c816623625d1c54d4593",
           
-          });
+        //   });
+
+
+        //   var tiledLayerLabel = new WebTileLayer({
+        //     urlTemplate:
+        //       "http://59.215.186.129:9800/ext/yxzjm-proxy/cia_w/wmts?ua_token=eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aG91YmFuIiwiY3JlYXRlZCI6MTYxNzE1NTc1NjE4MiwiZXhwIjoxNjUzOTMyODcyfQ.pwwuBsdjmpuWr4iLGBwCZo9kI5cxN8hnTx5W-THI_0FYxvJAhf9oF5FfuLne_L7KtUWMqG3J2FkhNAAtD_4FNw&service=wmts&request=GetTile&version=1.0.0&LAYER=cia&tileMatrixSet=w&TileMatrix={z}&TileRow={y}&TileCol={x}&style=default&format=tiles&tk=5853c0e92459c816623625d1c54d4593",
+          
+        //   });
          
 
 
-        map.add(tiledLayer);
-        map.add(tiledLayerLabel);
+        // map.add(tiledLayer);
+        // map.add(tiledLayerLabel);
     
       });
     </script>

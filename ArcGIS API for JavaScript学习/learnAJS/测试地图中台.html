@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.6.1/css/ol.css" type="text/css">
+    <style>
+        html,body,
+      .map {
+        height: 100%;
+        width: 100%;
+      }
+    </style>
+    <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.6.1/build/ol.js"></script>
+  </head>
+  <body>
+    <div id="map" class="map"></div>
+    <script type="text/javascript">
+       var map = new ol.Map({
+            target: 'map',
+            layers: [
+                // 影像
+                new ol.layer.Tile({
+                        source: new ol.source.XYZ({
+                          // url: "http://59.215.221.30:9800/ext/GZDOMimg2019-proxy/arcgis/rest/services/Map/GZDOMimg2019/MapServer/WMTS?ua_token=eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJIdWFuQmFvVGluZyIsImNyZWF0ZWQiOjE2NDU3NTMwNDIyMDEsImV4cCI6MTc1NjU2OTYwMH0.3tEoYA3ejdqXIV55wlGZsTYD9J77kZ2fG5ny4PHik-DkF_u2-GzhgSVpggP6MaRBWn36HD7eM75ZTPVzbVT7mA"
+                          // 之前的
+                        // url: 'http://59.215.186.129:9800/ext/yxmkt-proxy/img_w/wmts?ua_token=eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aG91YmFuIiwiY3JlYXRlZCI6MTYxNzE1NTc1NjE4MiwiZXhwIjoxNjUzOTMyODcyfQ.pwwuBsdjmpuWr4iLGBwCZo9kI5cxN8hnTx5W-THI_0FYxvJAhf9oF5FfuLne_L7KtUWMqG3J2FkhNAAtD_4FNw&service=wmts&request=GetTile&version=1.0.0&LAYER=img&tileMatrixSet=w&TileMatrix={z}&TileRow={y}&TileCol={x}&style=default&format=tiles&tk=5853c0e92459c816623625d1c54d4593',
+                          // 需要改的
+                        url: 'http://59.215.221.30:9800/ext/tiandituyingxiang-proxy/img_c/wmts?ua_token=eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJIdWFuQmFvVGluZyIsImNyZWF0ZWQiOjE2NDU3NTMwNDIyMDEsImV4cCI6MTc1NjU2OTYwMH0.3tEoYA3ejdqXIV55wlGZsTYD9J77kZ2fG5ny4PHik-DkF_u2-GzhgSVpggP6MaRBWn36HD7eM75ZTPVzbVT7mA&service=wmts&request=GetTile&version=1.0.0&LAYER=img&tileMatrixSet=c&TileMatrix={z}&TileRow={y}&TileCol={x}&style=default&format=tiles&tk=5853c0e92459c816623625d1c54d4593',
+                    }),
+                }),
+            ],
+            view: new ol.View({
+                center: [106.42, 26.35],
+                zoom: 2,
+               
+                // projection: "EPSG:900913",
+                // projection: "EPSG:4326",
+            })
+        });
+        // var map = new ol.Map({
+        //     target: 'map',
+        //     layers: [
+        //         // 影像
+        //         new ol.layer.Tile({
+        //                 source: new ol.source.XYZ({
+        //                   // url: "http://59.215.221.30:9800/ext/GZDOMimg2019-proxy/arcgis/rest/services/Map/GZDOMimg2019/MapServer/WMTS?ua_token=eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJIdWFuQmFvVGluZyIsImNyZWF0ZWQiOjE2NDU3NTMwNDIyMDEsImV4cCI6MTc1NjU2OTYwMH0.3tEoYA3ejdqXIV55wlGZsTYD9J77kZ2fG5ny4PHik-DkF_u2-GzhgSVpggP6MaRBWn36HD7eM75ZTPVzbVT7mA"
+        //                   // 之前的
+        //                 // url: 'http://59.215.186.129:9800/ext/yxmkt-proxy/img_w/wmts?ua_token=eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aG91YmFuIiwiY3JlYXRlZCI6MTYxNzE1NTc1NjE4MiwiZXhwIjoxNjUzOTMyODcyfQ.pwwuBsdjmpuWr4iLGBwCZo9kI5cxN8hnTx5W-THI_0FYxvJAhf9oF5FfuLne_L7KtUWMqG3J2FkhNAAtD_4FNw&service=wmts&request=GetTile&version=1.0.0&LAYER=img&tileMatrixSet=w&TileMatrix={z}&TileRow={y}&TileCol={x}&style=default&format=tiles&tk=5853c0e92459c816623625d1c54d4593',
+        //                   // 需要改的
+        //                 url: 'http://59.215.221.30:9800/ext/tiandituyingxiang-proxy/img_c/wmts?ua_token=eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJIdWFuQmFvVGluZyIsImNyZWF0ZWQiOjE2NDU3NTMwNDIyMDEsImV4cCI6MTc1NjU2OTYwMH0.3tEoYA3ejdqXIV55wlGZsTYD9J77kZ2fG5ny4PHik-DkF_u2-GzhgSVpggP6MaRBWn36HD7eM75ZTPVzbVT7mA&service=wmts&request=GetTile&version=1.0.0&LAYER=img&tileMatrixSet=c&TileMatrix={z}&TileRow={y}&TileCol={x}&style=default&format=tiles&tk=5853c0e92459c816623625d1c54d4593',
+        //             }),
+        //         }),
+        //     ],
+        //     view: new ol.View({
+        //         center: [106.42, 26.35],
+        //         zoom: 1,
+        //         projection: "EPSG:900913",
+        //         // projection: "EPSG:4326",
+        //     })
+        // });
+    </script>
+  </body>
+</html>
